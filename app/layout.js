@@ -8,7 +8,7 @@ import { Footer } from '../components/Footer/Footer';
 import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
-import { initializeAnalytics } from './analytics.js';// Import analytics
+import {initializeAnalytics} from './analytics';// Import analytics
 
 
 const outfit = Outfit({
