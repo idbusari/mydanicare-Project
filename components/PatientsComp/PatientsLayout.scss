@@ -1,0 +1,38 @@
+
+  .action-box {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .action-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .action-box i {
+    font-size: 2.5rem;
+    color: #E66926;
+    margin-bottom: 1rem;
+  }
+
+  .action-box h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .action-box p {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  .content-section {
+    padding: 4rem 2rem;
+  }
+
+  .icon-large {
+    font-size: 2.5rem;
+    color: #FFCC00;
+  }

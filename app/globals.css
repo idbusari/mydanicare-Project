@@ -1,0 +1,412 @@
+:root {
+  --font-outfit: 'Outfit', sans-serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --yel: #ffcc00;
+  --blck: #333132;
+  --ornge: #e66926;
+  --warmblue: #5e6883;
+  --white: #fff;
+  --bg-light: #f9f9f9;
+  --bg-lighter: #fcfcfc;
+}
+
+html,
+body {
+  font-family: var(--font-dm-sans), sans-serif;
+  background: var(--white);
+  max-width: 100vw;
+  font-size: 1rem; /* 16px for desktop */
+  line-height: 1.7; /* 27.2px */
+  margin: 0;
+  padding: 0;
+  color: var(--blck);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+*/
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn-yellow {
+  background-color: #FFCC00;
+  color: #333132;
+  display: inline-block;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  transition: all 200ms cubic-bezier(.645, .045, .355, 1);
+  padding: 25px 55px;
+  border-radius: 36px;
+  border: none;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 2.4px;
+  min-width: auto;
+  text-decoration: none !important;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit) !important;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.5rem;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+h4 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+h5 {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+h6 {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+small {
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.spacer {
+  height: 30px
+}
+
+.dark-color {
+  color: #333132
+}
+
+.prim-color {
+  color: #E66926;
+}
+
+.sec-color {
+  color: #06c;
+}
+
+.tet-yellow {
+  color: #FFCC00
+}
+
+
+.main-color {
+  color: #FFCC00;
+}
+
+.sec-dark {
+  color: #333132
+}
+
+.bg-patternbright {
+  background-image: url("/images/pattern-bright.png");
+}
+
+.bg-transparent {
+  background-color: rgba(0, 0, 0, 0.199) !important;
+
+}
+.bg-patterngray {
+  background-image: url("/images/dolaniBg.svg");
+}
+
+.bg-gray {
+  background-color: #fcfcfc;
+}
+
+.bg-blck {
+  color: #323332;
+}
+
+.bg-danicare {
+  background-color: #FFF5D6;
+}
+
+.subheader-caps-large,
+.subheader-caps-medium,
+.subheader-caps-small {
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #343d56;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.text-sapphire-medium {
+  color: #333132 !important;
+  line-height: 38px;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.text-sapphire-white {
+  color: #fff !important;
+  line-height: 46px;
+  font-weight: 400;
+}
+
+.text-sapphire-light {
+  color: #E66926;
+}
+
+.text-large {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-outline,
+.btn-outline-dark,
+.btn-tertiary {
+  display: inline-block;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  transition: all 200ms cubic-bezier(.645, .045, .355, 1);
+  padding: 25px 55px;
+  border-radius: 36px;
+  border: none;
+  background-color: #FFCC00;
+  position: relative;
+  color: #333132 !important;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 2.4px;
+  min-width: auto;
+  text-decoration: none !important;
+  text-align: center;
+}
+
+.btn-primaryy {
+  background-color: #0056b3;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-custom {
+  background: #FFCC00;
+  color: #333132;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+
+.btn-orange {
+  background-color: #e66926;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 0px solid #e66926;
+  text-decoration: none;
+}
+
+.btn-orange:hover {
+  background-color: #e66926;
+  color: #fff;
+}
+
+.btn-yellow {
+  background-color: #FFCC00;
+  color: #333132;
+  /* This is now set once */
+  display: inline-block;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  transition: all 200ms cubic-bezier(.645, .045, .355, 1);
+  padding: 25px 55px;
+  border-radius: 36px;
+  border: none;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 2.4px;
+  min-width: auto;
+  text-decoration: none !important;
+  text-align: center;
+}
+
+
+/*.btn-primary:hover {
+  background-color: #e66926;
+  color:#fff !important;
+}
+*/
+.btn-yellow:hover {
+  background-color: #FFCC00;
+  ;
+  color: #333132 !important;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-arrow,
+.btn-arrow-left {
+  position: relative;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  color: #3e99db !important;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  text-align: center;
+  padding: 5px 35px;
+}
+
+
+
+.btn-arrow:after {
+  background-image: url("/images/arrow-right-sky.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% auto;
+  content: "";
+  display: inline-block;
+  height: 12px;
+  width: 14px;
+  margin: -3px 0 0 6px;
+  vertical-align: middle;
+  transition: transform .15s ease-out;
+}
+
+.section-title {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.heropage-bg {
+  background-color: #FFCC00;
+  ;
+}
+
+.heropage-heading {
+  font-weight: 700;
+  color: #323232;
+  font-size: 53px;
+  line-height: 63px;
+}
+
+.heropage-description {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9375rem; /* 15px for mobile */
+    line-height: 1.8; /* 27px */
+  }
+  p {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+  }
+  small {
+    font-size: 0.8125rem; /* 13px for small text on mobile */
+    line-height: 1.8;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+  }
+  h2 {
+    font-size: 2rem;
+    line-height: 1.4;
+  }
+  h3 {
+    font-size: 1.75rem;
+    line-height: 1.5;
+  }
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+  h5 {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  h6 {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 1.125rem; /* Slightly larger for desktops (18px) */
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

@@ -1,0 +1,74 @@
+/* #insurancePartner {
+  background-color: #f9f9f9;
+} */
+
+.insuranceIntro {
+    font-size: 24px;
+    line-height: 46px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#insurancePartner img {
+    flex: 1;
+    align-self: center;
+    height: auto;
+    max-width: 105px !important;
+    /* filter: grayscale(100%) !important; */
+  }
+  
+  #insurancePartner img:nth-of-type(2) {
+    max-width: 90px !important;
+  }
+  
+  #insurancePartner img:nth-of-type(3) {
+    max-width: 200px !important;
+  }
+  
+  /* Mobile-specific styling for two columns */
+  @media (max-width: 767px) {
+    #insurancePartner .col-lg-8 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; /* Space images evenly */
+    }
+  
+    #insurancePartner img {
+      max-width: 48%; /* Each image will take up roughly half the width */
+      margin-bottom: 15px; /* Add space between images */
+    }
+  
+    #insurancePartner img:nth-of-type(1),
+    #insurancePartner img:nth-of-type(2) {
+      max-width: 48%; /* First two images will be 48% width */
+    }
+  
+    #insurancePartner img:nth-of-type(3),
+    #insurancePartner img:nth-of-type(4) {
+      max-width: 48%; /* Next two images will be 48% width */
+    }
+  
+    #insurancePartner img:nth-of-type(5) {
+      max-width: 48%; /* Last image will also take up 48% width */
+    }
+  
+    /* Ensure the "and more" text is centered and not squeezed */
+    #insurancePartner .flex-break {
+      display: block;
+      width: 100%;
+    }
+  
+    #insurancePartner h5 {
+      text-align: center;
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    /* Reset max-width for larger screens */
+    #insurancePartner img {
+      max-width: 105px !important;
+    }
+  }
+  

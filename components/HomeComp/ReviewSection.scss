@@ -1,0 +1,78 @@
+/* Swiper Slide Cards Styling */
+.swiper-slide {
+  display: flex; /* Ensure the card takes full slide space */
+  justify-content: center; /* Center content horizontally */
+  align-items: stretch; /* Stretch content vertically */
+}
+
+.card.review-card {
+  width: 90%; /* Limit the card's width to avoid edge clipping */
+  max-width: 500px; /* Optional: Set a max width */
+  height: 320px; /* Set a fixed height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Spread content evenly */
+  background: #fff; /* Card background */
+  
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+  text-align: center;
+}
+
+/* Card Body Styling */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+/* Swiper Pagination */
+.swiper-pagination {
+  position: absolute;
+  bottom: 20px; /* Move pagination further down */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding-top: 10px; /* Add spacing above pagination */
+}
+
+.swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+  background-color: #007aff;
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #0056b3;
+  transform: scale(1.2); /* Slightly enlarge active bullet */
+}
+
+/* Adjust Swiper Slide to Prevent Overlap */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding-bottom: 50px; /* Ensure enough space below cards */
+}
+
+/* Card Styles */
+
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .swiper-pagination {
+    bottom: 10px; /* Adjust pagination for smaller screens */
+  }
+
+  .swiper-slide {
+    padding-bottom: 40px; /* Ensure space for pagination */
+  }
+
+  .card.review-card {
+    height: auto; /* Allow dynamic height on small screens */
+  }
+}

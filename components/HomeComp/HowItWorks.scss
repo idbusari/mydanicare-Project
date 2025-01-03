@@ -1,0 +1,35 @@
+.how-it-works-section {
+    padding: 60px 20px;
+    background: linear-gradient(180deg, #f6f7f9 35%, #eaf8f8 100%);
+  }
+  
+  .how-it-works-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .how-it-works-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .how-it-works-content h3 {
+    /* font-size: 1.5rem; 
+    line-height: 1.6; */
+    font-weight: 400;
+  }
+  
+  .how-it-works-content p {
+    font-weight: 400;
+    color: #555;
+  }
+  
+  .how-it-works-content a {
+    text-decoration: none;
+  }
+  
+  .how-it-works-content h2 {
+    font-weight: 600;
+  }
+  

@@ -1,0 +1,20 @@
+.partners-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+  }
+  .partners-section .partner-logo {
+  width: 120px;
+  height: 60px;
+  object-fit: contain; /* Ensures the image fits without distortion */
+}
+
+  .partner-logo {
+    width: 150px;
+    height: auto;
+    margin: 15px;
+    transition: transform 0.3s ease;
+  }
+
+  .partner-logo:hover {
+    transform: scale(1.1);
+  }

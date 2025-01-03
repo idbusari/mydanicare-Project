@@ -1,0 +1,36 @@
+.hero-section {
+  position: relative;
+  background-image: url("/images/partnergroup.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 1;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2; /* Ensure text appears above the overlay */
+}
+
+  
+  .spacer {
+    height: 50px;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  

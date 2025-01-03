@@ -1,0 +1,65 @@
+.section {
+    margin-bottom: 4rem;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  .image-content img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+
+  @keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+
+  .slide-left {
+    animation: slideInLeft 1.2s ease-in-out;
+  }
+
+  .slide-right {
+    animation: slideInRight 1.2s ease-in-out;
+  }
+
+  .hero-section {
+    position: relative;
+    height: 50vh; 
+  }
+  
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+  }
+  
+  .hero-section .container {
+    position: relative;
+    z-index: 2; /* Ensures content is above overlay */
+  }
+  
+  .hero-heading {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .hero-description {
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+  

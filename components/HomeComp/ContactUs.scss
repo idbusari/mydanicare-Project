@@ -1,0 +1,31 @@
+#contactUs {
+  background-color: #f8f9fa;  
+  padding: 50px 0;
+  margin: 50px;
+}
+
+#contactUs h2 {
+  font-size: 2rem;
+  line-height: 1.6;
+  text-align: center;  /* Ensures heading is centered */
+}
+
+#cta-contactus {
+  font-size: 1rem;
+  padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+#contactUs {
+  margin: 20px 0;
+}
+
+#contactUs h2 {
+  font-size: 1.5rem;
+}
+
+#cta-contactus {
+  font-size: 1rem;
+  padding: 10px 20px;
+}
+}

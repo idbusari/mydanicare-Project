@@ -1,0 +1,23 @@
+/*#aboutUs p {
+    font-size: 18px; 
+    line-height: 1.6; 
+    color: #555;
+}*/
+
+/* Hide the image on mobile devices */
+@media (max-width: 767px) {
+    .hide-on-mobile {
+      display: none !important;
+    }
+    #aboutUs .row {
+      display: flex;
+      flex-direction: column; /* Stack the content vertically */
+      align-items: center;    /* Center align items horizontally */
+      text-align: center;     /* Center align text */
+    }
+  
+    #aboutUs .btn-yellow {
+      margin-top: 20px; /* Add spacing for better button placement */
+    }
+  }
+  
