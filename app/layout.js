@@ -8,7 +8,7 @@ import { Footer } from '../components/Footer/Footer';
 import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
-import Head from 'next/head';
+import { initializeAnalytics } from './analytics'; // Import analytics
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -28,37 +28,25 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  if (typeof window !== "undefined") {
+    initializeAnalytics(); // Initialize Google Analytics
+  }
+
   return (
     <html lang="en">
       <head>
-        <Head>
-          {/* Google Analytics */}
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=G-BVBHZ1NWSN`}
-          ></script>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-BVBHZ1NWSN', {
-                  page_path: window.location.pathname,
-                });
-              `,
-            }}
-          />
-          {/* Swiper CSS and JS */}
-          <link
-            rel="stylesheet"
-            href="https://unpkg.com/swiper/swiper-bundle.min.css"
-          />
-          <script
-            src="https://unpkg.com/swiper/swiper-bundle.min.js"
-            defer
-          ></script>
-        </Head>
+      <title>{metadata.title || "Default Title"}</title>
+      <meta name="description" content={metadata.description || "Default description"} />
+      
+        {/* Adding Swiper CDN links */}
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/swiper/swiper-bundle.min.css"
+        />
+        <script
+          src="https://unpkg.com/swiper/swiper-bundle.min.js"
+          defer
+        ></script>
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
         <HeaderTop />
