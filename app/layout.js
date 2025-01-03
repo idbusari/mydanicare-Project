@@ -8,7 +8,8 @@ import { Footer } from '../components/Footer/Footer';
 import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
-import { initializeAnalytics } from './analytics'; // Import analytics
+import { initializeAnalytics } from './analytics.js';// Import analytics
+
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -37,7 +38,7 @@ export default function RootLayout({ children }) {
       <head>
       <title>{metadata.title || "Default Title"}</title>
       <meta name="description" content={metadata.description || "Default description"} />
-      
+
         {/* Adding Swiper CDN links */}
         <link
           rel="stylesheet"
