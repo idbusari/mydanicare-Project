@@ -8,8 +8,7 @@ import { Footer } from '../components/Footer/Footer';
 import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
-import {initializeAnalytics} from './analytics';// Import analytics
-
+import { GoogleAnalytics } from '@next/third-parties/google'; // Import GA4 component
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -29,15 +28,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  if (typeof window !== "undefined") {
-    initializeAnalytics(); // Initialize Google Analytics
-  }
-
   return (
     <html lang="en">
       <head>
-      <title>{metadata.title || "Default Title"}</title>
-      <meta name="description" content={metadata.description || "Default description"} />
+        <title>{metadata.title || "Default Title"}</title>
+        <meta name="description" content={metadata.description || "Default description"} />
 
         {/* Adding Swiper CDN links */}
         <link
@@ -48,6 +43,9 @@ export default function RootLayout({ children }) {
           src="https://unpkg.com/swiper/swiper-bundle.min.js"
           defer
         ></script>
+
+        {/* Google Analytics - GA4 */}
+        <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
         <HeaderTop />
