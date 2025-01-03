@@ -23,7 +23,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
-  title: "Danicare",
+  title: "Danicare Psychiatry",
   description: "Psychiatry Tailored to Suit You",
 };
 
