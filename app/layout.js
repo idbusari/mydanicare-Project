@@ -8,6 +8,7 @@ import { Footer } from '../components/Footer/Footer';
 import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
+import Head from 'next/head';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -23,31 +24,50 @@ const dmSans = DM_Sans({
 
 export const metadata = {
   title: "Danicare",
-  description: "Psychiatry Tailored to Suit Yo",
+  description: "Psychiatry Tailored to Suit You",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Adding Swiper CDN links */}
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/swiper/swiper-bundle.min.css"
-        />
-        <script
-          src="https://unpkg.com/swiper/swiper-bundle.min.js"
-          defer
-        ></script>
+        <Head>
+          {/* Google Analytics */}
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=G-BVBHZ1NWSN`}
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-BVBHZ1NWSN', {
+                  page_path: window.location.pathname,
+                });
+              `,
+            }}
+          />
+          {/* Swiper CSS and JS */}
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/swiper/swiper-bundle.min.css"
+          />
+          <script
+            src="https://unpkg.com/swiper/swiper-bundle.min.js"
+            defer
+          ></script>
+        </Head>
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
-        <HeaderTop/>
+        <HeaderTop />
         <Header />
         <ClientLayout>
           {children}
         </ClientLayout>
         <Footer />
-        <FooterBottom/>
+        <FooterBottom />
       </body>
     </html>
   );
