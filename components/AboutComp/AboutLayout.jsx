@@ -46,9 +46,8 @@ const AboutLayout = () => {
             live.</p>
 
 
-          <p className="text-description"> We&apos;re not just changing the game; we&apos;re creating a brighter future for mental
-            health care—one patient, one breakthrough, and one act of compassion at a time. Join us as we lead the
-            transformation.</p>
+          <p className="text-description"> We are not just revolutionizing mental health care; we are shaping a brighter future for psychiatric 
+            services—one patient, one breakthrough, and one act of compassionate care at a time. Join us as we spearhead the transformation of psychiatric treatment.</p>
         </div>
         <div className="col-md-6">
           <Image src={"/images/mentalTreatment.png"} alt="About DaniCare" width={500} height={500} className="img-fluid"/>

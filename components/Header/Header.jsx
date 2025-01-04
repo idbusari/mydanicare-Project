@@ -36,8 +36,8 @@ export const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto align-items-center">
               {[
-                { href: '/about-us', label: 'About Us' },
-                { href: '/psychiatry-service-provider', label: 'Treatment' },
+                { href: '/psychiatry-service-provider', label: 'About Us' },
+                { href: '/psychiatry-treatment', label: 'Treatment' },
                 { href: '/become-a-patient', label: 'Patients' },
                 { href: '/we-accept-insurance', label: 'Insurance' },
                 { href: '/partner-with-us', label: 'Partner' },

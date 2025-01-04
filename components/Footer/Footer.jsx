@@ -20,7 +20,7 @@ export const Footer = () => {
               />
             </Link>
             <p>
-              At DaniCare, we are dedicated to providing personalized, compassionate mental health care to help you achieve
+              At DaniCare Psychiatry, we are dedicated to providing personalized, compassionate mental health care to help you achieve
               lasting well-being.
             </p>
             <p><span className="intro">Service Address: </span> <br/> Laredo Medical Center <br/> 
@@ -32,10 +32,10 @@ export const Footer = () => {
           <div className="col-6 col-md-3 col-lg-2 mb-4">
             <h5 className="mb-3">Our Solutions</h5>
             <ul className="list-unstyled">
-              <li><Link href="/insurance">Insurance</Link></li>
-              <li><Link href="/treatment">Treatment</Link></li>
+              <li><Link href="/we-accept-insurance">Insurance</Link></li>
+              <li><Link href="/psychiatry-services">Treatment</Link></li>
               <li><Link href="/psychiatrist">Our psychiatrist</Link></li>
-              <li><Link href="/patients">Patients</Link></li>
+              <li><Link href="/become-a-patient">Patients</Link></li>
             </ul>
           </div>
     
@@ -43,18 +43,18 @@ export const Footer = () => {
             <h5 className="mb-3">Resources</h5>
             <ul className="list-unstyled">
               <li><Link href="/faq">Faqs</Link></li>
-              <li><Link href="/treatment">Anxiety Test</Link></li>
-              <li><Link href="/treatment">Depression Test</Link></li>
-              <li><Link href="/treatment">ADHD Test</Link></li>
+              <li><Link href="/psychiatry-treatment">Anxiety Test</Link></li>
+              <li><Link href="/psychiatry-treatment">Depression Test</Link></li>
+              <li><Link href="/psychiatry-treatment">ADHD Test</Link></li>
             </ul>
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
             <h5 className="mb-3">Company</h5>
             <ul className="list-unstyled">
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/patients">Contact Us</Link></li>
-              <li><Link href="/register">Become a Patient</Link></li>
+              <li><Link href="/psychiatry-service-provider">About Us</Link></li>
+              <li><Link href="/become-a-patient">Contact Us</Link></li>
+              <li><Link href="/psychiatry-registration">Become a Patient</Link></li>
             </ul>
           </div>
     
