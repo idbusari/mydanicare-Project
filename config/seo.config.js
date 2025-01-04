@@ -1,4 +1,4 @@
-// config/seoconfig.js
+// config/seo.config.js
 const seoConfig = {
     title: "DaniCare Psychiatry",
     description: "Psychiatry Tailored to Suit You",
@@ -9,7 +9,7 @@ const seoConfig = {
       description: "Psychiatry Tailored to Suit You",
       images: [
         {
-          url: 'https://thedanicare.vercel.app/danicareLogo.svg',
+          url: 'https://thedanicare.vercel.app/images/crisislogo.png',
           width: 800,
           height: 600,
           alt: 'DaniCare Psychiatry',
