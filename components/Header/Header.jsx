@@ -36,13 +36,13 @@ export const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto align-items-center">
               {[
-                { href: '/about', label: 'About Us' },
-                { href: '/treatment', label: 'Treatment' },
-                { href: '/patients', label: 'Patients' },
-                { href: '/insurance', label: 'Insurance' },
+                { href: '/about-us', label: 'About Us' },
+                { href: '/psychiatry-service-provider', label: 'Treatment' },
+                { href: '/become-a-patient', label: 'Patients' },
+                { href: '/we-accept-insurance', label: 'Insurance' },
                 { href: '/partner-with-us', label: 'Partner' },
-                { href: '/refer-patient', label: 'Refer Patient' },
-                { href: '/faqs', label: 'FAQ' },
+                { href: '/refer-a-patient', label: 'Refer Patient' },
+                { href: '/our-faqs', label: 'FAQ' },
                
               ].map((item, idx) => (
                 <li key={idx} className="nav-item">
