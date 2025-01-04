@@ -9,7 +9,7 @@ import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
 import { GoogleAnalytics } from '@next/third-parties/google'; // Import GA4 component
-import seoConfig from '../lib/seo.config'; // Import SEO Configuration
+import seoConfig from '../config/seo.config'; // Import SEO Configuration
 
 const outfit = Outfit({
   subsets: ['latin'],
