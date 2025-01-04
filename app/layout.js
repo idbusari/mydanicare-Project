@@ -31,9 +31,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>{metadata.title || "Default Title"}</title>
-        <meta name="description" content={metadata.description || "Default description"} />
-
+        
         {/* Adding Swiper CDN links */}
         <link
           rel="stylesheet"
