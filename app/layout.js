@@ -9,9 +9,7 @@ import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
 import { GoogleAnalytics } from '@next/third-parties/google'; // Import GA4 component
-import { NextSeo } from 'next-seo'; // Import NextSeo for dynamic SEO management
 import seoConfig from '../config/seo.config'; // Import SEO Configuration
-import SchemaMarkup from '../components/SchemaMarkup'; // Schema Import
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -34,36 +32,28 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Dynamic SEO Meta Tags with NextSeo */}
-        <NextSeo
-          title={seoConfig.title}
-          description={seoConfig.description}
-          openGraph={{
-            title: seoConfig.openGraph.title,
-            description: seoConfig.openGraph.description,
-            url: seoConfig.openGraph.url,
-            images: [
-              {
-                url: seoConfig.openGraph.images[0].url,
-                width: 800,
-                height: 600,
-                alt: 'Open Graph Image',
-              },
-            ],
-            site_name: seoConfig.openGraph.site_name,
-          }}
-          twitter={{
-            handle: seoConfig.twitter.handle,
-            site: seoConfig.twitter.site,
-            cardType: seoConfig.twitter.cardType,
-          }}
-        />
-        
-        {/* Google Analytics - GA4 */}
-        <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
+        {/* Dynamic SEO Meta Tags */}
+        <title>{seoConfig.title}</title>
+        <meta name="description" content={seoConfig.description} />
+        <meta property="og:title" content={seoConfig.openGraph.title} />
+        <meta property="og:description" content={seoConfig.openGraph.description} />
+        <meta property="og:url" content={seoConfig.openGraph.url} />
+        <meta property="og:image" content={seoConfig.openGraph.images[0].url} />
+        <meta name="twitter:card" content={seoConfig.twitter.cardType} />
+        <meta name="twitter:site" content={seoConfig.twitter.site} />
+        <meta name="twitter:creator" content={seoConfig.twitter.handle} />
 
-        {/* Add Schema Markup */}
-        <SchemaMarkup />
+        {/* Adding Swiper CDN links */}
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/swiper/swiper-bundle.min.css"
+        />
+        <script
+          src="https://unpkg.com/swiper/swiper-bundle.min.js"
+          defer
+        ></script>
+         {/* Google Analytics - GA4 */}
+         <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
         {/* Page Layout */}
