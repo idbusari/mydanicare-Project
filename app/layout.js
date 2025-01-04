@@ -52,6 +52,8 @@ export default function RootLayout({ children }) {
           src="https://unpkg.com/swiper/swiper-bundle.min.js"
           defer
         ></script>
+         {/* Google Analytics - GA4 */}
+         <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
         {/* Page Layout */}
