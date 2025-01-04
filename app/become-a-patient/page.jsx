@@ -4,7 +4,7 @@ import Head from 'next/head';
 import seoConfig from '../../config/seo.config';
 
 const Patients = () => {
-  const pageSEO = seoConfig.pages['/patients'] || {}; // Get page-specific SEO, fallback to default
+  const pageSEO = seoConfig.pages['/become-a-patient'] || {}; // Get page-specific SEO, fallback to default
 
   return (
     <>

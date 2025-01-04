@@ -67,7 +67,7 @@ export const Header = () => {
                   Patient Login
                 </Link>
               </li>
-<Link href="/patients" className="cta ms-lg-3">
+<Link href="/become-a-patient" className="cta ms-lg-3">
               Get Started
             </Link>
               
