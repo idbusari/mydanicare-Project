@@ -24,15 +24,25 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
-  title: "DaniCare Psychiatry",
-  description: "Psychiatry Tailored to Suit You",
+  title: seoConfig.title, // Use the title from seoConfig
+  description: seoConfig.description, // Use the description from seoConfig
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        
+        {/* Dynamic SEO Meta Tags */}
+        <title>{seoConfig.title}</title>
+        <meta name="description" content={seoConfig.description} />
+        <meta property="og:title" content={seoConfig.openGraph.title} />
+        <meta property="og:description" content={seoConfig.openGraph.description} />
+        <meta property="og:url" content={seoConfig.openGraph.url} />
+        <meta property="og:image" content={seoConfig.openGraph.images[0].url} />
+        <meta name="twitter:card" content={seoConfig.twitter.cardType} />
+        <meta name="twitter:site" content={seoConfig.twitter.site} />
+        <meta name="twitter:creator" content={seoConfig.twitter.handle} />
+
         {/* Adding Swiper CDN links */}
         <link
           rel="stylesheet"
@@ -42,11 +52,9 @@ export default function RootLayout({ children }) {
           src="https://unpkg.com/swiper/swiper-bundle.min.js"
           defer
         ></script>
-
-        {/* Google Analytics - GA4 */}
-        <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
+        {/* Page Layout */}
         <HeaderTop />
         <Header />
         <ClientLayout>
