@@ -10,6 +10,7 @@ import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
 import { GoogleAnalytics } from '@next/third-parties/google'; // Import GA4 component
 import seoConfig from '../config/seo.config'; // Import SEO Configuration
+import SchemaMarkup from '../components/SchemaMarkup'; // Schema Import
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -52,8 +53,12 @@ export default function RootLayout({ children }) {
           src="https://unpkg.com/swiper/swiper-bundle.min.js"
           defer
         ></script>
-         {/* Google Analytics - GA4 */}
-         <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
+        
+        {/* Google Analytics - GA4 */}
+        <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
+
+        {/* Add Schema Markup here for all pages */}
+        <SchemaMarkup />
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
         {/* Page Layout */}
