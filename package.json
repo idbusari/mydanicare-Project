@@ -24,6 +24,7 @@
     "react-gtm-module": "^2.0.11",
     "rimraf": "^6.0.1",
     "sass": "^1.83.1",
+    "sitemap": "^8.0.0",
     "swiper": "^11.2.0"
   },
   "devDependencies": {
