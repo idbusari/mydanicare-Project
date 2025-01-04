@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo';
-import SEO from '../../seo.config';
+import SEO from '../../config/seo.config';
 import FooterTop from "../../components/FooterTop/FooterTop";
 import PartnerWithUsLayout from "../../components/PartnerWithUs/PartnerWithUsLayout";
 
