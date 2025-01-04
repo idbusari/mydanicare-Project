@@ -8,7 +8,7 @@ import { Footer } from '../components/Footer/Footer';
 import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
-import Script from 'next/script'; // Import the Script component for GA4
+import { GoogleAnalytics } from '@next/third-parties/google'; // Import GA4 component
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -44,22 +44,8 @@ export default function RootLayout({ children }) {
           defer
         ></script>
 
-        {/* Google Analytics - GA4 via gtag.js */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-BVBHZ1NWSN`} // GA4 Script
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-        >
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-BVBHZ1NWSN');
-          `}
-        </Script>
+        {/* Google Analytics - GA4 */}
+        <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
         <HeaderTop />
