@@ -9,11 +9,7 @@ const Patients = () => {
         ...SEO,  // Spread the default SEO settings from seo.config.js
         title: 'Become a Patient at Danicare Psychiatry | Start Your Mental Health Journey',  // Custom page title
         description: 'Join Danicare Psychiatry and begin your personalized psychiatric treatment. Our team of professionals provides compassionate mental health care, including evaluations and therapy. Register today to start your journey to better mental health.', // Custom page description
-        openGraph: {
-            ...SEO.openGraph,
-            title: 'Become a Patient at Danicare Psychiatry',
-            description: 'Start your mental health journey with Danicare Psychiatry. Compassionate psychiatric treatment and therapy await.',
-        },
+        
     };
 
     return (
