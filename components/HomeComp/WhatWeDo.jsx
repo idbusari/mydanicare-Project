@@ -51,7 +51,7 @@ const WhatWeDo = () => {
           </p>
         </div>
         <p className="mt-4">
-          <Link href="/patients" className="btn-primary" title="Get Started">
+          <Link href="/become-a-patient" className="btn-primary" title="Start Your Journey Today">
             Get Started
           </Link>
         </p>

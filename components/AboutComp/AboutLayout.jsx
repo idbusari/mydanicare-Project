@@ -176,7 +176,7 @@ const AboutLayout = () => {
 
 
 <p className="text-sm-left text-center mt-5 mb-5">
-    <Link href="/patients" className="btn-primary" title="Start Treatment Now">Get Started</Link>
+    <Link href="/become-a-patient" className="btn-primary" title="Start Treatment Now">Get Started</Link>
   </p>
 
   </>

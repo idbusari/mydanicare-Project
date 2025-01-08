@@ -86,7 +86,7 @@ const HowItWorks = () => {
         </div>
         <p className="text-start mt-3">
           <Link
-            href="/patients"
+            href="/become-a-patient"
             className="btn-primary"
             title="Start Treatment Now"
           >

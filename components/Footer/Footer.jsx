@@ -33,7 +33,7 @@ export const Footer = () => {
             <h5 className="mb-3">Our Solutions</h5>
             <ul className="list-unstyled">
               <li><Link href="/we-accept-insurance">Insurance</Link></li>
-              <li><Link href="/psychiatry-services">Treatment</Link></li>
+              <li><Link href="/psychiatry-treatment">Treatment</Link></li>
               <li><Link href="/psychiatrist">Our psychiatrist</Link></li>
               <li><Link href="/become-a-patient">Patients</Link></li>
             </ul>
@@ -42,7 +42,7 @@ export const Footer = () => {
           <div className="col-6 col-md-3 col-lg-2 mb-4">
             <h5 className="mb-3">Resources</h5>
             <ul className="list-unstyled">
-              <li><Link href="/faq">Faqs</Link></li>
+              <li><Link href="/our-faqs">Faqs</Link></li>
               <li><Link href="/psychiatry-treatment">Anxiety Test</Link></li>
               <li><Link href="/psychiatry-treatment">Depression Test</Link></li>
               <li><Link href="/psychiatry-treatment">ADHD Test</Link></li>

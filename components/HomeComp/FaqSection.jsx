@@ -9,7 +9,7 @@ const FaqSection = () => {
                     <div className="col-10 text-center">
                         <p className="subheader-caps-medium text-sapphire-light mb-2 mb-sm-3">FREQUENTLY ASKED QUESTIONS</p>
                         <h2 className="mb-4">What&apos;s on your mind?</h2>
-                        <p className="text-large mb-4 mb-md-5">If your question isn&apos;t answered below, view our full list of FAQs <Link className="text-oxford-medium" title="faqs" href="/faqs/">here</Link>.</p>
+                        <p className="text-large mb-4 mb-md-5">If your question isn&apos;t answered below, view our full list of FAQs <Link className="text-oxford-medium" title="faqs" href="/our-faqs/">here</Link>.</p>
                     </div>
                 </div>
                 <div className="row justify-content-center">

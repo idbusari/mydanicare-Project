@@ -11,7 +11,7 @@ const InsurancePartner = () => {
                             <div className="row">
                                 <div className="col-12 col-lg-4 mb-3 mb-sm-5 my-lg-auto text-center text-lg-left">
                                     <h4 className="insuranceIntro mb-1">We accept all major insurance.</h4> 
-                                    <Link href="/insurance/"
+                                    <Link href="/we-accept-insurance/"
                                         className="btn-arrow pt-0 pl-lg-0" title="Check your plan">Check your plan</Link>
 
                                 </div>

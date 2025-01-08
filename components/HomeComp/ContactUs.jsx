@@ -10,7 +10,7 @@ const ContactUs = () => {
               <h2 className="text-sapphire-medium mb-4 ">
                 Start your journey to better mental health today, with our expert care by your side
               </h2>
-              <Link href="/patients" className="btn-primary mt-5 mt-md-4" title="Get Started">
+              <Link href="/become-a-patient" className="btn-primary mt-5 mt-md-4" title="Get Started">
                 Get Started
               </Link>
             </div>

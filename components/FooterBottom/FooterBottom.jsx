@@ -15,7 +15,7 @@ export const FooterBottom = () => {
                 style={{color:"transparent"}}
               />
             <p style={{ color: "#333" }}>
-            &copy; {new Date().getFullYear()} DaniCare. All rights reserved.
+            &copy; {new Date().getFullYear()} DaniCare Psychiatry. All rights reserved.
             </p>
           </div>
         </div>
