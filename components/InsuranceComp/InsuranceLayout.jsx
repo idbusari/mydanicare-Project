@@ -157,7 +157,7 @@ const InsuranceLayout = () => {
     <div className="container text-center">
     <h1 className="mb-4 section-title text-center">Questions About Insurance or Payment?</h1>
       <p>If you have questions about your insurance plan or would like to discuss payment options, please reach out to our team. We&apos;re here to help you access the care you deserve.</p>
-      <Link href="/patients" className="btn-primary btn-lg">Get Started</Link>
+      <Link href="/become-a-patient" className="btn-primary btn-lg">Get Started</Link>
     </div>
   </div> 
         </>

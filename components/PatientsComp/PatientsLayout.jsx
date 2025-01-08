@@ -118,7 +118,7 @@ const PatientsLayout = () => {
             <i className="fas fa-user-plus"></i>
             <h5>Become a Patient</h5>
             <p>Complete our online form to become a patient and start your mental health care journey today.</p>
-            <Link href="/register" className="btn btn-orange">Register</Link>
+            <Link href="/psychiatry-care-registration" className="btn btn-orange">Register</Link>
           </div>
         </div>
       </div>

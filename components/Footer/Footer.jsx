@@ -54,7 +54,7 @@ export const Footer = () => {
             <ul className="list-unstyled">
               <li><Link href="/psychiatry-service-provider">About Us</Link></li>
               <li><Link href="/become-a-patient">Ask for Help</Link></li>
-              <li><Link href="/psychiatry-registration">Become a Patient</Link></li>
+              <li><Link href="/psychiatry-care-registration">Become a Patient</Link></li>
             </ul>
           </div>
     
