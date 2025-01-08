@@ -53,7 +53,7 @@ export const Footer = () => {
             <h5 className="mb-3">Company</h5>
             <ul className="list-unstyled">
               <li><Link href="/psychiatry-service-provider">About Us</Link></li>
-              <li><Link href="/become-a-patient">Contact Us</Link></li>
+              <li><Link href="/become-a-patient">Ask for Help</Link></li>
               <li><Link href="/psychiatry-registration">Become a Patient</Link></li>
             </ul>
           </div>

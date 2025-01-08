@@ -35,8 +35,8 @@ const HeroSection = () => {
               </p>
               </div>
               <div className="hero-btn">
-                <Link href="/become-a-patient" className="btn btn-yellow btn-lg me-2 mb-2 mb-md-0">Get Started</Link>
-                <Link href="/psychiatry-service-provider" className="btn btn-outline-dark btn-lg bg-light">Learn More</Link>
+                <Link href="/become-a-patient" className="btn btn-yellow btn-lg me-2 mb-2 mb-md-0">Get Help Now</Link>
+                <Link href="/psychiatry-service-provider" className="btn btn-outline-dark btn-lg bg-light">Explore Options</Link>
               </div>
             </div>
           </div>

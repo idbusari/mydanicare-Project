@@ -21,7 +21,7 @@ const AboutIntro = () => {
                         </p>
 
                         <div>
-                            <Link href="/psychiatry-service-provider"><button className="btn-yellow">Learn More</button></Link>
+                            <Link href="/psychiatry-service-provider"><button className="btn-yellow">Discover More</button></Link>
                         </div>
                     </div>
 

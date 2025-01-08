@@ -52,7 +52,7 @@ const WhatWeDo = () => {
         </div>
         <p className="mt-4">
           <Link href="/become-a-patient" className="btn-primary" title="Start Your Journey Today">
-            Get Started
+          Explore Care
           </Link>
         </p>
       </div>

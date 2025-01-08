@@ -21,7 +21,7 @@ const PartnerSection = () => {
           <Image alt="Our Psychiatrist" className="partner-image d-lg-none mb-4"
             src={"/images/providers-map.png"} layout="intrinsic" width={712} height={350}/>
 
-          <p className="mb-0"> <Link href="/become-a-patient" className="btn-primary" title="Get Started">Get Started</Link></p>
+          <p className="mb-0"> <Link href="/become-a-patient" className="btn-primary" title="Get Started">Schedule Now</Link></p>
 
         </div>
       </div>
