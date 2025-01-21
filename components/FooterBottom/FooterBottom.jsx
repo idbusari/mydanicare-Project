@@ -15,7 +15,7 @@ export const FooterBottom = () => {
                 style={{color:"transparent"}}
               />
               <Image
-                src={"/images/hipaa.jpg"}
+                src={"/images/psychverify.png"}
                 layout="intrinsic"
                 width={159}
                 height={32}
