@@ -1,3 +1,5 @@
+'use client';  // Add this line at the very top
+
 import { useEffect } from 'react';
 import Image from 'next/image';
 import './FooterBottom.scss';
