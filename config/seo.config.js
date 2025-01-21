@@ -1,17 +1,15 @@
 // config/seo.config.js
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'https://mydanicare.com';
-
-const defaultSEO = {
+const seoConfig = {
   title: "DaniCare Psychiatry",
   description: "Psychiatry Tailored to Suit You",
   openGraph: {
     type: 'website',
-    url: baseURL,
+    url: 'https://thedanicare.vercel.app',
     title: "DaniCare Psychiatry",
     description: "Psychiatry Tailored to Suit You",
     images: [
       {
-        url: `${baseURL}/images/crisislogo.png`,
+        url: 'https://thedanicare.vercel.app/images/crisislogo.png',
         width: 800,
         height: 600,
         alt: 'DaniCare Psychiatry',
@@ -27,20 +25,18 @@ const defaultSEO = {
     instagram: 'https://www.instagram.com/danicarepsychiatry/',
     facebook: 'https://www.facebook.com/danicarepsychiatry',
   },
-};
-
-const seoConfig = (path) => {
-  const pageSEO = {
+  // You can define page-specific SEO overrides here
+  pages: {
     '/become-a-patient': {
-      title: 'Patients | DaniCare Psychiatry',
+      title: 'Become a Patient | DaniCare Psychiatry',
       description: 'Learn more about our services and resources for patients at DaniCare Psychiatry.',
       openGraph: {
         title: 'Patients | DaniCare Psychiatry',
         description: 'Explore the resources and services we offer to patients at DaniCare Psychiatry.',
-        url: `${baseURL}/become-a-patient`,
+        url: 'https://thedanicare.vercel.app/become-a-patient',
         images: [
           {
-            url: `${baseURL}/images/patients-banner.jpg`,
+            url: 'https://thedanicare.vercel.app/images/patients-banner.jpg',
             width: 800,
             height: 600,
             alt: 'Patients Resources',
@@ -48,15 +44,7 @@ const seoConfig = (path) => {
         ],
       },
     },
-    // Add more pages as needed
-  };
-
-  const seoData = { ...defaultSEO, ...pageSEO[path] };
-
-  // Ensure that title and other critical properties are always defined
-  seoData.title = seoData.title || defaultSEO.title;
-  seoData.description = seoData.description || defaultSEO.description;
-  seoData.openGraph = seoData.openGraph || defaultSEO.openGraph;
-
-  return seoData;
+  },
 };
+
+export default seoConfig;
