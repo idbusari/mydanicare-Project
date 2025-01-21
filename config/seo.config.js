@@ -1,15 +1,17 @@
 // config/seo.config.js
-const seoConfig = {
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'https://thedanicare.vercel.app';
+
+const defaultSEO = {
   title: "DaniCare Psychiatry",
   description: "Psychiatry Tailored to Suit You",
   openGraph: {
     type: 'website',
-    url: 'https://thedanicare.vercel.app',
+    url: baseURL,
     title: "DaniCare Psychiatry",
     description: "Psychiatry Tailored to Suit You",
     images: [
       {
-        url: 'https://thedanicare.vercel.app/images/crisislogo.png',
+        url: `${baseURL}/images/crisislogo.png`,
         width: 800,
         height: 600,
         alt: 'DaniCare Psychiatry',
@@ -25,18 +27,20 @@ const seoConfig = {
     instagram: 'https://www.instagram.com/danicarepsychiatry/',
     facebook: 'https://www.facebook.com/danicarepsychiatry',
   },
-  // You can define page-specific SEO overrides here
-  pages: {
+};
+
+const seoConfig = (path) => {
+  const pageSEO = {
     '/become-a-patient': {
-      title: 'Patients | DaniCare Psychiatry',
+      title: 'Become a Patient | DaniCare Psychiatry',
       description: 'Learn more about our services and resources for patients at DaniCare Psychiatry.',
       openGraph: {
         title: 'Patients | DaniCare Psychiatry',
         description: 'Explore the resources and services we offer to patients at DaniCare Psychiatry.',
-        url: 'https://thedanicare.vercel.app/become-a-patient',
+        url: `${baseURL}/become-a-patient`,
         images: [
           {
-            url: 'https://thedanicare.vercel.app/images/patients-banner.jpg',
+            url: `${baseURL}/images/patients-banner.jpg`,
             width: 800,
             height: 600,
             alt: 'Patients Resources',
@@ -44,7 +48,10 @@ const seoConfig = {
         ],
       },
     },
-  },
+    // Add more pages as needed
+  };
+
+  return { ...defaultSEO, ...pageSEO[path] };
 };
 
 export default seoConfig;
