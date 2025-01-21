@@ -1,5 +1,5 @@
 // config/seo.config.js
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'https://thedanicare.vercel.app';
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'https://mydanicare.com';
 
 const defaultSEO = {
   title: "DaniCare Psychiatry",
@@ -32,7 +32,7 @@ const defaultSEO = {
 const seoConfig = (path) => {
   const pageSEO = {
     '/become-a-patient': {
-      title: 'Become a Patient | DaniCare Psychiatry',
+      title: 'Patients | DaniCare Psychiatry',
       description: 'Learn more about our services and resources for patients at DaniCare Psychiatry.',
       openGraph: {
         title: 'Patients | DaniCare Psychiatry',
@@ -51,7 +51,12 @@ const seoConfig = (path) => {
     // Add more pages as needed
   };
 
-  return { ...defaultSEO, ...pageSEO[path] };
-};
+  const seoData = { ...defaultSEO, ...pageSEO[path] };
 
-export default seoConfig;
+  // Ensure that title and other critical properties are always defined
+  seoData.title = seoData.title || defaultSEO.title;
+  seoData.description = seoData.description || defaultSEO.description;
+  seoData.openGraph = seoData.openGraph || defaultSEO.openGraph;
+
+  return seoData;
+};
