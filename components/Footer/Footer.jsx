@@ -39,8 +39,7 @@ export const Footer = () => {
             </ul>
             <p>
 <ol className="list-unstyled">
-  <p></p>
-  </br>
+<span>  </span>
 <p><span className="intro">Other Locations </span> <br/> Laredo Medical Center <br/> </p>     
 </ol>
 
