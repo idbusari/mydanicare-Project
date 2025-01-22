@@ -36,11 +36,12 @@ export const Footer = () => {
               <li><Link href="/psychiatry-treatment">Treatment</Link></li>
               <li><Link href="/psychiatrist">Our psychiatrist</Link></li>
               <li><Link href="/become-a-patient">Patients</Link></li>
+              <li><Link href="/become-a-patient"></Link></li>
             </ul>
             <p>
 <ol className="list-unstyled">
-<span>  </span>
-<p><span className="intro">Other Locations </span> <br/> Laredo Medical Center <br/> </p>     
+<span>  it </span>
+<p><span className="intro">Other Locations </span> <br/> Irving, Dallas <br/> Atlanta </p>     
 </ol>
 
             </p>
@@ -54,7 +55,7 @@ export const Footer = () => {
               <li><Link href="/psychiatry-treatment">Depression Test</Link></li>
               <li><Link href="/psychiatry-treatment">ADHD Test</Link></li>
             </ul>
-            <p><span className="intro"> </span> <br/> Laredo Medical Center <br/> </p>    
+            <p><span className="intro"> </span> <br/> New Jersey <br/> </p>    
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
@@ -64,7 +65,7 @@ export const Footer = () => {
               <li><Link href="/become-a-patient">Ask for Help</Link></li>
               <li><Link href="/psychiatry-care-registration">Become a Patient</Link></li>
             </ul>
-            <p><span className="intro"> </span> <br/> Laredo Medical Center <br/> </p>    
+            <p><span className="intro"> </span> <br/> California <br/> </p>    
           </div>
     
           <div className="col-6 col-md-3 col-lg-3 mb-4">
@@ -74,7 +75,7 @@ export const Footer = () => {
               <li><Link href="#">Terms of Use</Link></li>
               <li><Link href="/privacy-policy">Privacy</Link></li>
             </ul>
-            <p><span className="intro"> </span> <br/> Laredo Medical Center <br/> </p>    
+            <p><span className="intro"> </span> <br/> Oklahoma <br/> </p>    
           </div>
           <div className="">
     <div className="d-flex text-center gap-3">
