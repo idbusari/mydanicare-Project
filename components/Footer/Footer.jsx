@@ -27,11 +27,6 @@ export const Footer = () => {
             1700 E Saunders Street <br/> 
             Ste B475 <br/>
             Laredo, TX 78041.</p>
-
-            <p><span className="intro">Service Address: </span> <br/> Laredo Medical Center <br/> 
-            1700 E Saunders Street <br/> 
-            Ste B475 <br/>
-            Laredo, TX 78041.</p>
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
@@ -42,6 +37,14 @@ export const Footer = () => {
               <li><Link href="/psychiatrist">Our psychiatrist</Link></li>
               <li><Link href="/become-a-patient">Patients</Link></li>
             </ul>
+            <p>
+<ol className="list-unstyled">
+<p><span className="intro">Other Locations </span> <br/> Laredo Medical Center <br/> </p>
+<p><span className="intro"> </span> <br/> Laredo Medical Center <br/> </p>         
+
+</ol>
+
+            </p>
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
