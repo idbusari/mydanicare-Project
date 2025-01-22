@@ -39,9 +39,9 @@ export const Footer = () => {
             </ul>
             <p>
 <ol className="list-unstyled">
-<p><span className="intro">Other Locations </span> <br/> Laredo Medical Center <br/> </p>
-<p><span className="intro"> </span> <br/> Laredo Medical Center <br/> </p>         
-
+  <p></p>
+  </br>
+<p><span className="intro">Other Locations </span> <br/> Laredo Medical Center <br/> </p>     
 </ol>
 
             </p>
@@ -55,6 +55,7 @@ export const Footer = () => {
               <li><Link href="/psychiatry-treatment">Depression Test</Link></li>
               <li><Link href="/psychiatry-treatment">ADHD Test</Link></li>
             </ul>
+            <p><span className="intro"> </span> <br/> Laredo Medical Center <br/> </p>    
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
@@ -64,6 +65,7 @@ export const Footer = () => {
               <li><Link href="/become-a-patient">Ask for Help</Link></li>
               <li><Link href="/psychiatry-care-registration">Become a Patient</Link></li>
             </ul>
+            <p><span className="intro"> </span> <br/> Laredo Medical Center <br/> </p>    
           </div>
     
           <div className="col-6 col-md-3 col-lg-3 mb-4">
@@ -73,7 +75,7 @@ export const Footer = () => {
               <li><Link href="#">Terms of Use</Link></li>
               <li><Link href="/privacy-policy">Privacy</Link></li>
             </ul>
-            
+            <p><span className="intro"> </span> <br/> Laredo Medical Center <br/> </p>    
           </div>
           <div className="">
     <div className="d-flex text-center gap-3">
