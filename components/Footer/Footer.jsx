@@ -55,7 +55,7 @@ export const Footer = () => {
               <li><Link href="/become-a-patient"></Link></li>
               <li><Link href="/become-a-patient"></Link></li>
             </ul>
-            <p><span className="intro"> </span> <br/> New Jersey <br/> California <br/> </p>    
+            <p><span className="intro"> </span> <br/> </br> New Jersey <br/> California <br/> </p>    
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
