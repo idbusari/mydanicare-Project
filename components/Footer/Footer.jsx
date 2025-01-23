@@ -42,10 +42,13 @@ export const Footer = () => {
               <li><Link href="/become-a-patient"></Link></li>
             </ul>
             <p>
+              </p>
+              <p>
+                
+              </p>
+              
+              <p>
 <ol className="list-unstyled">
-<span>  </span>
-<span>  </span>
-<span>  </span>
 <span>  </span>
 <p><span className="intro">Other Locations </span> <br/> Irving  <br/> Atlanta <br/>  </p>     
 </ol>
