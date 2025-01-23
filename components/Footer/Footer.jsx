@@ -37,10 +37,14 @@ export const Footer = () => {
               <li><Link href="/psychiatrist">Our psychiatrist</Link></li>
               <li><Link href="/become-a-patient">Patients</Link></li>
               <li><Link href="/become-a-patient"></Link></li>
-              <li><Link href="/become-a-patient"></Link></li>
-              <li><Link href="/become-a-patient"></Link></li>
-              <li><Link href="/become-a-patient"></Link></li>
             </ul>
+            <p>
+<ol className="list-unstyled">
+<span>  </span>
+<p><span className="intro">Other Locations </span> <br/> Irving  <br/> Atlanta <br/>  </p>     
+</ol>
+
+            </p>
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
@@ -52,10 +56,8 @@ export const Footer = () => {
               <li><Link href="/psychiatry-treatment">ADHD Test</Link></li>
               <li><Link href="/become-a-patient"></Link></li>
               <li><Link href="/become-a-patient"></Link></li>
-              <li><Link href="/become-a-patient"></Link></li>
-              <li><Link href="/become-a-patient"></Link></li>
             </ul>
-            <p><span className="intro"> </span> <br/> </br> New Jersey <br/> California <br/> </p>    
+            <p><span className="intro"> </span> <br/> New Jersey <br/> California <br/> </p>    
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
@@ -64,8 +66,6 @@ export const Footer = () => {
               <li><Link href="/psychiatry-service-provider">About Us</Link></li>
               <li><Link href="/become-a-patient">Ask for Help</Link></li>
               <li><Link href="/psychiatry-care-registration">Become a Patient</Link></li>
-              <li><Link href="/become-a-patient"></Link></li>
-              <li><Link href="/become-a-patient"></Link></li>
               <li><Link href="/become-a-patient"></Link></li>
               <li><Link href="/become-a-patient"></Link></li>
               <li><Link href="/become-a-patient"></Link></li>
