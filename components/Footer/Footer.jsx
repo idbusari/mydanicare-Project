@@ -41,19 +41,6 @@ export const Footer = () => {
               <li><Link href="/become-a-patient"></Link></li>
               <li><Link href="/become-a-patient"></Link></li>
             </ul>
-            <p>
-              </p>
-              <p>
-                
-              </p>
-              
-              <p>
-<ol className="list-unstyled">
-<span>  </span>
-<p><span className="intro">Other Locations </span> <br/> Irving  <br/> Atlanta <br/>  </p>     
-</ol>
-
-            </p>
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
