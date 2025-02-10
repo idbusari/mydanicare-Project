@@ -1,6 +1,6 @@
 import "./FooterETop.scss";
 
-const FooterTop = () => {
+const FooterETop = () => {
   return (
     <div className="container-fluid footerETop">
       {/* Row for 4 columns with text */}
