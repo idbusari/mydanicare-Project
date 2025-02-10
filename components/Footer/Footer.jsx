@@ -37,10 +37,7 @@ export const Footer = () => {
               <li><Link href="/become-a-patient">Patients</Link></li>
             </ul>
             <p>
-            <p><span className="intro">Pther Location: </span> <br/> Irving, Dallas <br/> 
-            511 E. John Carpenter Freeway, <br/> 
-            Suite 500 <br/>
-            Irving, TX 75062.</p>
+              <span className="intro">Other Locations:</span> <br/> Irving <br/> Atlanta <br/>
             </p>
           </div>
     
@@ -52,6 +49,10 @@ export const Footer = () => {
               <li><Link href="/psychiatry-treatment">Depression Test</Link></li>
               <li><Link href="/psychiatry-treatment">ADHD Test</Link></li>
             </ul>
+            <p>
+              <span className="intro">States We Serve:</span> <br/> New Jersey <br/> California <br/>
+            </p>
+          </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
             <h5 className="mb-3">Company</h5>
