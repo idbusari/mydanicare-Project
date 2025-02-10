@@ -36,10 +36,7 @@ export const Footer = () => {
               <li><Link href="/psychiatrist">Our psychiatrist</Link></li>
               <li><Link href="/become-a-patient">Patients</Link></li>
             </ul>
-            <p><span className="intro"> Address: </span> <br/> Laredo Medical Center <br/> 
-            1700 E Saunders Street <br/> 
-            Ste B475 <br/>
-            Laredo, TX 78041.</p>
+            
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
