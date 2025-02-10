@@ -36,8 +36,10 @@ export const Footer = () => {
     <li><Link href="/psychiatrist">Our psychiatrist</Link></li>
     <li><Link href="/become-a-patient">Patients</Link></li>
   </ul>
-  <p>&nbsp;</p>  // added a non-breaking space
-  <p className="mt-4">  // added margin top
+  {/* added a non-breaking space */}
+  <p>&nbsp;</p>
+  {/* added margin top */}
+  <p className="mt-4">
     <span className="intro">Other Locations:</span>
     <br/> Irving, Dallas
     <br/> 511 E. John Carpenter Freeway,
@@ -45,6 +47,7 @@ export const Footer = () => {
     <br/> Irving, TX 75062.
   </p>
 </div>
+
 
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
