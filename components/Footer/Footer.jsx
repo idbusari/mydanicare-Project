@@ -36,10 +36,13 @@ export const Footer = () => {
               <li><Link href="/psychiatrist">Our psychiatrist</Link></li>
               <li><Link href="/become-a-patient">Patients</Link></li>
             </ul>
+            <p>
+              
+            </p>
             <p><span className="intro"> Other Locations: </span> <br/> Irving, Dallas <br/> 
-            1700 E Saunders Street <br/> 
-            Ste B475 <br/>
-            Laredo, TX 78041.</p>
+            511 E. John Carpenter Freeway,<br/> 
+            Suite 500 <br/>
+            Irving, TX 75062.</p>
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
