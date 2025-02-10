@@ -7,6 +7,7 @@ import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
+import {FooterETop} from '../components/FooterETop/FooterETop';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
 import { GoogleAnalytics } from '@next/third-parties/google'; // Import GA4 component
 import seoConfig from '../config/seo.config'; // Import SEO Configuration
