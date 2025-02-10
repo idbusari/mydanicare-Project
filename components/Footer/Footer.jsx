@@ -29,21 +29,23 @@ export const Footer = () => {
           </div>
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
-            <h5 className="mb-3">Our Solutions</h5>
-            <ul className="list-unstyled">
-              <li><Link href="/we-accept-insurance">Insurance</Link></li>
-              <li><Link href="/psychiatry-treatment">Treatment</Link></li>
-              <li><Link href="/psychiatrist">Our psychiatrist</Link></li>
-              <li><Link href="/become-a-patient">Patients</Link></li>
-            </ul>
-            <p>
-              
-            </p>
-            <p><span className="intro"> Other Locations: </span> <br/> Irving, Dallas <br/> 
-            511 E. John Carpenter Freeway,<br/> 
-            Suite 500 <br/>
-            Irving, TX 75062.</p>
-          </div>
+  <h5 className="mb-3">Our Solutions</h5>
+  <ul className="list-unstyled">
+    <li><Link href="/we-accept-insurance">Insurance</Link></li>
+    <li><Link href="/psychiatry-treatment">Treatment</Link></li>
+    <li><Link href="/psychiatrist">Our psychiatrist</Link></li>
+    <li><Link href="/become-a-patient">Patients</Link></li>
+  </ul>
+  <p>&nbsp;</p>  // added a non-breaking space
+  <p className="mt-4">  // added margin top
+    <span className="intro">Other Locations:</span>
+    <br/> Irving, Dallas
+    <br/> 511 E. John Carpenter Freeway,
+    <br/> Suite 500
+    <br/> Irving, TX 75062.
+  </p>
+</div>
+
     
           <div className="col-6 col-md-3 col-lg-2 mb-4">
             <h5 className="mb-3">Resources</h5>
