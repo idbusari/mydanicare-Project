@@ -63,6 +63,7 @@ export default function RootLayout({ children }) {
           {children}
         </ClientLayout>
         <Footer />
+        <FooterETop />
         <FooterBottom />
       </body>
     </html>
