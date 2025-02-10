@@ -1,0 +1,46 @@
+.footerETop {
+  background-color: #E66926;
+}
+
+.footerETop h4 {
+  font-size: 21px;
+  color: #fff;
+}
+
+.crisis-text {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.4;
+  color: #fff;
+
+  @media (max-width: 991px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 1.6rem;
+  }
+}
+
+.social-icons {
+  font-size: 2rem;
+  color: #fff;
+
+  i {
+    margin: 0 15px;
+    cursor: pointer;
+  }
+
+  i:hover {
+    color: #f4f4f4; /* Change this to hover color */
+  }
+
+  @media (max-width: 991px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 1.2rem;
+  }
+}

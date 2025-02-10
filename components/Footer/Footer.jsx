@@ -22,7 +22,7 @@ export const Footer = () => {
               At DaniCare Psychiatry, we are dedicated to providing personalized, compassionate mental health care to help you achieve
               lasting well-being.
             </p>
-            <p><span className="intro"> Service Address: </span> <br/> Laredo Medical Center <br/> 
+            <p><span className="intro"> Location Address: </span> <br/> Laredo Medical Center <br/> 
             1700 E Saunders Street <br/> 
             Ste B475 <br/>
             Laredo, TX 78041.</p>
