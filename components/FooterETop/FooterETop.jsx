@@ -45,4 +45,4 @@ const FooterTop = () => {
   );
 };
 
-export default FooterTop;
+export default FooterETop; // ✅ Ensure this line is present
