@@ -8,13 +8,16 @@ import { Footer } from '../components/Footer/Footer';
 import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
-import { GoogleAnalytics } from '@next/third-parties/google'; // Import GA4 component
-import seoConfig from '../config/seo.config'; // Import SEO Configuration
+import { GoogleAnalytics } from '@next/third-parties/google';
+import seoConfig from '../config/seo.config';
+
+// Import FooterETop
+import FooterETop from '../components/FooterETop/FooterETop';
 
 const outfit = Outfit({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'], 
-  variable: '--font-outfit', 
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-outfit',
 });
 
 const dmSans = DM_Sans({
@@ -24,15 +27,14 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
-  title: seoConfig.title, // Use the title from seoConfig
-  description: seoConfig.description, // Use the description from seoConfig
+  title: seoConfig.title,
+  description: seoConfig.description,
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Dynamic SEO Meta Tags */}
         <title>{seoConfig.title}</title>
         <meta name="description" content={seoConfig.description} />
         <meta property="og:title" content={seoConfig.openGraph.title} />
@@ -43,26 +45,19 @@ export default function RootLayout({ children }) {
         <meta name="twitter:site" content={seoConfig.twitter.site} />
         <meta name="twitter:creator" content={seoConfig.twitter.handle} />
 
-        {/* Adding Swiper CDN links */}
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/swiper/swiper-bundle.min.css"
-        />
-        <script
-          src="https://unpkg.com/swiper/swiper-bundle.min.js"
-          defer
-        ></script>
-         {/* Google Analytics - GA4 */}
-         <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+        <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
-        {/* Page Layout */}
         <HeaderTop />
         <Header />
         <ClientLayout>
           {children}
         </ClientLayout>
         <Footer />
+        {/* FooterETop now appears here, after Footer but before FooterBottom */}
+        <FooterETop />
         <FooterBottom />
       </body>
     </html>
