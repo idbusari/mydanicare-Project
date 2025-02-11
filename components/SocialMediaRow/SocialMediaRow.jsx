@@ -21,6 +21,9 @@ const SocialMediaRow = () => {
       <a href="https://www.youtube.com/channel/UC4jl96PJxHQJKHd0-CRl0mg" target="_blank" rel="noopener noreferrer">
         <img src="/images/youtube.svg" alt="YouTube logo" className="social-icon" />
       </a>
+      <a href="https://g.page/r/CbL7GF2HZ0LwEBM/review" target="_blank" rel="noopener noreferrer">
+        <img src="/images/google.svg" alt="Google logo" className="social-icon" />
+      </a>
     </div>
   );
 };

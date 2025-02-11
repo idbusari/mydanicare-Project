@@ -55,7 +55,8 @@ export default function RootLayout({ children }) {
       <body className={`${outfit.variable} ${dmSans.variable}`}>
       
       <HeaderTop />
-        <Header />
+      <SocialMediaSidebar />
+      <Header />
         <ClientLayout>
           {children}
         </ClientLayout>
