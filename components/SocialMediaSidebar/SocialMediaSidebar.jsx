@@ -1,6 +1,5 @@
 import React from "react";
 import "./SocialMediaSidebar.scss"; // Import the styles
-
 const SocialMediaSidebar = () => {
   return (
     <div className="social-sidebar">

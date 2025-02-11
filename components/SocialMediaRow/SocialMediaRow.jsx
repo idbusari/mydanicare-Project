@@ -1,6 +1,5 @@
 import React from "react";
 import "./SocialMediaRow.scss";
-import Image from "next/image";
 
 
 const SocialMediaRow = () => {
