@@ -9,7 +9,7 @@ const SocialMediaRow = () => {
         <img src="/images/facebook.svg" alt="Facebook" className="social-icon" />
       </a>
       <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-        <img src="/images/x.svg" alt="Twitter" className="social-icon" />
+        <img src="/images/X.svg" alt="Twitter" className="social-icon" />
       </a>
       <a href="https://www.instagram.com/danicarepsychiatry/" target="_blank" rel="noopener noreferrer">
         <img src="/images/instagram.svg" alt="Instagram Logo" className="social-icon" />
