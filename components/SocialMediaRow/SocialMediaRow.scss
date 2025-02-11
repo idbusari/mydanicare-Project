@@ -1,0 +1,25 @@
+.social-media-row {
+    display: flex;
+    justify-content: center;  /* Centers the icons horizontally */
+    align-items: center;      /* Vertically aligns the icons */
+    gap: 20px;                /* Spacing between icons */
+    padding: 20px 0;          /* Optional padding */
+    background-color: rgb(58, 58, 58);
+  
+    a {
+      text-decoration: none;
+    }
+  
+    .social-icon {
+      width: 40px;            /* Adjust icon width as needed */
+      height: auto;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0.8;
+  
+      &:hover {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+  }
+  

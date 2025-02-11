@@ -13,6 +13,9 @@ import seoConfig from '../config/seo.config';
 
 // Import FooterETop
 import FooterETop from '../components/FooterETop/FooterETop';
+import SocialMediaSidebar from "../components/SocialMediaSidebar/SocialMediaSidebar"; // Import sidebar component
+import SocialMediaRow from '../components/SocialMediaRow/SocialMediaRow'; // Import social media footer
+
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -50,7 +53,8 @@ export default function RootLayout({ children }) {
         <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
-        <HeaderTop />
+      
+      <HeaderTop />
         <Header />
         <ClientLayout>
           {children}
@@ -58,6 +62,7 @@ export default function RootLayout({ children }) {
         <Footer />
         {/* FooterETop now appears here, after Footer but before FooterBottom */}
         <FooterETop />
+        <SocialMediaRow />
         <FooterBottom />
       </body>
     </html>
