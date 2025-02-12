@@ -3,7 +3,6 @@ import { getSortedPostsData } from "@/lib/posts";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./post.module.scss";
-import { Metadata } from "next";
 
 export async function generateMetadata({ params }) {
   const posts = getSortedPostsData();
