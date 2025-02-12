@@ -23,10 +23,10 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: post.seo?.title || post.title,
       description: post.seo?.description || post.excerpt,
-      url: `https://yourwebsite.com/blog/${post.id}`,
+      url: `https://mydanicare.com/blog/${post.id}`,
       images: [
         {
-          url: `https://yourwebsite.com${post.image}`,
+          url: `https://mydanicare.com${post.image}`,
           width: 800,
           height: 400,
           alt: post.title,
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: post.seo?.title || post.title,
       description: post.seo?.description || post.excerpt,
-      images: [`https://yourwebsite.com${post.image}`],
+      images: [`https://mydanicare.com${post.image}`],
     },
   };
 }
