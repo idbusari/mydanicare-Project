@@ -4,8 +4,21 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation'; // Use the correct hook for App Router
 import './Header.scss';
 
+
 export const Header = () => {
   const pathname = usePathname(); // Get the current path
+
+  // Add your navigation items. Notice the new Blog link.
+  const navItems = [
+    { href: '/psychiatry-service-provider', label: 'About Us' },
+    { href: '/psychiatry-treatment', label: 'Treatment' },
+    { href: '/become-a-patient', label: 'Patients' },
+    { href: '/we-accept-insurance', label: 'Insurance' },
+    { href: '/partner-with-us', label: 'Partner' },
+    { href: '/refer-a-patient', label: 'Refer Patient' },
+    { href: '/our-faqs', label: 'FAQ' },
+    { href: '/blog', label: 'Blog' }, // New Blog link added here
+  ];
 
   return (
     <header>
@@ -35,21 +48,10 @@ export const Header = () => {
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto align-items-center">
-              {[
-                { href: '/psychiatry-service-provider', label: 'About Us' },
-                { href: '/psychiatry-treatment', label: 'Treatment' },
-                { href: '/become-a-patient', label: 'Patients' },
-                { href: '/we-accept-insurance', label: 'Insurance' },
-                { href: '/partner-with-us', label: 'Partner' },
-                { href: '/refer-a-patient', label: 'Refer Patient' },
-                { href: '/our-faqs', label: 'FAQ' },
-               
-              ].map((item, idx) => (
+              {navItems.map((item, idx) => (
                 <li key={idx} className="nav-item">
                   <Link
-                    className={`nav-link ${
-                      pathname === item.href ? 'active' : ''
-                    }`}
+                    className={`nav-link ${pathname === item.href ? 'active' : ''}`}
                     href={item.href}
                   >
                     {item.label}
@@ -57,8 +59,8 @@ export const Header = () => {
                 </li>
               ))}
 
-{/* Patient Login */}
-<li className="nav-item">
+              {/* Patient Login */}
+              <li className="nav-item">
                 <Link 
                   className="nav-link" 
                   href="https://portal.kareo.com/pp-webapp/app/new/login" 
@@ -67,13 +69,10 @@ export const Header = () => {
                   Patient Login
                 </Link>
               </li>
-<Link href="/become-a-patient" className="cta ms-lg-3">
-              Get Started
-            </Link>
-              
+              <Link href="/become-a-patient" className="cta ms-lg-3">
+                Get Started
+              </Link>
             </ul>
-            
-         
           </div>
         </div>
       </nav>
