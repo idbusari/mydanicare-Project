@@ -16,10 +16,9 @@ const FooterETop = () => {
         </div>
 
         <div className="col-md-3">
-          <h4>Irving</h4>
-          <p>
-          DFW Area 511 E.John<br /> 
-          Carpenter Freeway, Suite 500 <br /> 
+          <h4>Dallas–Fort Worth Area</h4>
+          <p> 511 E.John Carpenter<br /> 
+          Freeway, Suite 500 <br /> 
             Irving, TX 75062.
           </p>
         </div>
