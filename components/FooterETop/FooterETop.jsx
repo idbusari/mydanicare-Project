@@ -35,9 +35,9 @@ const FooterETop = () => {
         <div className="col-md-3">
           <h4>New Jersey</h4>
           <p>
-            Coming up soon <br /> 
-            We will share <br /> 
-            here shortly.
+          100 enterprise drive <br /> 
+          Suite 301 Rockaway, <br /> 
+          NJ 07866.
           </p>
         </div>
       </div>
