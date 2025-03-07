@@ -1,9 +1,10 @@
-"use client";
+"use client"
 import Image from "next/image";
 import { useState } from "react";
 import styles from './BecomePatientPage.module.scss';
 
 const BecomePatientPage = () => {
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -18,6 +19,7 @@ const BecomePatientPage = () => {
 
   const [responseMessage, setResponseMessage] = useState("");
 
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData({
@@ -29,12 +31,6 @@ const BecomePatientPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Basic validation (can be expanded)
-    if (!formData.firstName || !formData.lastName || !formData.email) {
-      setResponseMessage("Please fill in all required fields.");
-      return;
-    }
-
     try {
       const response = await fetch("/api/register", {
         method: "POST",
@@ -44,20 +40,7 @@ const BecomePatientPage = () => {
         body: JSON.stringify(formData),
       });
 
-      // Check if the response is successful (status code 200-299)
-      if (!response.ok) {
-        setResponseMessage(`Error: ${response.statusText}`);
-        return;
-      }
-
-      // Try to parse the response as JSON
-      let result = {};
-      try {
-        result = await response.json();
-      } catch (error) {
-        setResponseMessage("Error parsing the response from the server.");
-        return;
-      }
+      const result = await response.json();
 
       if (response.ok) {
         setResponseMessage("Thank you for your submission! We will contact you shortly.");
@@ -68,15 +51,13 @@ const BecomePatientPage = () => {
           email: "",
           phone: "",
           reason: "",
-          states: "",
-          contact: "",
           insurance: "",
         });
       } else {
         setResponseMessage(`Error: ${result.error || "Something went wrong."}`);
       }
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       setResponseMessage("Error: Unable to send message. Please try again.");
     }
   };
@@ -85,6 +66,7 @@ const BecomePatientPage = () => {
     <div className={styles.pageContainer}>
       <div className="container">
         <div className="row align-items-center">
+
           <div className="col-lg-6">
             <div className={styles.formSection}>
               <h1 className={styles.heading}>Become a Patient</h1>
@@ -93,6 +75,7 @@ const BecomePatientPage = () => {
               </p>
               <form onSubmit={handleSubmit}>
                 <div className="row">
+
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="firstName" className="form-label">
@@ -107,6 +90,7 @@ const BecomePatientPage = () => {
                       />
                     </div>
                   </div>
+
 
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
@@ -125,6 +109,7 @@ const BecomePatientPage = () => {
                 </div>
 
                 <div className="row">
+
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="age" className="form-label">
@@ -139,6 +124,7 @@ const BecomePatientPage = () => {
                       />
                     </div>
                   </div>
+
 
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
@@ -157,6 +143,7 @@ const BecomePatientPage = () => {
                 </div>
 
                 <div className="row">
+
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="phone" className="form-label">
@@ -171,6 +158,7 @@ const BecomePatientPage = () => {
                       />
                     </div>
                   </div>
+
 
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
@@ -189,56 +177,55 @@ const BecomePatientPage = () => {
                 </div>
 
                 <div className="row">
-                  {/* State Dropdown */}
-                  <div className="col-md-6">
-                    <div className={styles.formGroup}>
-                      <label htmlFor="states" className="form-label">
-                        State
-                      </label>
-                      <select
-                        className="form-control"
-                        id="states"
-                        value={formData.states}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select State</option>
-                        <option value="New York">New York</option>
-                        <option value="New Jersey">New Jersey</option>
-                        <option value="Texas">Texas</option>
-                        <option value="California">California</option>
-                        <option value="Pennsylvania">Pennsylvania</option>
-                        <option value="New Mexico">New Mexico</option>
-                        <option value="Arizona">Arizona</option>
-                        <option value="Oklahoma">Oklahoma</option>
-                        <option value="Idaho">Idaho</option>
-                        <option value="Florida">Florida</option>
-                      </select>
-                    </div>
-                  </div>
+  <div className="col-md-6">
+    <div className={styles.formGroup}>
+      <label htmlFor="state" className="form-label">
+        State
+      </label>
+      <select
+        className="form-control"
+        id="state"
+        value={formData.state}
+        onChange={handleChange}
+      >
+        <option value="">Select State</option>
+        <option value="New York">New York</option>
+        <option value="New Jersey">New Jersey</option>
+        <option value="Texas">Texas</option>
+        <option value="California">California</option>
+        <option value="Pennsylvania">Pennsylvania</option>
+        <option value="New Mexico">New Mexico</option>
+        <option value="Arizona">Arizona</option>
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Florida">Florida</option>
+      </select>
+    </div>
+  </div>
 
-                  {/* Preferred Contact Method Dropdown */}
-                  <div className="col-md-6">
-                    <div className={styles.formGroup}>
-                      <label htmlFor="contact" className="form-label">
-                        Preferred Contact Method
-                      </label>
-                      <select
-                        className="form-control"
-                        id="contact"
-                        value={formData.contact}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select Contact Method</option>
-                        <option value="Phone">Phone</option>
-                        <option value="Email">Email</option>
-                        <option value="SMS">SMS</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
+  <div className="col-md-6">
+    <div className={styles.formGroup}>
+      <label htmlFor="contact" className="form-label">
+        Preferred Contact Method
+      </label>
+      <select
+        className="form-control"
+        id="contact"
+        value={formData.contact}
+        onChange={handleChange}
+      >
+        <option value="">Select Contact Method</option>
+        <option value="Phone">Phone</option>
+        <option value="Email">Email</option>
+        <option value="SMS">SMS</option>
+      </select>
+    </div>
+  </div>
+</div>
 
                 <div className="row">
-                  <div className="col-md-14">
+
+                  <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="reason" className="form-label">
                         Reason for visit
@@ -246,11 +233,16 @@ const BecomePatientPage = () => {
                       <textarea
                         className="form-control"
                         id="reason"
-                        rows="4"
+                        rows="4" // You can adjust the number of rows as per your preference
                         value={formData.reason}
                         onChange={handleChange}
                       />
                     </div>
+                  </div>
+
+
+                  <div className="col-md-6">
+
                   </div>
                 </div>
 
@@ -261,6 +253,7 @@ const BecomePatientPage = () => {
                 </div>
               </form>
 
+
               {responseMessage && (
                 <div className="mt-4 text-center bg-info">
                   <p>{responseMessage}</p>
@@ -268,6 +261,7 @@ const BecomePatientPage = () => {
               )}
             </div>
           </div>
+
 
           <div className="col-lg-6 imageSection">
             <Image
