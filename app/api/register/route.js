@@ -1,55 +1,45 @@
 import nodemailer from 'nodemailer';
 
-// Handle POST request
-export async function POST(req) {
-  const formData = await req.json();
+export const POST = async (req) => {
+  const formData = await req.json();  // Get form data from the request body
 
-  const { firstName, lastName, age, email, phone, insurance, states, contact, reason } = formData;
-
-  // Set up the transporter for Gmail SMTP
+  // Create a transporter object using Gmail SMTP server
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: process.env.SMTP_SERVICE,  // Use service from environment variables
     auth: {
-      user: 'danicarepsych@gmail.com', // Your Gmail email address
-      pass: 'qrjh fvdo spue eogc' // Your Gmail app password (if using 2FA)
+      user: process.env.SMTP_USER,  // Use email from environment variables
+      pass: process.env.SMTP_PASS,  // Use password from environment variables
     },
   });
 
-  // Define the email options
+  // Email content
   const mailOptions = {
-    from: 'danicarepsych@gmail.com', // Your Gmail address
-    to: 'hello@mydanicare.com', // Recipient email
+    from: process.env.SMTP_USER,  // Use the email from environment variables
+    to: 'hello@mydanicare.com',  // The recipient's email address
     subject: 'New Patient Registration - DaniCare',
     html: `
       <h3>New Patient Registration</h3>
-      <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-      <p><strong>Age:</strong> ${age}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
-      <p><strong>Insurance Provider:</strong> ${insurance}</p>
-      <p><strong>State:</strong> ${states}</p>
-      <p><strong>Preferred Contact:</strong> ${contact}</p>
-      <p><strong>Reason for Visit:</strong> ${reason}</p>
+      <p><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</p>
+      <p><strong>Age:</strong> ${formData.age}</p>
+      <p><strong>Email:</strong> ${formData.email}</p>
+      <p><strong>Phone:</strong> ${formData.phone}</p>
+      <p><strong>Insurance Provider:</strong> ${formData.insurance}</p>
+      <p><strong>State:</strong> ${formData.states}</p>
+      <p><strong>Preferred Contact:</strong> ${formData.contact}</p>
+      <p><strong>Reason for Visit:</strong> ${formData.reason}</p>
     `,
   };
 
   try {
-    // Attempt to send the email
-    await transporter.sendMail(mailOptions);
-    console.log('Message sent successfully');
-    
-    // Return success response
-    return new Response(
-      JSON.stringify({ message: 'Thank you for your submission! We will contact you shortly.' }),
-      { status: 200 }
-    );
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Message sent: %s', info.messageId);
+    return new Response('Thank you for your submission! We will contact you shortly.', {
+      status: 200,
+    });
   } catch (error) {
     console.error('Error sending email:', error);
-    
-    // Return error response
-    return new Response(
-      JSON.stringify({ error: 'Error: Unable to send message. Please try again.' }),
-      { status: 500 }
-    );
+    return new Response('Error: Unable to send message. Please try again.', {
+      status: 500,
+    });
   }
-}
+};
