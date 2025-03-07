@@ -1,62 +1,55 @@
-import nodemailer from "nodemailer";
-import { google } from "googleapis";
+import nodemailer from 'nodemailer';
 
-const oauth2Client = new google.auth.OAuth2(
-  process.env.CLIENT_ID,
-  process.env.CLIENT_SECRET,
-  "https://developers.google.com/oauthplayground"
-);
-
-// Set refresh token for OAuth2 authentication
-oauth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
-
+// Handle POST request
 export async function POST(req) {
+  const formData = await req.json();
+
+  const { firstName, lastName, age, email, phone, insurance, states, contact, reason } = formData;
+
+  // Set up the transporter for Gmail SMTP
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'danicarepsych@gmail.com', // Your Gmail email address
+      pass: 'qrjh fvdo spue eogc' // Your Gmail app password (if using 2FA)
+    },
+  });
+
+  // Define the email options
+  const mailOptions = {
+    from: 'danicarepsych@gmail.com', // Your Gmail address
+    to: 'hello@mydanicare.com', // Recipient email
+    subject: 'New Patient Registration - DaniCare',
+    html: `
+      <h3>New Patient Registration</h3>
+      <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+      <p><strong>Age:</strong> ${age}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Insurance Provider:</strong> ${insurance}</p>
+      <p><strong>State:</strong> ${states}</p>
+      <p><strong>Preferred Contact:</strong> ${contact}</p>
+      <p><strong>Reason for Visit:</strong> ${reason}</p>
+    `,
+  };
+
   try {
-    const { firstName, lastName, age, email, phone, insurance, states, contact, reason } = await req.json();
-
-    if (!firstName || !lastName || !email || !phone || !states || !contact || !reason) {
-      return new Response(JSON.stringify({ error: "All required fields must be filled." }), { status: 400 });
-    }
-
-    // Generate OAuth2 access token
-    const accessToken = await oauth2Client.getAccessToken();
-
-    // Configure Microsoft 365 OAuth2 transporter
-    const transporter = nodemailer.createTransport({
-      service: "Outlook",
-      auth: {
-        type: "OAuth2",
-        user: process.env.O365_USER, // Your Office 365 email
-        clientId: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
-        refreshToken: process.env.REFRESH_TOKEN,
-        accessToken: accessToken.token,
-      },
-    });
-
-    const mailOptions = {
-      from: `DaniCare <${process.env.O365_USER}>`,
-      to: process.env.RECIPIENT_EMAIL,
-      subject: "New Patient Registration on DaniCare",
-      html: `
-        <h3>New Patient Registration</h3>
-        <p><strong>First Name:</strong> ${firstName}</p>
-        <p><strong>Last Name:</strong> ${lastName}</p>
-        <p><strong>Age:</strong> ${age}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Insurance Provider:</strong> ${insurance}</p>
-        <p><strong>State:</strong> ${states}</p>
-        <p><strong>Preferred Contact:</strong> ${contact}</p>
-        <p><strong>Reason:</strong> ${reason}</p>
-      `,
-    };
-
-    const info = await transporter.sendMail(mailOptions);
-
-    return new Response(JSON.stringify({ message: "Email sent successfully!", info }), { status: 200 });
+    // Attempt to send the email
+    await transporter.sendMail(mailOptions);
+    console.log('Message sent successfully');
+    
+    // Return success response
+    return new Response(
+      JSON.stringify({ message: 'Thank you for your submission! We will contact you shortly.' }),
+      { status: 200 }
+    );
   } catch (error) {
-    console.error("Error sending email:", error);
-    return new Response(JSON.stringify({ error: "Failed to send email. Please try again later." }), { status: 500 });
+    console.error('Error sending email:', error);
+    
+    // Return error response
+    return new Response(
+      JSON.stringify({ error: 'Error: Unable to send message. Please try again.' }),
+      { status: 500 }
+    );
   }
 }
