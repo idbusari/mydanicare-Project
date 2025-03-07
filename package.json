@@ -10,6 +10,7 @@
     "generate-sitemap": "node generate-sitemap.js"
   },
   "dependencies": {
+    "@azure/msal-node": "^3.2.3",
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
