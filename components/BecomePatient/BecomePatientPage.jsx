@@ -181,13 +181,13 @@ const BecomePatientPage = () => {
                 <div className="row">
   <div className="col-md-6">
     <div className={styles.formGroup}>
-      <label htmlFor="state" className="form-label">
+      <label htmlFor="states" className="form-label">
         State
       </label>
       <select
         className="form-control"
-        id="state"
-        value={formData.state}
+        id="states"
+        value={formData.states}
         onChange={handleChange}
       >
         <option value="">Select State</option>
