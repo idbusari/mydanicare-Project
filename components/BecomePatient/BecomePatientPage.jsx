@@ -12,7 +12,7 @@ const BecomePatientPage = () => {
     email: "",
     phone: "",
     insurance: "",
-    state: "",
+    states: "",
     contact: "",
     reason: "",
   });
@@ -51,6 +51,8 @@ const BecomePatientPage = () => {
           email: "",
           phone: "",
           reason: "",
+          states: "",
+          contact: "",
           insurance: "",
         });
       } else {
@@ -180,12 +182,12 @@ const BecomePatientPage = () => {
   {/* State Dropdown - Written by Rapheal */}
   <div className="col-md-6">
     <div className={styles.formGroup}>
-      <label htmlFor="state" className="form-label">
+      <label htmlFor="states" className="form-label">
         State
       </label>
       <select
         className="form-control"
-        id="state"
+        id="states"
         value={formData.state}
         onChange={handleChange}
       >

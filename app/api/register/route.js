@@ -3,10 +3,10 @@ import nodemailer from "nodemailer";
 export async function POST(req) {
   try {
    
-    const { firstName, lastName, age, email, phone, insurance, reason } = await req.json();
+    const { firstName, lastName, age, email, phone, insurance, states, contact, reason } = await req.json();
 
    
-    if (!firstName || !lastName || !email || !phone || !reason ) {
+    if (!firstName || !lastName || !email || !phone || !states || !contact || !reason ) {
       return new Response(JSON.stringify({ error: "All required fields must be filled." }), { status: 400 });
     }
 
@@ -50,6 +50,8 @@ export async function POST(req) {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Insurance Provider:</strong> ${insurance}</p>
+        <p><strong>State:</strong> ${states}</p>
+        <p><strong>Preffered Contact:</strong> ${contact}</p>
         <p><strong>Reason:</strong> ${reason}</p>
       `,
     };
