@@ -158,7 +158,22 @@ const BecomePatientPage = () => {
                   </div>
 
 
-                  <div className="col-md-6">
+                  <div className="col-md-3">
+                    <div className={styles.formGroup}>
+                      <label htmlFor="insurance" className="form-label">
+                        Insurance Provider
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="insurance"
+                        value={formData.insurance}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-md-3">
                     <div className={styles.formGroup}>
                       <label htmlFor="insurance" className="form-label">
                         Insurance Provider
@@ -176,7 +191,7 @@ const BecomePatientPage = () => {
 
                 <div className="row">
 
-                  <div className="col-md-6">
+                  <div className="col-md-4">
                     <div className={styles.formGroup}>
                       <label htmlFor="reason" className="form-label">
                         Reason for visit
