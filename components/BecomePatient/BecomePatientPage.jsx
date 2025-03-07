@@ -51,6 +51,8 @@ const BecomePatientPage = () => {
           email: "",
           phone: "",
           reason: "",
+          states: "",
+          contact: "",
           insurance: "",
         });
       } else {
