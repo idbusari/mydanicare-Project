@@ -9,7 +9,7 @@ const seoConfig = {
     description: "Psychiatry Tailored to Suit You",
     images: [
       {
-        url: 'https://thedanicare.vercel.app/images/crisislogo.png',
+        url: 'https://mydanicare.com/images/crisislogo.png',
         width: 800,
         height: 600,
         alt: 'DaniCare Psychiatry',

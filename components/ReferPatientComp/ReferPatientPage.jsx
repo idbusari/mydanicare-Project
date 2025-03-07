@@ -122,11 +122,16 @@ const ReferPatientPage = () => {
                     onChange={handleChange}
                   >
                     <option value="">Select State</option>
-                    <option value="OK">Oklahoma</option>
-                    <option value="NJ">New Jersey</option>
-                    <option value="NM">New Mexico</option>
-                    <option value="FL">Florida</option>
-                    <option value="TX">Texas</option>
+        <option value="New York">New York</option>
+        <option value="New Jersey">New Jersey</option>
+        <option value="Texas">Texas</option>
+        <option value="California">California</option>
+        <option value="Pennsylvania">Pennsylvania</option>
+        <option value="New Mexico">New Mexico</option>
+        <option value="Arizona">Arizona</option>
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Florida">Florida</option>
                   </select>
                 </div>
               </div>

@@ -12,6 +12,8 @@ const BecomePatientPage = () => {
     email: "",
     phone: "",
     insurance: "",
+    state: "",
+    contact: "",
     reason: "",
   });
 
@@ -158,22 +160,7 @@ const BecomePatientPage = () => {
                   </div>
 
 
-                  <div className="col-md-3">
-                    <div className={styles.formGroup}>
-                      <label htmlFor="insurance" className="form-label">
-                        Insurance Provider
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="insurance"
-                        value={formData.insurance}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="col-md-3">
+                  <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="insurance" className="form-label">
                         Insurance Provider
@@ -190,8 +177,59 @@ const BecomePatientPage = () => {
                 </div>
 
                 <div className="row">
+  {/* State Dropdown - Written by Rapheal */}
+  <div className="col-md-6">
+    <div className={styles.formGroup}>
+      <label htmlFor="state" className="form-label">
+        State
+      </label>
+      <select
+        className="form-control"
+        id="state"
+        value={formData.state}
+        onChange={handleChange}
+      >
+        <option value="">Select State</option>
+        <option value="New York">New York</option>
+        <option value="New Jersey">New Jersey</option>
+        <option value="Texas">Texas</option>
+        <option value="California">California</option>
+        <option value="Pennsylvania">Pennsylvania</option>
+        <option value="New Mexico">New Mexico</option>
+        <option value="Arizona">Arizona</option>
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Florida">Florida</option>
+      </select>
+    </div>
+  </div>
 
-                  <div className="col-md-4">
+  {/* Preferred Contact Method Dropdown - Written by Rapheal */}
+  <div className="col-md-6">
+    <div className={styles.formGroup}>
+      <label htmlFor="contact" className="form-label">
+        Preferred Contact Method
+      </label>
+      <select
+        className="form-control"
+        id="contact"
+        value={formData.contact}
+        onChange={handleChange}
+      >
+        <option value="">Select Contact Method</option>
+        <option value="Phone">Phone</option>
+        <option value="Email">Email</option>
+        <option value="SMS">SMS</option>
+      </select>
+      
+    </div>
+  </div>
+</div>
+
+
+                <div className="row">
+
+                  <div className="col-md-14">
                     <div className={styles.formGroup}>
                       <label htmlFor="reason" className="form-label">
                         Reason for visit
