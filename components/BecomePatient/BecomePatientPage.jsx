@@ -75,8 +75,8 @@ const BecomePatientPage = () => {
       } else {
         setResponseMessage(`Error: ${result.error || "Something went wrong."}`);
       }
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
       setResponseMessage("Error: Unable to send message. Please try again.");
     }
   };
@@ -189,7 +189,7 @@ const BecomePatientPage = () => {
                 </div>
 
                 <div className="row">
-                  {/* State Dropdown - Written by Rapheal */}
+                  {/* State Dropdown */}
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="states" className="form-label">
@@ -216,7 +216,7 @@ const BecomePatientPage = () => {
                     </div>
                   </div>
 
-                  {/* Preferred Contact Method Dropdown - Written by Rapheal */}
+                  {/* Preferred Contact Method Dropdown */}
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="contact" className="form-label">
@@ -246,14 +246,12 @@ const BecomePatientPage = () => {
                       <textarea
                         className="form-control"
                         id="reason"
-                        rows="4" // You can adjust the number of rows as per your preference
+                        rows="4"
                         value={formData.reason}
                         onChange={handleChange}
                       />
                     </div>
                   </div>
-
-                  <div className="col-md-6"></div>
                 </div>
 
                 <div className="text-center mt-4">
