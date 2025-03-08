@@ -2,59 +2,58 @@ import nodemailer from "nodemailer";
 
 export async function POST(req) {
   try {
-    const formData = await req.json();
+    const { state, firstName, lastName, dob, phone, email, insurance, reason } = await req.json();
 
-    if (!formData.firstName || !formData.lastName || !formData.email) {
+    // Validate required fields
+    if (!state || !firstName || !lastName || !dob || !phone || !email || !reason) {
       return new Response(
-        JSON.stringify({ error: "Please fill in all required fields." }),
+        JSON.stringify({ error: "All required fields must be filled." }),
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
 
-    
-   // SMTP configuration
-   var transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port:587,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS
-    },
-   // debug: true, 
-//logger: true, 
+    // Mailtrap SMTP transporter
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false, // Avoid self-signed certificate issues
+      },
+    });
 
-  });
-
-
-    // Email content
     const mailOptions = {
-      from: `"${process.env.NAME}" <${process.env.RECIPIENT_EMAIL}>`, // Sender's email
-      to: process.env.RECIPIENT_EMAIL, 
-      subject: "New Patient Referral",
+      from: `"${process.env.NAME}" <${process.env.RECIPIENT_EMAIL}>`,
+      to: process.env.RECIPIENT_EMAIL,
+      subject: "New Patient Refferal on DaniCare",
       html: `
-        <h1>New Patient Referral</h1>
-        <p><strong>Patient's Name:</strong> ${formData.firstName} ${formData.lastName}</p>
-        <p><strong>Date of Birth:</strong> ${formData.dob}</p>
-        <p><strong>Phone:</strong> ${formData.phone}</p>
-        <p><strong>Email:</strong> ${formData.email}</p>
-        <p><strong>State:</strong> ${formData.state}</p>
-        <p><strong>Insurance:</strong> ${formData.insurance}</p>
-        <p><strong>Reason for Referral:</strong> ${formData.reason || "N/A"}</p>
+        <h3>New Patient Refferal Details</h3>
+        <p><strong>State:</strong> ${state}</p>
+        <p><strong>First Name:</strong> ${firstName}</p>
+        <p><strong>Last Name:</strong> ${lastName}</p>
+        <p><strong>Date of Birth:</strong> ${dob}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Insurance Provider:</strong> ${insurance}</p>
+        <p><strong>Reason for Referral:</strong> ${reason}</p>
       `,
     };
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent:", info);
 
-    // Respond with success
     return new Response(
-      JSON.stringify({ message: "Referral submitted successfully!" }),
+      JSON.stringify({ message: "Email sent successfully!" }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (error) {
     console.error("Error sending email:", error);
     return new Response(
-      JSON.stringify({ error: "Failed to send referral. Please try again." }),
+      JSON.stringify({ error: "Failed to send email. Please try again later." }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }

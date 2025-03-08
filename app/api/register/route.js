@@ -1,45 +1,61 @@
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
-export const POST = async (req) => {
-  const formData = await req.json();  // Get form data from the request body
-
-  // Create a transporter object using Gmail SMTP server
-  const transporter = nodemailer.createTransport({
-    service: process.env.SMTP_SERVICE,  // Use service from environment variables
-    auth: {
-      user: process.env.SMTP_USER,  // Use email from environment variables
-      pass: process.env.SMTP_PASS,  // Use password from environment variables
-    },
-  });
-
-  // Email content
-  const mailOptions = {
-    from: process.env.SMTP_USER,  // Use the email from environment variables
-    to: 'hello@mydanicare.com',  // The recipient's email address
-    subject: 'New Patient Registration - DaniCare',
-    html: `
-      <h3>New Patient Registration</h3>
-      <p><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</p>
-      <p><strong>Age:</strong> ${formData.age}</p>
-      <p><strong>Email:</strong> ${formData.email}</p>
-      <p><strong>Phone:</strong> ${formData.phone}</p>
-      <p><strong>Insurance Provider:</strong> ${formData.insurance}</p>
-      <p><strong>State:</strong> ${formData.states}</p>
-      <p><strong>Preferred Contact:</strong> ${formData.contact}</p>
-      <p><strong>Reason for Visit:</strong> ${formData.reason}</p>
-    `,
-  };
-
+export async function POST(req) {
   try {
+    const { firstName, lastName, age, email, phone, insurance, state, contact, reason } = await req.json();
+
+    // Validate required fields
+    if (!firstName || !lastName || !email || !phone  || !state || !contact  || !reason) {
+      return new Response(
+        JSON.stringify({ error: "All required fields must be filled." }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    // Mailtrap SMTP transporter
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false, // Avoid self-signed certificate issues
+      },
+    });
+
+    const mailOptions = {
+      from: `"${process.env.NAME}" <${process.env.RECIPIENT_EMAIL}>`,
+      to: process.env.RECIPIENT_EMAIL,
+      subject: "New Patient Registration on DaniCare",
+      html: `
+        <h3>New Patient Registration</h3>
+        <p><strong>First Name:</strong> ${firstName}</p>
+        <p><strong>Last Name:</strong> ${lastName}</p>
+        <p><strong>Age:</strong> ${age}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Insurance Provider:</strong> ${insurance}</p>
+        <p><strong>State:</strong> ${state}</p>
+        <p><strong>Preferred Contact:</strong> ${contact}</p>
+        <p><strong>Reason:</strong> ${reason}</p>
+      `,
+    };
+
+    // Send email
     const info = await transporter.sendMail(mailOptions);
-    console.log('Message sent: %s', info.messageId);
-    return new Response('Thank you for your submission! We will contact you shortly.', {
-      status: 200,
-    });
+    console.log("Email sent:", info);
+
+    return new Response(
+      JSON.stringify({ message: "Email sent successfully!" }),
+      { status: 200, headers: { "Content-Type": "application/json" } }
+    );
   } catch (error) {
-    console.error('Error sending email:', error);
-    return new Response('Error: Unable to send message. Please try again.', {
-      status: 500,
-    });
+    console.error("Error sending email:", error);
+    return new Response(
+      JSON.stringify({ error: "Failed to send email. Please try again later." }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
-};
+}

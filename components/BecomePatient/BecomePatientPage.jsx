@@ -1,10 +1,9 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { useState } from "react";
 import styles from './BecomePatientPage.module.scss';
 
 const BecomePatientPage = () => {
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -12,13 +11,12 @@ const BecomePatientPage = () => {
     email: "",
     phone: "",
     insurance: "",
-    states: "",
+    state: "",
     contact: "",
     reason: "",
   });
 
   const [responseMessage, setResponseMessage] = useState("");
-
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -40,7 +38,9 @@ const BecomePatientPage = () => {
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      // Ensure the response is not empty before parsing
+      const text = await response.text();
+      const result = text ? JSON.parse(text) : null;
 
       if (response.ok) {
         setResponseMessage("Thank you for your submission! We will contact you shortly.");
@@ -50,16 +50,16 @@ const BecomePatientPage = () => {
           age: "",
           email: "",
           phone: "",
-          reason: "",
-          states: "",
-          contact: "",
           insurance: "",
+          state: "",
+          contact: "", 
+          reason: "",
         });
       } else {
-        setResponseMessage(`Error: ${result.error || "Something went wrong."}`);
+        setResponseMessage(`Error: ${result?.error || "Something went wrong."}`);
       }
     } catch (error) {
-      console.error(error);
+      console.error("Submission Error:", error);
       setResponseMessage("Error: Unable to send message. Please try again.");
     }
   };
@@ -68,7 +68,6 @@ const BecomePatientPage = () => {
     <div className={styles.pageContainer}>
       <div className="container">
         <div className="row align-items-center">
-
           <div className="col-lg-6">
             <div className={styles.formSection}>
               <h1 className={styles.heading}>Become a Patient</h1>
@@ -77,117 +76,105 @@ const BecomePatientPage = () => {
               </p>
               <form onSubmit={handleSubmit}>
                 <div className="row">
-
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="firstName" className="form-label">
-                        First Name
-                      </label>
+                      <label htmlFor="firstName" className="form-label">First Name</label>
                       <input
                         type="text"
                         className="form-control"
                         id="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
+                        required
                       />
                     </div>
                   </div>
 
-
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="lastName" className="form-label">
-                        Last Name
-                      </label>
+                      <label htmlFor="lastName" className="form-label">Last Name</label>
                       <input
                         type="text"
                         className="form-control"
                         id="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
+                        required
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="row">
-
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="age" className="form-label">
-                        Age
-                      </label>
+                      <label htmlFor="age" className="form-label">Age</label>
                       <input
                         type="number"
                         className="form-control"
                         id="age"
                         value={formData.age}
                         onChange={handleChange}
+                        required
                       />
                     </div>
                   </div>
 
-
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="email" className="form-label">
-                        Email
-                      </label>
+                      <label htmlFor="email" className="form-label">Email</label>
                       <input
                         type="email"
                         className="form-control"
                         id="email"
                         value={formData.email}
                         onChange={handleChange}
+                        required
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="row">
-
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="phone" className="form-label">
-                        Phone Number
-                      </label>
+                      <label htmlFor="phone" className="form-label">Phone Number</label>
                       <input
                         type="tel"
                         className="form-control"
                         id="phone"
                         value={formData.phone}
                         onChange={handleChange}
+                        required
                       />
                     </div>
                   </div>
 
-
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="insurance" className="form-label">
-                        Insurance Provider
-                      </label>
+                      <label htmlFor="insurance" className="form-label">Insurance Provider</label>
                       <input
                         type="text"
                         className="form-control"
                         id="insurance"
                         value={formData.insurance}
                         onChange={handleChange}
+                        required
                       />
                     </div>
                   </div>
                 </div>
-
+               
                 <div className="row">
   <div className="col-md-6">
     <div className={styles.formGroup}>
-      <label htmlFor="states" className="form-label">
+      <label htmlFor="state" className="form-label">
         State
       </label>
       <select
         className="form-control"
-        id="states"
-        value={formData.states}
+        id="state"
+        value={formData.state}
         onChange={handleChange}
       >
         <option value="">Select State</option>
@@ -226,44 +213,33 @@ const BecomePatientPage = () => {
 </div>
 
                 <div className="row">
-
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className={styles.formGroup}>
-                      <label htmlFor="reason" className="form-label">
-                        Reason for visit
-                      </label>
+                      <label htmlFor="reason" className="form-label">Reason for Visit</label>
                       <textarea
                         className="form-control"
                         id="reason"
-                        rows="4" // You can adjust the number of rows as per your preference
+                        rows="4"
                         value={formData.reason}
                         onChange={handleChange}
+                        required
                       />
                     </div>
-                  </div>
-
-
-                  <div className="col-md-6">
-
                   </div>
                 </div>
 
                 <div className="text-center mt-4">
-                  <button type="submit" className="btn-primary btn-lg">
-                    Submit
-                  </button>
+                  <button type="submit" className="btn btn-primary btn-lg">Submit</button>
                 </div>
               </form>
 
-
               {responseMessage && (
-                <div className="mt-4 text-center bg-info">
+                <div className="mt-4 text-center alert alert-info">
                   <p>{responseMessage}</p>
                 </div>
               )}
             </div>
           </div>
-
 
           <div className="col-lg-6 imageSection">
             <Image
