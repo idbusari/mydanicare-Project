@@ -11,7 +11,7 @@ const BecomePatientPage = () => {
     email: "",
     phone: "",
     insurance: "",
-    plannumm: "",
+    plannos: "",
     state: "",
     contact: "",
     refsource: "",
@@ -53,7 +53,7 @@ const BecomePatientPage = () => {
           email: "",
           phone: "",
           insurance: "",
-          plannumm:"",
+          plannos:"",
           state: "",
           contact: "", 
           refsource: "",
@@ -196,20 +196,21 @@ const BecomePatientPage = () => {
                       />
                     </div>
                   </div>
-               
-                <div className="col-md-6">
+
+                  <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="plannumm" className="form-label">Insurance Plan Number</label>
+                      <label htmlFor="plannos" className="form-label">Insurance Plan Number</label>
                       <input
                         type="text"
                         className="form-control"
-                        id="plannum"
-                        value={formData.plannumm}
+                        id="plannos"
+                        value={formData.plannos}
                         onChange={handleChange}
                         required
                       />
                     </div>
                   </div>
+               
                 </div>
 
                 <div className="row">
