@@ -7,7 +7,7 @@ const BecomePatientPage = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    age: "",
+    dob: "",
     email: "",
     phone: "",
     insurance: "",
@@ -47,7 +47,7 @@ const BecomePatientPage = () => {
         setFormData({
           firstName: "",
           lastName: "",
-          age: "",
+          dob: "",
           email: "",
           phone: "",
           insurance: "",
@@ -108,12 +108,13 @@ const BecomePatientPage = () => {
                 <div className="row">
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="age" className="form-label">Age</label>
+                      <label htmlFor="dob" className="form-label">Date of Birth (m/d/y)</label>
                       <input
-                        type="number"
+                        type="text"
                         className="form-control"
-                        id="age"
-                        value={formData.age}
+                        id="dob"
+                        placeholder="e.g., 12/25/1990"
+                        value={formData.dob}
                         onChange={handleChange}
                         required
                       />
