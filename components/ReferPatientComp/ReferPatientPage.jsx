@@ -12,6 +12,7 @@ const ReferPatientPage = () => {
     phone: "",
     email: "",
     insurance: "",
+    plannumm: "",
     reason: "",
   });
 
@@ -50,6 +51,7 @@ const ReferPatientPage = () => {
         phone: "",
         email: "",
         insurance: "",
+        plannumm: "",
         reason: "",
       });
       setStatus({ success: true, message: "Referral submitted successfully!" });
@@ -112,12 +114,20 @@ const ReferPatientPage = () => {
             </div>
 
             <div className="row">
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <label htmlFor="insurance" className="form-label">Insurance</label>
                 <input type="text" className="form-control" id="insurance" value={formData.insurance} onChange={handleChange} />
               </div>
 
-              <div className="col-md-8">
+              <div className="col-md-6">
+                <label htmlFor="plannumm" className="form-label">Insurance Plan Number</label>
+                <input type="text" className="form-control" id="plannumm" rows="3" value={formData.plannumm} onChange={handleChange}></input>
+              </div>
+            </div>
+
+            <div className="row">
+          
+              <div className="col-md-12">
                 <label htmlFor="reason" className="form-label">Reason For Referral (Optional)</label>
                 <textarea className="form-control" id="reason" rows="3" value={formData.reason} onChange={handleChange}></textarea>
               </div>

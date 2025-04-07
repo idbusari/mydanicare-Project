@@ -11,8 +11,10 @@ const BecomePatientPage = () => {
     email: "",
     phone: "",
     insurance: "",
+    plannumm: "",
     state: "",
     contact: "",
+    refsource: "",
     reason: "",
   });
 
@@ -51,8 +53,10 @@ const BecomePatientPage = () => {
           email: "",
           phone: "",
           insurance: "",
+          plannumm:"",
           state: "",
           contact: "", 
+          refsource: "",
           reason: "",
         });
       } else {
@@ -108,66 +112,19 @@ const BecomePatientPage = () => {
                 <div className="row">
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="dob" className="form-label">Date of Birth (m/d/y)</label>
+                      <label htmlFor="dob" className="form-label">Date of Birth (MM/DD/YYYY)</label>
                       <input
                         type="text"
                         className="form-control"
                         id="dob"
-                        placeholder="e.g., 12/25/1990"
+                        placeholder="e.g., MM/DD/YYYY"
                         value={formData.dob}
                         onChange={handleChange}
                         required
                       />
                     </div>
                   </div>
-
                   <div className="col-md-6">
-                    <div className={styles.formGroup}>
-                      <label htmlFor="email" className="form-label">Email</label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className={styles.formGroup}>
-                      <label htmlFor="phone" className="form-label">Phone Number</label>
-                      <input
-                        type="tel"
-                        className="form-control"
-                        id="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="col-md-6">
-                    <div className={styles.formGroup}>
-                      <label htmlFor="insurance" className="form-label">Insurance Provider</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="insurance"
-                        value={formData.insurance}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-               
-                <div className="row">
-  <div className="col-md-6">
     <div className={styles.formGroup}>
       <label htmlFor="state" className="form-label">
         State
@@ -192,6 +149,70 @@ const BecomePatientPage = () => {
       </select>
     </div>
   </div>
+  </div>
+  <div className="row">
+                  <div className="col-md-6">
+                    <div className={styles.formGroup}>
+                      <label htmlFor="email" className="form-label">Email</label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+               
+
+                <div className="col-md-6">
+                    <div className={styles.formGroup}>
+                      <label htmlFor="phone" className="form-label">Phone Number</label>
+                      <input
+                        type="tel"
+                        className="form-control"
+                        id="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  </div>
+
+                <div className="row">             
+                  <div className="col-md-6">
+                    <div className={styles.formGroup}>
+                      <label htmlFor="insurance" className="form-label">Insurance Provider</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="insurance"
+                        value={formData.insurance}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+               
+                <div className="col-md-6">
+                    <div className={styles.formGroup}>
+                      <label htmlFor="plannumm" className="form-label">Insurance Plan Number</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="plannum"
+                        value={formData.plannumm}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row">
 
   <div className="col-md-6">
     <div className={styles.formGroup}>
@@ -211,6 +232,29 @@ const BecomePatientPage = () => {
       </select>
     </div>
   </div>
+  
+  <div className="col-md-6">
+  <div className={styles.formGroup}>
+    <label htmlFor="refsource" className="form-label">
+      Referral Source
+    </label>
+    <select
+      className="form-control"
+      id="refsource"
+      name="refsource"
+      value={formData.refsource}
+      onChange={handleChange}
+    >
+      <option value="">Select Referral Source</option>
+      <option value="Google Search">Google Search</option>
+      <option value="Social Media">Social Media (e.g., Instagram, Facebook)</option>
+      <option value="Family or Friend">Family or Friend</option>
+      <option value="Healthcare Provider">Doctor or Healthcare Provider</option>
+      <option value="Online Ad">Online Ad</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+</div>
 </div>
 
                 <div className="row">
