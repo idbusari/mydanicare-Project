@@ -99,7 +99,7 @@ const ReferPatientPage = () => {
             <div className="row">
               <div className="col-md-4">
                 <label htmlFor="dob" className="form-label">Date of Birth</label>
-                <input type="text" className="form-control" id="dob" placeholder="MM/DD/YYYY" value={formData.dob} onChange={handleChange} />
+                <input type="text" className="form-control" id="dob" placeholder="e.g., MM DD YYYY without any special characters" value={formData.dob} onChange={handleChange} />
               </div>
 
               <div className="col-md-4">

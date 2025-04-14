@@ -22,6 +22,7 @@
     "@sendgrid/mail": "^8.1.4",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
+    "datepicker": "^0.0.0",
     "dotenv": "^16.4.7",
     "fontawesome-free": "^1.0.4",
     "fortawesome": "^0.0.1-security",

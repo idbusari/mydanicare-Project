@@ -112,12 +112,12 @@ const BecomePatientPage = () => {
                 <div className="row">
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="dob" className="form-label">Date of Birth (MM/DD/YYYY)</label>
+                      <label htmlFor="dob" className="form-label">Date of Birth (MM DD YYYY)</label>
                       <input
                         type="text"
                         className="form-control"
                         id="dob"
-                        placeholder="e.g., MM/DD/YYYY"
+                        placeholder="e.g., MM DD YYYY without any special characters"
                         value={formData.dob}
                         onChange={handleChange}
                         required
