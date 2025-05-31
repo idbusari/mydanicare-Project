@@ -2,6 +2,7 @@ import styles from "./blog.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { getSortedPostsData } from "@/lib/posts";
+import DOMPurify from "isomorphic-dompurify";
 
 export default async function BlogPage() {
   const posts = await getSortedPostsData();
@@ -13,16 +14,29 @@ export default async function BlogPage() {
         {posts.map(({ id, title, date, excerpt, image, author }) => (
           <div key={id} className={styles.card}>
             <Link href={`/blog/${id}`}>
-              <Image src={image} alt={title} width={400} height={250} className={styles.image} />
+              <Image
+                src={image}
+                alt={title}
+                width={400}
+                height={250}
+                className={styles.image}
+              />
             </Link>
+
             <div className={styles.content}>
               <h2 className={styles.postTitle}>
                 <Link href={`/blog/${id}`}>{title}</Link>
               </h2>
+
               <p className={styles.meta}>
                 By {author} • {date}
               </p>
-              <p className={styles.excerpt}>{excerpt}</p>
+
+              <div
+                className={styles.excerpt}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(excerpt) }}
+              />
+
               <Link href={`/blog/${id}`} className={styles.readMore}>
                 Read More →
               </Link>
