@@ -54,6 +54,14 @@ export const trackEvent = (eventName, eventData = {}) => {
   }
 };
 
+window.dataLayer.push({
+  event: 'form_submission',
+  form_id: 'become_patient_form',
+  // Add metrics like form value (if applicable)
+  value: 100, // Example: Lead score or revenue
+  currency: 'USD'
+});
+
 /**
  * Track page views for SPA (React Router)
  * @param {string} path - Current page path
