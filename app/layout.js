@@ -10,6 +10,9 @@ import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import seoConfig from '../config/seo.config';
+import TagManager from 'react-gtm-module'; // Import TagManager
+
+
 
 // Import FooterETop
 import FooterETop from '../components/FooterETop/FooterETop';

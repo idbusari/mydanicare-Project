@@ -1,26 +1,67 @@
-// analytics.js
-export const GA_MEASUREMENT_ID = "G-BVBHZ1NWSN"; // Replace with your Measurement ID
+// gtm.js - New implementation using Google Tag Manager
+export const GTM_ID = "GTM-PN7M6L9W"; // Your GTM container ID
 
-// Function to initialize Google Analytics
-export const initializeAnalytics = () => {
-  if (typeof window !== "undefined" && !window.gtagInitialized) {
-    // Load Google Analytics script
-    const script1 = document.createElement("script");
-    script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-    script1.async = true;
-    document.head.appendChild(script1);
-
-    const script2 = document.createElement("script");
-    script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${GA_MEASUREMENT_ID}', {
-        page_path: window.location.pathname,
-      });
+/**
+ * Initializes Google Tag Manager and sets up the data layer
+ * This replaces the direct gtag implementation
+ */
+export const initializeGTM = () => {
+  if (typeof window !== "undefined" && !window.gtmInitialized) {
+    // Initialize data layer
+    window.dataLayer = window.dataLayer || [];
+    
+    // Main GTM script loader
+    const script = document.createElement('script');
+    script.innerHTML = `
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','${GTM_ID}');
     `;
-    document.head.appendChild(script2);
+    document.head.appendChild(script);
 
-    window.gtagInitialized = true;
+    // Noscript fallback
+    const noscript = document.createElement('noscript');
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.googletagmanager.com/ns.html?id=${GTM_ID}`;
+    iframe.height = '0';
+    iframe.width = '0';
+    iframe.style.display = 'none';
+    iframe.style.visibility = 'hidden';
+    noscript.appendChild(iframe);
+    document.body.insertBefore(noscript, document.body.firstChild);
+
+    window.gtmInitialized = true;
   }
+};
+
+/**
+ * Track custom events through GTM data layer
+ * @param {string} eventName - The event name (e.g., 'button_click')
+ * @param {object} eventData - Additional event parameters
+ */
+export const trackEvent = (eventName, eventData = {}) => {
+  if (typeof window !== "undefined") {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: eventName,
+      ...eventData
+    });
+  }
+};
+
+/**
+ * Track page views for SPA (React Router)
+ * @param {string} path - Current page path
+ */
+export const trackPageView = (path) => {
+  trackEvent('page_view', {
+    page_path: path,
+    page_title: document.title,
+    page_location: window.location.href
+  });
 };
