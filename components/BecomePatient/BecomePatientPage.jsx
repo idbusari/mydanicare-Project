@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from './BecomePatientPage.module.scss';
 
 const BecomePatientPage = () => {
@@ -20,6 +20,10 @@ const BecomePatientPage = () => {
 
   const [responseMessage, setResponseMessage] = useState("");
 
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+  }, []);
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData({
@@ -32,6 +36,12 @@ const BecomePatientPage = () => {
     e.preventDefault();
 
     try {
+      window.dataLayer.push({
+        event: 'form_submission',
+        form_id: 'become_patient_form',
+        form_name: 'Become a Patient Form'
+      });
+
       const response = await fetch("/api/register", {
         method: "POST",
         headers: {
@@ -40,12 +50,16 @@ const BecomePatientPage = () => {
         body: JSON.stringify(formData),
       });
 
-      // Ensure the response is not empty before parsing
       const text = await response.text();
       const result = text ? JSON.parse(text) : null;
 
       if (response.ok) {
         setResponseMessage("Thank you for your submission! We will contact you shortly.");
+        window.dataLayer.push({
+          event: 'form_submission_success',
+          form_id: 'become_patient_form'
+        });
+        
         setFormData({
           firstName: "",
           lastName: "",
@@ -61,10 +75,20 @@ const BecomePatientPage = () => {
         });
       } else {
         setResponseMessage(`Error: ${result?.error || "Something went wrong."}`);
+        window.dataLayer.push({
+          event: 'form_submission_error',
+          form_id: 'become_patient_form',
+          error: result?.error || "Unknown error"
+        });
       }
     } catch (error) {
       console.error("Submission Error:", error);
       setResponseMessage("Error: Unable to send message. Please try again.");
+      window.dataLayer.push({
+        event: 'form_submission_error',
+        form_id: 'become_patient_form',
+        error: error.message
+      });
     }
   };
 
@@ -78,7 +102,11 @@ const BecomePatientPage = () => {
               <p className={styles.description}>
                 Kindly fill the following information to become a Patient on DaniCare.
               </p>
-              <form onSubmit={handleSubmit}>
+              <form 
+                onSubmit={handleSubmit}
+                id="become_patient_form"
+                data-gtm-form="become_patient_form"
+              >
                 <div className="row">
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
@@ -112,12 +140,12 @@ const BecomePatientPage = () => {
                 <div className="row">
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="dob" className="form-label">Date of Birth (MM DD YYYY)</label>
+                      <label htmlFor="dob" className="form-label">Date of Birth</label>
                       <input
                         type="text"
                         className="form-control"
                         id="dob"
-                        placeholder="e.g., MM DD YYYY without any special characters"
+                        placeholder="MM DD YYYY"
                         value={formData.dob}
                         onChange={handleChange}
                         required
@@ -125,32 +153,26 @@ const BecomePatientPage = () => {
                     </div>
                   </div>
                   <div className="col-md-6">
-    <div className={styles.formGroup}>
-      <label htmlFor="state" className="form-label">
-        State
-      </label>
-      <select
-        className="form-control"
-        id="state"
-        value={formData.state}
-        onChange={handleChange}
-      >
-        <option value="">Select State</option>
-        <option value="New York">New York</option>
-        <option value="New Jersey">New Jersey</option>
-        <option value="Texas">Texas</option>
-        <option value="California">California</option>
-        <option value="Pennsylvania">Pennsylvania</option>
-        <option value="New Mexico">New Mexico</option>
-        <option value="Arizona">Arizona</option>
-        <option value="Oklahoma">Oklahoma</option>
-        <option value="Idaho">Idaho</option>
-        <option value="Florida">Florida</option>
-      </select>
-    </div>
-  </div>
-  </div>
-  <div className="row">
+                    <div className={styles.formGroup}>
+                      <label htmlFor="state" className="form-label">State</label>
+                      <select
+                        className="form-control"
+                        id="state"
+                        value={formData.state}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select State</option>
+                        <option value="New York">New York</option>
+                        <option value="New Jersey">New Jersey</option>
+                        <option value="Texas">Texas</option>
+                        <option value="California">California</option>
+                        <option value="Pennsylvania">Pennsylvania</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row">
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="email" className="form-label">Email</label>
@@ -164,9 +186,7 @@ const BecomePatientPage = () => {
                       />
                     </div>
                   </div>
-               
-
-                <div className="col-md-6">
+                  <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="phone" className="form-label">Phone Number</label>
                       <input
@@ -179,10 +199,9 @@ const BecomePatientPage = () => {
                       />
                     </div>
                   </div>
+                </div>
 
-                  </div>
-
-                <div className="row">             
+                <div className="row">
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="insurance" className="form-label">Insurance Provider</label>
@@ -196,10 +215,9 @@ const BecomePatientPage = () => {
                       />
                     </div>
                   </div>
-
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
-                      <label htmlFor="plannos" className="form-label">Insurance Plan Number</label>
+                      <label htmlFor="plannos" className="form-label">Plan Number</label>
                       <input
                         type="text"
                         className="form-control"
@@ -210,53 +228,42 @@ const BecomePatientPage = () => {
                       />
                     </div>
                   </div>
-               
                 </div>
 
                 <div className="row">
-
-  <div className="col-md-6">
-    <div className={styles.formGroup}>
-      <label htmlFor="contact" className="form-label">
-        Preferred Contact Method
-      </label>
-      <select
-        className="form-control"
-        id="contact"
-        value={formData.contact}
-        onChange={handleChange}
-      >
-        <option value="">Select Contact Method</option>
-        <option value="Phone">Phone</option>
-        <option value="Email">Email</option>
-        <option value="SMS">SMS</option>
-      </select>
-    </div>
-  </div>
-  
-  <div className="col-md-6">
-  <div className={styles.formGroup}>
-    <label htmlFor="refsource" className="form-label">
-      Referral Source
-    </label>
-    <select
-      className="form-control"
-      id="refsource"
-      name="refsource"
-      value={formData.refsource}
-      onChange={handleChange}
-    >
-      <option value="">Select Referral Source</option>
-      <option value="Google Search">Google Search</option>
-      <option value="Social Media">Social Media (e.g., Instagram, Facebook)</option>
-      <option value="Family or Friend">Family or Friend</option>
-      <option value="Healthcare Provider">Doctor or Healthcare Provider</option>
-      <option value="Online Ad">Online Ad</option>
-      <option value="Other">Other</option>
-    </select>
-  </div>
-</div>
-</div>
+                  <div className="col-md-6">
+                    <div className={styles.formGroup}>
+                      <label htmlFor="contact" className="form-label">Contact Method</label>
+                      <select
+                        className="form-control"
+                        id="contact"
+                        value={formData.contact}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select Method</option>
+                        <option value="Phone">Phone</option>
+                        <option value="Email">Email</option>
+                        <option value="SMS">SMS</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className={styles.formGroup}>
+                      <label htmlFor="refsource" className="form-label">Referral Source</label>
+                      <select
+                        className="form-control"
+                        id="refsource"
+                        value={formData.refsource}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select Source</option>
+                        <option value="Google">Google</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Friend">Friend</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
 
                 <div className="row">
                   <div className="col-md-12">
@@ -275,7 +282,13 @@ const BecomePatientPage = () => {
                 </div>
 
                 <div className="text-center mt-4">
-                  <button type="submit" className="btn btn-primary btn-lg">Submit</button>
+                  <button 
+                    type="submit" 
+                    className="btn btn-primary btn-lg"
+                    data-gtm-form="become_patient_form"
+                  >
+                    Submit
+                  </button>
                 </div>
               </form>
 
@@ -289,10 +302,9 @@ const BecomePatientPage = () => {
 
           <div className="col-lg-6 imageSection">
             <Image
-              src={"/images/becomePatient.webp"}
+              src="/images/becomePatient.webp"
               width={681}
               height={540}
-              layout="intrinsic"
               alt="Become a Patient"
               className="img-fluid"
             />
