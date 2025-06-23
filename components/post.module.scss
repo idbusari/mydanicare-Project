@@ -1,0 +1,49 @@
+.shareButtons {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+
+  .label {
+    font-weight: 500;
+    color: #444;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    a,
+    button {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #0066cc;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #004999;
+        text-decoration: underline;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+    }
+
+    button {
+      font-family: inherit;
+      padding: 0;
+    }
+  }
+}

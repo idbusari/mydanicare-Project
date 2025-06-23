@@ -3,6 +3,7 @@ import DOMPurify from "isomorphic-dompurify";
 import styles from "./post.module.scss";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import ShareButtons from "@/components/ShareButtons"; // ✅ Import share button
 
 export async function generateMetadata({ params }) {
   const posts = getSortedPostsData();
@@ -35,6 +36,7 @@ export default function BlogPostPage({ params }) {
       <p className={styles.meta}>
         By {post.author} — {post.date}
       </p>
+
       <Image
         src={post.image}
         alt={post.title}
@@ -42,14 +44,20 @@ export default function BlogPostPage({ params }) {
         height={400}
         className={styles.image}
       />
+
       <div
         className={styles.content}
         dangerouslySetInnerHTML={{ __html: sanitizedContent }}
       />
+
+      {/* ✅ Share Buttons inserted below blog content */}
+      <ShareButtons title={post.title} />
     </article>
+    
   );
 }
+
 export async function generateStaticParams() {
   const posts = getSortedPostsData();
   return posts.map((post) => ({ slug: post.id }));
-}   
+}

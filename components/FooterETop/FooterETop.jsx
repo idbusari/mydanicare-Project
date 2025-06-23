@@ -34,11 +34,11 @@ const FooterETop = () => {
         </div>
         
         <div className="col-md-3">
-          <h4>Forth Worth</h4>
+          <h4>Other Location</h4>
           <p>
-          1122 NW 25th St <br /> 
-          Suite 104, Fort Worth, <br /> 
-           TX 76164.
+          We will share details <br /> 
+          as soon as we, <br /> 
+          launch.
           </p>
         </div>
       </div>
