@@ -7,7 +7,7 @@ const BecomePatientPage = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    dob: "",
+    age: "",
     email: "",
     phone: "",
     insurance: "",
@@ -63,7 +63,7 @@ const BecomePatientPage = () => {
         setFormData({
           firstName: "",
           lastName: "",
-          dob: "",
+          age: "",
           email: "",
           phone: "",
           insurance: "",
@@ -138,20 +138,25 @@ const BecomePatientPage = () => {
                 </div>
 
                 <div className="row">
-                  <div className="col-md-6">
-                    <div className={styles.formGroup}>
-                      <label htmlFor="dob" className="form-label">Date of Birth</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="dob"
-                        placeholder="MM DD YYYY"
-                        value={formData.dob}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
+                  
+
+  <div className="col-md-6">
+  <div className={styles.formGroup}>
+    <label htmlFor="age" className="form-label">Date of Birth</label>
+    <input
+      type="text"
+      className="form-control"
+      id="age"
+      placeholder="MM/DD/YYYY or MM-DD-YYYY"
+      value={formData.age}
+      onChange={handleChange}
+      pattern="^(0[1-9]|1[0-2])[-\/](0[1-9]|[12][0-9]|3[01])[-\/](19|20)\d{2}$"
+      title="Use MM/DD/YYYY or MM-DD-YYYY format only"
+      required
+    />
+  </div>
+</div>
+
                   <div className="col-md-6">
                     <div className={styles.formGroup}>
                       <label htmlFor="state" className="form-label">State</label>
