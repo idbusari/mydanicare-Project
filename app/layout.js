@@ -62,6 +62,8 @@ export default function RootLayout({ children }) {
             })(window,document,'script','dataLayer','${GTM_ID}');
           `}
         </Script>
+
+        
         
         <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
       </head>
