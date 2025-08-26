@@ -18,6 +18,7 @@ export const Header = () => {
     { href: '/refer-a-patient', label: 'Refer Patient' },
     { href: '/our-faqs', label: 'FAQ' },
     { href: '/blog', label: 'Blog' }, // New Blog link added here
+    { href: '/immigration-psychiatry-service', label: 'Immigration' }, // New  link added here
   ];
 
   return (
