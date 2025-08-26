@@ -12,6 +12,7 @@ const ImmConsultPage = () => {
     phone: "",
     email: "",
     immstatus: "",
+    immcase: "",
     passnumm: "",
     others: "",
   });
@@ -51,6 +52,7 @@ const ImmConsultPage = () => {
         phone: "",
         email: "",
         immstatus: "",
+        immcase: "",
         passnumm: "",
         others: "",
       });
@@ -77,7 +79,7 @@ const ImmConsultPage = () => {
         <form onSubmit={handleSubmit} className="row justify-content-center">
           <div className="col-lg-10">
             <div className="row">
-              <div className="col-md-4">
+              <div className="col-md-4 mt-3">
                 <label htmlFor="state" className="form-label"> State</label>
                 <select id="state" className="form-select" value={formData.state} onChange={handleChange}>
                   <option value="">Select State</option>
@@ -87,49 +89,78 @@ const ImmConsultPage = () => {
                 </select>
               </div>
               
-              <div className="col-md-4">
+              <div className="col-md-4 mt-3">
                 <label htmlFor="firstName" className="form-label">First Name</label>
                 <input type="text" className="form-control" id="firstName" value={formData.firstName} onChange={handleChange} />
               </div>
               
-              <div className="col-md-4">
+              <div className="col-md-4 mt-3">
                 <label htmlFor="lastName" className="form-label">Last Name</label>
                 <input type="text" className="form-control" id="lastName" value={formData.lastName} onChange={handleChange} />
               </div>
             </div>
 
             <div className="row">
-              <div className="col-md-4">
+              <div className="col-md-4 mt-3">
                 <label htmlFor="dob" className="form-label">Date of Birth</label>
                 <input type="text" className="form-control" id="dob" placeholder="e.g., MM DD YYYY without any special characters" value={formData.dob} onChange={handleChange} />
               </div>
 
-              <div className="col-md-4">
+              <div className="col-md-4 mt-3">
                 <label htmlFor="phone" className="form-label">Phone Number</label>
                 <input type="tel" className="form-control" id="phone" value={formData.phone} onChange={handleChange} />
               </div>
 
-              <div className="col-md-4">
+              <div className="col-md-4 mt-3">
                 <label htmlFor="email" className="form-label">Email</label>
                 <input type="email" className="form-control" id="email" value={formData.email} onChange={handleChange} />
               </div>
             </div>
 
             <div className="row">
-              <div className="col-md-6">
-                <label htmlFor="immstatus" className="form-label">Immigration Status</label>
-                <input type="text" className="form-control" id="immstatus" value={formData.immstatus} onChange={handleChange} />
-              </div>
+              <div className="col-md-6 mt-3">
+  <label htmlFor="immstatus" className="form-label">Immigration Status</label>
+  <select
+    id="immstatus"
+    className="form-control"
+    value={formData.immstatus}
+    onChange={handleChange}
+  >
+    <option value="">Select One</option>
+    <option value="us_citizen">U.S. Citizen</option>
+    <option value="green_card">Lawful Permanent Resident (Green Card Holder)</option>
+    <option value="asylum">Asylum Seeker / Granted Asylum</option>
+    <option value="tps">Temporary Protected Status (TPS)</option>
+    <option value="daca">DACA (Deferred Action for Childhood Arrivals)</option>
+    <option value="visa_holder">Visa Holder (e.g., H-1B, F-1, etc.)</option>
+    <option value="no_status">No Current Legal Status</option>
+    <option value="other">Other (Please Specify in text box)</option>
+    <option value="prefer_not_say">Prefer not to say</option>
+  </select>
+</div>
 
-              <div className="col-md-6">
-                <label htmlFor="passnumm" className="form-label"> Passport Number </label>
-                <input type="text" className="form-control" id="passnumm" rows="3" value={formData.passnumm} onChange={handleChange}></input>
-              </div>
+
+                           <div className="col-md-6 mt-3">
+  <label htmlFor="immcase" className="form-label">Immigration Case</label>
+  <select
+    id="immcase"
+    className="form-control"
+    value={formData.immcase}
+    onChange={handleChange}
+  >
+    <option value="">Select One</option>
+    <option value="Assylum_Cases">Asylum & Protection-Based Cases</option>
+    <option value="Waiver_Cases">Family-Based & Waiver Cases</option>
+    <option value="Victim_Visa">Victim-Based Visas</option>
+    <option value="Removal_Defense">Removal Defense</option>
+    <option value="Others">Other Common Needs</option>
+  </select>
+</div>
             </div>
 
             <div className="row">
           
-              <div className="col-md-12">
+              <div className="col-md-12 mt-3">
                 <label htmlFor="others" className="form-label">Any other related information (Optional)</label>
                 <textarea className="form-control" id="others" rows="3" value={formData.others} onChange={handleChange}></textarea>
               </div>

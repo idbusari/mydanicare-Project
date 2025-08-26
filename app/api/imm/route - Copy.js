@@ -39,6 +39,7 @@ export async function POST(req) {
         <p><strong>Email:</strong> ${formData.email}</p>
         <p><strong>State:</strong> ${formData.state}</p>
         <p><strong>Immigration Status:</strong> ${formData.immstatus}</p>
+        <p><strong>Immigration Case:</strong> ${formData.immcase}</p>
         <p><strong>Reason for Referral:</strong> ${formData.reason || "N/A"}</p>
       `,
     };
