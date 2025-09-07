@@ -1,24 +1,24 @@
 // config/seo.config.js
 const seoConfig = {
-  title: "DaniCare Psychiatry",
+  title: "DaniCare Psychiatry - Mental Health Service",
   description: "Psychiatry Tailored to Suit You",
   openGraph: {
     type: 'website',
     url: 'https://thedanicare.vercel.app',
-    title: "DaniCare Psychiatry",
+    title: "DaniCare Psychiatry - Mental Health Service",
     description: "Psychiatry Tailored to Suit You",
     images: [
       {
         url: 'https://mydanicare.com/images/crisislogo.png',
         width: 800,
         height: 600,
-        alt: 'DaniCare Psychiatry',
+        alt: 'DaniCare Psychiatry - Mental Health Service',
       },
     ],
   },
   twitter: {
-    handle: '@DaniCare',
-    site: '@DaniCare',
+    handle: '@danicarepsychiatry',
+    site: '@danicarepsychiatry',
     cardType: 'summary_large_image',
   },
   socialMedia: {
