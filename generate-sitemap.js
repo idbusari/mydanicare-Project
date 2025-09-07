@@ -1,32 +1,58 @@
+// scripts/generate-sitemap.js
 const { SitemapStream, streamToPromise } = require('sitemap');
-const { createWriteStream } = require('fs');
+const { createWriteStream, readdirSync } = require('fs');
 const path = require('path');
 
+const PAGES_DIR = path.join(__dirname, '..', 'pages'); // Adjust if your pages dir is elsewhere
+const PUBLIC_DIR = path.join(__dirname, '..', 'public');
+
 const generateSitemap = async () => {
-  const sitemapStream = new SitemapStream({ hostname: 'https://thedanicare.vercel.app' });
+  try {
+    const hostname = 'https://mydanicare.com';
+    const sitemapStream = new SitemapStream({ hostname });
 
-  // Add static URLs
-  sitemapStream.write({ url: '/', changefreq: 'daily', priority: 1.0 });
-  sitemapStream.write({ url: '/about', changefreq: 'weekly', priority: 0.8 });
-  sitemapStream.write({ url: '/contact', changefreq: 'monthly', priority: 0.5 });
+    // ✅ Read all files from pages folder
+    const getRoutes = (dir, baseRoute = '') => {
+      const files = readdirSync(dir, { withFileTypes: true });
+      let routes = [];
 
-  // Dynamically add URLs (e.g., blog posts, patients pages, etc.)
-  const dynamicRoutes = [
-    { url: '/patients', changefreq: 'weekly', priority: 0.7 },
-    // Add other dynamic routes here
-  ];
+      for (const file of files) {
+        if (file.isDirectory()) {
+          routes = routes.concat(getRoutes(path.join(dir, file.name), `${baseRoute}/${file.name}`));
+        } else {
+          if (file.name.startsWith('_') || file.name.startsWith('[')) continue; // Skip Next.js special files
+          if (!file.name.endsWith('.js') && !file.name.endsWith('.tsx')) continue;
 
-  dynamicRoutes.forEach(route => sitemapStream.write(route));
+          const route =
+            file.name === 'index.js' || file.name === 'index.tsx'
+              ? baseRoute || '/'
+              : `${baseRoute}/${file.name.replace(/\.(js|tsx)$/, '')}`;
 
-  sitemapStream.end();
+          routes.push(route);
+        }
+      }
+      return routes;
+    };
 
-  const sitemapPath = path.join(__dirname, 'public', 'sitemap.xml');
-  const writeStream = createWriteStream(sitemapPath);
+    const allRoutes = getRoutes(PAGES_DIR);
 
-  // Generate the sitemap
-  await streamToPromise(sitemapStream).then(data => writeStream.write(data.toString()));
+    // ✅ Write all routes to sitemap
+    allRoutes.forEach((route) => {
+      sitemapStream.write({ url: route, changefreq: 'weekly', priority: 0.7 });
+    });
 
-  console.log(`Sitemap successfully created at ${sitemapPath}`);
+    sitemapStream.end();
+
+    const sitemapPath = path.join(PUBLIC_DIR, 'sitemap.xml');
+    const writeStream = createWriteStream(sitemapPath);
+
+    const sitemap = await streamToPromise(sitemapStream);
+    writeStream.write(sitemap.toString());
+
+    console.log(`✅ Sitemap successfully created at ${sitemapPath}`);
+  } catch (err) {
+    console.error('❌ Error generating sitemap:', err);
+  }
 };
 
-generateSitemap().catch(err => console.error('Error generating sitemap:', err));
+generateSitemap();

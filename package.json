@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node generate-sitemap.js",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-sitemap": "node generate-sitemap.js"
+    "generate-sitemap": "node generate-sitemap.js",
+    "postbuild": "node generate-sitemap.js"
   },
   "dependencies": {
     "@azure/msal-node": "^3.2.3",
@@ -34,6 +35,7 @@
     "lucide-react": "^0.522.0",
     "next": "^15.1.3",
     "next-seo": "^6.6.0",
+    "next-sitemap": "^4.2.3",
     "nodemailer": "^6.10.0",
     "oauth2-client": "^0.0.4",
     "react": "^19.0.0",
