@@ -34,11 +34,11 @@ const FooterETop = () => {
         </div>
         
         <div className="col-md-3">
-          <h4>Other Location</h4>
+          <h4>New York</h4>
           <p>
-          We will share details <br /> 
-          as soon as we, <br /> 
-          launch.
+          1500 Astor Avenue, <br />
+          2nd Floor, Bronx, <br /> 
+          New York, 1046.
           </p>
         </div>
       </div>
