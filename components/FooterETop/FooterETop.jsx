@@ -38,7 +38,7 @@ const FooterETop = () => {
           <p>
           1500 Astor Avenue, <br />
           2nd Floor, Bronx, <br /> 
-          New York, 1046.
+          New York, 10469.
           </p>
         </div>
       </div>
