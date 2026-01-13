@@ -30,7 +30,7 @@ export async function POST(req) {
     const mailOptions = {
       from: `"${process.env.NAME}" <${process.env.RECIPIENT_EMAIL}>`, // Sender's email
       to: process.env.RECIPIENT_EMAIL, 
-      subject: "New Patient Referral",
+      subject: "New Immigration Psychiatric Evaluation",
       html: `
         <h1>New Enquiries - Psychiatric Evavluation (Immigration)</h1>
         <p><strong>Patient's Name:</strong> ${formData.firstName} ${formData.lastName}</p>
