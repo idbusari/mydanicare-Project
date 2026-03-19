@@ -25,13 +25,13 @@ export const Header = () => {
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
         <div className="container">
-          <Link className="navbar-brand" href="/">
+          <Link className="navbar-brand" href="/" aria-label="DaniCare Psychiatry">
             <Image
-              alt="logo"
+              alt="About DaniCare Psychiatry"
               src={'/images/danicareLogo.svg'}
               width={159}
               height={32}
-              layout="intrinsic"
+              priority
             />
           </Link>
 
