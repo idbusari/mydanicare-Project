@@ -286,6 +286,46 @@ const BecomePatientPage = () => {
                   </div>
                 </div>
 
+                <div className="row">
+  <div className="col-md-12">
+    <div className={styles.formGroup}>
+      
+      <div className="form-check">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          id="consent"
+          required
+        />
+        <label className="form-check-label" htmlFor="consent" style={{ fontSize: "8px", lineHeight: "1.0" }}>
+          
+          <p style={{ marginBottom: "8px" }}>
+            By submitting your contact information, you give DaniCare written consent to send you communications via email and SMS. Message and data rates may apply.
+          </p>
+
+          <p style={{ marginBottom: "8px" }}>
+            Message frequency: up to 5 messages per month. You may withdraw your consent or unsubscribe from these communications at any time by replying STOP.
+          </p>
+
+          <p style={{ marginBottom: "8px" }}>
+            For assistance, reply HELP. By opting in, you also agree to our{" "}
+            <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer">
+              Terms &amp; Conditions
+            </a>{" "}
+            and{" "}
+            <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+              Privacy Policy
+            </a>
+            , which explain how we handle your information.
+          </p>
+
+        </label>
+      </div>
+
+    </div>
+  </div>
+</div>
+
                 <div className="text-center mt-4">
                   <button 
                     type="submit" 
