@@ -11,7 +11,7 @@ export const FooterBottom = () => {
                 width={159}
                 height={32}
                 
-                alt="DaniCare Logo" 
+                alt="DaniCare Psychiatry - Mental Heath Service Provider" 
                 style={{color:"transparent"}}
               />
               <Image
@@ -20,7 +20,7 @@ export const FooterBottom = () => {
                 width={159}
                 height={32}
                 
-                alt="DaniCare Logo" 
+                alt="DaniCare Psychiatry" 
                 style={{color:"transparent"}}
               />
             <p style={{ color: "#333" }}>

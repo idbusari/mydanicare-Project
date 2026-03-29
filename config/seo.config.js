@@ -4,7 +4,7 @@ const seoConfig = {
   description: "Psychiatry Tailored to Suit You",
   openGraph: {
     type: 'website',
-    url: 'https://thedanicare.vercel.app',
+    url: 'https://mydanicare.com',
     title: "DaniCare Psychiatry - Mental Health Service",
     description: "Psychiatry Tailored to Suit You",
     images: [
