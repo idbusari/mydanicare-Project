@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/adhd-waitlist',
-        destination: '/get-started',
+        destination: '/adhd-get-started',
+        permanent: true,
+      },
+      {
+        source: '/get-started',
+        destination: '/adhd-get-started',
         permanent: true,
       },
     ];
