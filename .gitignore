@@ -41,3 +41,4 @@ next-env.d.ts
 
 # Ignore environment variables file
 .env.local
+.claude/
