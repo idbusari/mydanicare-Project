@@ -87,7 +87,7 @@ export default function ADHDPopup() {
           </div>
 
           {/* CTA */}
-          <Link href="/adhd-waitlist" className="adhd-popup-cta" onClick={dismiss}>
+          <Link href="/get-started" className="adhd-popup-cta" onClick={dismiss}>
             <i className="fas fa-arrow-right" />
             Get Started
           </Link>
