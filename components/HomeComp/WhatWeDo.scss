@@ -8,6 +8,24 @@
     margin-bottom: 10px;
   }
 
+  @media (max-width: 768px) {
+    .what-we-do-section {
+      padding: 40px 15px;
+    }
+    .what-we-do-heading {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .what-we-do-section {
+      padding: 30px 12px;
+    }
+    .what-we-do-heading {
+      font-size: 1.15rem;
+    }
+  }
+
   .what-we-do-text {
    /* font-size: 1rem;
     line-height: 1.6; 

@@ -29,7 +29,7 @@ export async function POST(request) {
 
     // Email message options
     const mailOptions = {
-      from: `"${process.env.NAME}" <${process.env.RECIPIENT_EMAIL}>`, // Sender's email
+      from: `"${process.env.NAME}" <${process.env.SMTP_FROM}>`, // Sender's email
       to: process.env.RECIPIENT_EMAIL, // Recipient's email (can be yourself or someone else)
       subject: `New Partnership Request from ${name}`,
       html: `

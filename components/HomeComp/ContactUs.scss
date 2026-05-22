@@ -16,16 +16,29 @@
 }
 
 @media (max-width: 768px) {
-#contactUs {
-  margin: 20px 0;
+  #contactUs {
+    margin: 20px 0;
+    padding: 40px 0;
+  }
+  #contactUs h2 {
+    font-size: 1.5rem;
+  }
+  #cta-contactus {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
 }
 
-#contactUs h2 {
-  font-size: 1.5rem;
-}
-
-#cta-contactus {
-  font-size: 1rem;
-  padding: 10px 20px;
-}
+@media (max-width: 576px) {
+  #contactUs {
+    margin: 0;
+    padding: 30px 15px;
+  }
+  #contactUs h2 {
+    font-size: 1.2rem;
+  }
+  #cta-contactus {
+    width: 100%;
+    text-align: center;
+  }
 }

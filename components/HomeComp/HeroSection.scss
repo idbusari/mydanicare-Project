@@ -57,6 +57,40 @@
   margin-bottom: 10px;
 }
 
+@media (max-width: 576px) {
+  .hero-section {
+    height: auto;
+    min-height: 100svh;
+    padding: 80px 16px 40px;
+    align-items: flex-start;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .hero-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .hero-btn .btn {
+    width: 100%;
+    max-width: 320px;
+    margin-bottom: 0;
+  }
+}
+
 @media (min-width: 768px) {
   .hero-content {
     text-align: left;
@@ -71,7 +105,7 @@
   }
 
   .hero-btn .btn {
-    width: auto; 
+    width: auto;
     margin-bottom: 0;
   }
 }

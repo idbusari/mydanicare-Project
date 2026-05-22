@@ -3,38 +3,73 @@
 }
 
 #faqs h2 {
-font-size: 40px;
-line-height: 46px;
-font-style: normal;
-font-weight: 400;
-color: #343d56;
+  font-size: 40px;
+  line-height: 46px;
+  font-style: normal;
+  font-weight: 400;
+  color: #343d56;
 }
 
 #faqs p.text-large {
-font-size: 20px;
-line-height: 30px;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 #faqAccordion {
-background: none;
+  background: none;
 }
 
 #faqAccordion h3 .accordion-button {
-font-size: 24px;
-line-height: 30px;
-font-weight: 300 !important;
-color: #5e6883 !important;
-padding: 2.15em 2em 2em;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 300 !important;
+  color: #5e6883 !important;
+  padding: 2.15em 2em 2em;
 }
 
 .faq-container {
-max-width: 1100px; /* Limit width for desktop */
-margin: 0 auto;   /* Center it horizontally */
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 @media (max-width: 991px) {
-.faq-container {
-  max-width: 100%;  /* Full width on smaller screens */
-  padding: 0 15px;  /* Add padding for smaller screens */
+  .faq-container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
 }
+
+@media (max-width: 768px) {
+  #faqs {
+    padding: 60px 0;
+  }
+  #faqs h2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #faqs p.text-large {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  #faqAccordion h3 .accordion-button {
+    font-size: 18px;
+    padding: 1.5em 1.25em;
+  }
+}
+
+@media (max-width: 576px) {
+  #faqs {
+    padding: 40px 0;
+  }
+  #faqs h2 {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  #faqs p.text-large {
+    font-size: 15px;
+  }
+  #faqAccordion h3 .accordion-button {
+    font-size: 15px;
+    padding: 1.25em 1em;
+  }
 }

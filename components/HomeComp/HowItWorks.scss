@@ -2,6 +2,21 @@
     padding: 60px 20px;
     background: linear-gradient(180deg, #f6f7f9 35%, #eaf8f8 100%);
   }
+
+  @media (max-width: 768px) {
+    .how-it-works-section {
+      padding: 40px 15px;
+    }
+    .how-it-works-image {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .how-it-works-section {
+      padding: 30px 12px;
+    }
+  }
   
   .how-it-works-image {
     max-width: 100%;

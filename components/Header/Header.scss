@@ -56,3 +56,27 @@
   text-align: center;
 }
 
+@media (max-width: 991px) {
+  .navbar-collapse {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 8px 0;
+    font-size: 15px;
+  }
+
+  .cta {
+    display: block;
+    margin: 10px 0 6px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand img {
+    width: 130px !important;
+  }
+}
+

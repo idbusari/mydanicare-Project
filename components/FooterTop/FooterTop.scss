@@ -18,8 +18,22 @@
       font-size: 2rem;
     }
   
-    @media (max-width: 767px) { /* Mobile screens */
-      font-size: 1.6rem;
+    @media (max-width: 767px) {
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 1.15rem;
+      line-height: 1.5;
     }
   }
+
+@media (max-width: 576px) {
+  .footerTop .col-10 {
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 1rem;
+  }
+}
   

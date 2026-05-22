@@ -26,7 +26,7 @@ export async function POST(req) {
     });
 
     const mailOptions = {
-      from: `"${process.env.NAME}" <${process.env.RECIPIENT_EMAIL}>`,
+      from: `"${process.env.NAME}" <${process.env.SMTP_FROM}>`,
       to: process.env.RECIPIENT_EMAIL,
       subject: "New Patient Registration on DaniCare",
       html: `

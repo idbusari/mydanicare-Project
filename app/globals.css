@@ -356,41 +356,66 @@ small {
 
 @media (max-width: 768px) {
   body {
-    font-size: 0.9375rem; /* 15px for mobile */
-    line-height: 1.8; /* 27px */
+    font-size: 0.9375rem;
+    line-height: 1.8;
   }
   p {
     font-size: 0.9375rem;
     line-height: 1.8;
   }
   small {
-    font-size: 0.8125rem; /* 13px for small text on mobile */
+    font-size: 0.8125rem;
     line-height: 1.8;
   }
+  h1 { font-size: 2.5rem; line-height: 1.3; }
+  h2 { font-size: 2rem;   line-height: 1.4; }
+  h3 { font-size: 1.75rem; line-height: 1.5; }
+  h4 { font-size: 1.25rem; line-height: 1.5; }
+  h5 { font-size: 1.125rem; line-height: 1.6; }
+  h6 { font-size: 0.875rem; line-height: 1.6; }
 
-  h1 {
-    font-size: 2.5rem;
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-outline-dark,
+  .btn-tertiary,
+  .btn-yellow {
+    padding: 14px 28px;
+    font-size: 12px;
+  }
+
+  .heropage-heading {
+    font-size: 2rem;
     line-height: 1.3;
   }
-  h2 {
-    font-size: 2rem;
-    line-height: 1.4;
+
+  .heropage-description {
+    font-size: 1rem;
   }
-  h3 {
-    font-size: 1.75rem;
-    line-height: 1.5;
+}
+
+@media (max-width: 576px) {
+  h1 { font-size: 1.8rem; line-height: 1.25; }
+  h2 { font-size: 1.5rem; line-height: 1.3; }
+  h3 { font-size: 1.3rem; line-height: 1.4; }
+  h4 { font-size: 1.1rem; line-height: 1.4; }
+  h5 { font-size: 1rem;   line-height: 1.5; }
+  h6 { font-size: 0.875rem; line-height: 1.5; }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-outline-dark,
+  .btn-tertiary,
+  .btn-yellow {
+    padding: 12px 22px;
+    font-size: 11px;
+    letter-spacing: 1.6px;
   }
-  h4 {
-    font-size: 1.25rem;
-    line-height: 1.5;
-  }
-  h5 {
-    font-size: 1.125rem;
-    line-height: 1.6;
-  }
-  h6 {
-    font-size: 0.875rem;
-    line-height: 1.6;
+
+  .heropage-heading {
+    font-size: 1.6rem;
+    line-height: 1.25;
   }
 }
 
