@@ -4,7 +4,7 @@ const HeaderTop = () => {
   return (
     <header className="headerSec flex-column justify-content-center">
       <div className="d-flex justify-content-center gap-4">
-        <p className="d-flex gap-2 align-items-center">
+        <p className="d-none d-md-flex gap-2 align-items-center">
           <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
             <path fill="none" d="M0 0h24v24H0z"></path>
             <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>
@@ -12,7 +12,7 @@ const HeaderTop = () => {
           </svg>
           <span>Monday to Friday: 8AM - 5PM</span>
         </p>
-        <p className="d-flex gap-2 align-items-center">
+        <p className="d-none d-md-flex gap-2 align-items-center">
           <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
             <path fill="none" d="M0 0h24v24H0z"></path>
             <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>
@@ -20,7 +20,7 @@ const HeaderTop = () => {
           </svg>
           <span>Saturdays 10AM - 2PM</span>
         </p>
-        <p className="d-flex gap-2 align-items-center">
+        <p className="d-none d-md-flex gap-2 align-items-center">
           <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
             <polyline points="6 9 6 2 18 2 18 9"></polyline>
             <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
