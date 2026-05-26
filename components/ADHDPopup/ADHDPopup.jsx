@@ -74,8 +74,10 @@ export default function ADHDPopup() {
                 <div className="adhd-card-icon">
                   <i className={`fas ${c.icon}`} />
                 </div>
-                <strong>{c.title}</strong>
-                <span>{c.desc}</span>
+                <div className="adhd-card-text">
+                  <strong>{c.title}</strong>
+                  <span>{c.desc}</span>
+                </div>
               </div>
             ))}
           </div>
