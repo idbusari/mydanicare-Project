@@ -8,7 +8,7 @@ import './ADHDPopup.scss';
 const cards = [
   {
     icon: 'fa-clipboard-list',
-    title: 'Comprehensive evaluation',
+    title: 'Comprehensive assessment',
     desc: 'We look at attention, focus, memory, symptoms, and how ADHD shows up in daily life.',
   },
   {
