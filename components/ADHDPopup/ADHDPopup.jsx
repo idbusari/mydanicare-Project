@@ -95,13 +95,6 @@ export default function ADHDPopup() {
 
           {/* Price + CTA */}
           <div className="adhd-popup-bottom">
-            <div className="adhd-popup-price">
-              <i className="fas fa-tag" />
-              <div>
-                <strong>$220</strong>
-                <span>Cash pay only</span>
-              </div>
-            </div>
             <Link href="/adhd-get-started" className="adhd-popup-cta" onClick={dismiss}>
               <i className="fas fa-arrow-right" />
               Start ADHD Evaluation
