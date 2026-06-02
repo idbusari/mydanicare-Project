@@ -42,7 +42,7 @@ export const Footer = () => {
               <li><Link href="/our-faqs">FAQs</Link></li>
               <li><Link href="/psychiatry-treatment">Anxiety Test</Link></li>
               <li><Link href="/psychiatry-treatment">Depression Test</Link></li>
-              <li><Link href="/psychiatry-treatment">ADHD Test</Link></li>
+              <li><Link href="/adhd-get-started">ADHD Test</Link></li>
             </ul>
           </div>
     
