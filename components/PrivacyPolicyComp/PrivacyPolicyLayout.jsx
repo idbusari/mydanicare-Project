@@ -62,8 +62,9 @@ const PrivacyPolicy = () => {
       </p>
       <address className="mt-3">
         <strong>DaniCare Psychiatry</strong><br />
-        3210 Jamie Zapata Memorial Highway<br />
-        Laredo, TX 78043<br />
+        Laredo Medical Center<br />
+        1700 E Saunders Street<br />
+        Ste B270, Laredo, TX 78041<br />
         Email: <a href="mailto:admin@mydanicare.com">admin@mydanicare.com</a>
       </address>
     </div>
