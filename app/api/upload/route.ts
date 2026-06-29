@@ -21,7 +21,8 @@ export async function POST(req: NextRequest) {
     await writeFile(join(dir, filename), buffer);
 
     return NextResponse.json({ url: `/images/${filename}` });
-  } catch (err: any) {
-    return NextResponse.json({ error: err?.message || 'Upload failed' }, { status: 500 });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Upload failed';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
