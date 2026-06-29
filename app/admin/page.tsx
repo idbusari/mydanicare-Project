@@ -12,6 +12,7 @@ export default async function AdminDashboard() {
     page: v.page,
     device: v.device,
     source: v.source,
+    city: v.city,
     createdAt: v.createdAt.toISOString(),
   }));
 

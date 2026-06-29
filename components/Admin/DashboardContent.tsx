@@ -8,6 +8,7 @@ interface View {
   page: string;
   device: string | null;
   source: string | null;
+  city: string | null;
   createdAt: string;
 }
 

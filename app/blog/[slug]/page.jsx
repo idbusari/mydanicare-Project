@@ -1,9 +1,7 @@
 import { getSortedPostsData } from "@/lib/posts";
-import DOMPurify from "isomorphic-dompurify";
-import styles from "./post.module.scss";
-import Image from "next/image";
 import { notFound } from "next/navigation";
-import ShareButtons from "@/components/ShareButtons"; // ✅ Import share button
+import ShareButtons from "@/components/ShareButtons";
+import BlogArticle from "@/components/BlogArticle/BlogArticle";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -30,33 +28,19 @@ export default async function BlogPostPage({ params }) {
 
   if (!post) return notFound();
 
-  const sanitizedContent = DOMPurify.sanitize(post.content);
-
   return (
-    <article className={styles.post}>
-      <h1 className={styles.title}>{post.title}</h1>
-      <p className={styles.meta}>
-        By {post.author} — {post.date}
-      </p>
-
-      <Image
-        src={post.image}
-        alt={post.title}
-        width={800}
-        height={400}
-        className={styles.image}
+    <>
+      <BlogArticle
+        title={post.title}
+        author={post.author}
+        date={post.date}
+        image={post.image}
+        content={post.content}
       />
-
-      <div
-        className={styles.content}
-        lang="en"
-        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-      />
-
-      {/* ✅ Share Buttons inserted below blog content */}
-      <ShareButtons title={post.title} />
-    </article>
-    
+      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 2rem 2rem' }}>
+        <ShareButtons title={post.title} />
+      </div>
+    </>
   );
 }
 

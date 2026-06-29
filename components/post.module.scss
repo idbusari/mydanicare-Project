@@ -1,42 +1,46 @@
 .shareButtons {
   margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e0e0e0;
+  padding-top: 2rem;
+  border-top: 2px solid #e2e8f0;
+  text-align: center;
 
   .label {
-    font-weight: 500;
-    color: #444;
+    font-weight: 600;
+    color: #555;
     font-size: 1rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
   }
 
   .icons {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    justify-content: center;
+    gap: 1rem;
 
     a,
     button {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
       text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #0066cc;
+      color: #fff;
       background: none;
       border: none;
       cursor: pointer;
-      transition: color 0.2s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease;
 
       &:hover {
-        color: #004999;
-        text-decoration: underline;
+        transform: scale(1.08);
+        opacity: 0.9;
       }
 
       svg {
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
         flex-shrink: 0;
       }
     }

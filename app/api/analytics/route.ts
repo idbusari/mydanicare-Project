@@ -17,6 +17,34 @@ function getSource(referrer: string, ua: string): string {
   return 'direct';
 }
 
+async function getCityFromIP(ip: string, req: NextRequest): Promise<string | null> {
+  // 1. Check platform-specific headers (Vercel, Cloudflare, etc.)
+  const vercelCity = req.headers.get('x-vercel-ip-city');
+  if (vercelCity) return vercelCity;
+
+  const cfCity = req.headers.get('cf-ipcity');
+  if (cfCity) return cfCity;
+
+  // 2. Skip private/local IPs
+  if (ip === 'unknown' || ip.startsWith('127.') || ip.startsWith('10.') || ip.startsWith('192.168.') || ip.startsWith('172.')) {
+    return null;
+  }
+
+  // 3. Best-effort free IP geolocation (ipapi.co — 45 requests/min free)
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 2000);
+    const res = await fetch(`https://ipapi.co/${ip}/json/`, { signal: controller.signal });
+    clearTimeout(timeout);
+    if (!res.ok) return null;
+    const data = await res.json() as { city?: string; error?: boolean };
+    if (data.error) return null;
+    return data.city || null;
+  } catch {
+    return null;
+  }
+}
+
 export async function GET() {
   const views = await prisma.pageView.findMany({ orderBy: { createdAt: 'desc' }, take: 1000 });
   return NextResponse.json(views);
@@ -27,15 +55,19 @@ export async function POST(req: NextRequest) {
   const ua = req.headers.get('user-agent') || '';
   const referrer = req.headers.get('referer') || '';
   const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+  const cleanIp = String(ip).split(',')[0].trim();
+
+  const city = await getCityFromIP(cleanIp, req);
 
   const view = await prisma.pageView.create({
     data: {
       page: body.page || '/',
-      ip: String(ip).split(',')[0].trim(),
+      ip: cleanIp,
       userAgent: ua,
       referrer,
       device: getDeviceType(ua),
       source: getSource(referrer, ua),
+      city,
     },
   });
 

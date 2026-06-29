@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
 export async function GET() {
-  const posts = await prisma.blogPost.findMany({ orderBy: { createdAt: 'desc' } });
+  const posts = await prisma.blogPost.findMany({
+    orderBy: { publishedAt: 'desc' },
+  });
   return NextResponse.json(posts);
 }
 
@@ -18,6 +20,7 @@ export async function POST(req: NextRequest) {
       author: body.author,
       keywords: body.keywords,
       published: body.published ?? false,
+      publishedAt: body.published ? new Date() : null,
       metaTitle: body.metaTitle,
       metaDesc: body.metaDesc,
     },
@@ -38,6 +41,7 @@ export async function PUT(req: NextRequest) {
       author: body.author,
       keywords: body.keywords,
       published: body.published,
+      publishedAt: body.published ? new Date() : null,
       metaTitle: body.metaTitle,
       metaDesc: body.metaDesc,
     },

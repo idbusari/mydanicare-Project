@@ -7,6 +7,7 @@ interface PageView {
   page: string;
   device: string | null;
   source: string | null;
+  city: string | null;
   createdAt: string;
 }
 
@@ -35,6 +36,10 @@ export default function AnalyticsPage() {
   const sourceCounts: Record<string, number> = {};
   filtered.forEach((v) => { const s = v.source || 'direct'; sourceCounts[s] = (sourceCounts[s] || 0) + 1; });
   const sourceData = Object.entries(sourceCounts).map(([name, value]) => ({ name, value }));
+
+  const cityCounts: Record<string, number> = {};
+  filtered.forEach((v) => { const c = v.city || 'Unknown'; cityCounts[c] = (cityCounts[c] || 0) + 1; });
+  const cityData = Object.entries(cityCounts).map(([name, value]) => ({ name, value })).sort((a, b) => b.value - a.value).slice(0, 10);
 
   return (
     <div>
@@ -78,17 +83,38 @@ export default function AnalyticsPage() {
         </div>
       </div>
 
-      <div style={{ background: '#fff', borderRadius: '12px', padding: '24px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
-        <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '16px', color: '#1a3c6e' }}>Traffic Sources</h3>
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={sourceData} layout="vertical">
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" />
-            <YAxis dataKey="name" type="category" width={100} tick={{ fontSize: 12 }} />
-            <Tooltip />
-            <Bar dataKey="value" fill="#FFCC00" radius={[0, 4, 4, 0]} />
-          </BarChart>
-        </ResponsiveContainer>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+        <div style={{ background: '#fff', borderRadius: '12px', padding: '24px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+          <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '16px', color: '#1a3c6e' }}>Traffic Sources</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={sourceData} layout="vertical">
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis type="number" />
+              <YAxis dataKey="name" type="category" width={100} tick={{ fontSize: 12 }} />
+              <Tooltip />
+              <Bar dataKey="value" fill="#FFCC00" radius={[0, 4, 4, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div style={{ background: '#fff', borderRadius: '12px', padding: '24px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+          <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '16px', color: '#1a3c6e' }}>Visitor Cities</h3>
+          {cityData.length === 0 ? (
+            <div style={{ height: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', fontSize: '0.9rem' }}>
+              No city data yet.
+            </div>
+          ) : (
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={cityData} layout="vertical">
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" />
+                <YAxis dataKey="name" type="category" width={110} tick={{ fontSize: 12 }} />
+                <Tooltip />
+                <Bar dataKey="value" fill="#7c3aed" radius={[0, 4, 4, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          )}
+        </div>
       </div>
     </div>
   );

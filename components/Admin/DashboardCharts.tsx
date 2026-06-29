@@ -7,7 +7,7 @@ import {
 } from 'recharts';
 
 interface DashboardChartsProps {
-  views: Array<{ page: string; device: string | null; source: string | null; createdAt: string }>;
+  views: Array<{ page: string; device: string | null; source: string | null; city: string | null; createdAt: string }>;
   leads: Array<{ source: string; status: string; createdAt: string }>;
 }
 
@@ -119,6 +119,19 @@ export default function DashboardCharts({ views, leads }: DashboardChartsProps) 
       counts[d] = (counts[d] || 0) + 1;
     });
     return Object.entries(counts).map(([name, value]) => ({ name: name.charAt(0).toUpperCase() + name.slice(1), value }));
+  }, [views]);
+
+  // --- CITY BREAKDOWN ---
+  const cityData = useMemo(() => {
+    const counts: Record<string, number> = {};
+    views.forEach((v) => {
+      const c = v.city || 'Unknown';
+      counts[c] = (counts[c] || 0) + 1;
+    });
+    return Object.entries(counts)
+      .map(([name, value]) => ({ name, value }))
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 10);
   }, [views]);
 
   return (
@@ -249,8 +262,8 @@ export default function DashboardCharts({ views, leads }: DashboardChartsProps) 
         </ChartCard>
       </div>
 
-      {/* ROW 4: Device Breakdown */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
+      {/* ROW 4: Device Breakdown + Visitor Cities */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
         <ChartCard title="Device Breakdown">
           <ResponsiveContainer width="100%" height={240}>
             <PieChart>
@@ -273,6 +286,26 @@ export default function DashboardCharts({ views, leads }: DashboardChartsProps) 
               />
             </PieChart>
           </ResponsiveContainer>
+        </ChartCard>
+
+        <ChartCard title="Visitor Cities (Where Visitors Come From)">
+          {cityData.length === 0 ? (
+            <div style={{ height: 240, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', fontSize: '0.9rem' }}>
+              No city data yet.
+            </div>
+          ) : (
+            <ResponsiveContainer width="100%" height={240}>
+              <BarChart data={cityData} layout="vertical">
+                <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <XAxis type="number" tick={{ fontSize: 12 }} />
+                <YAxis dataKey="name" type="category" width={110} tick={{ fontSize: 11 }} />
+                <Tooltip
+                  contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                />
+                <Bar dataKey="value" fill="#7c3aed" radius={[0, 6, 6, 0]} barSize={20} />
+              </BarChart>
+            </ResponsiveContainer>
+          )}
         </ChartCard>
       </div>
     </div>

@@ -16,6 +16,7 @@ export async function POST() {
           author: post.author,
           keywords: post.keywords,
           published: true,
+          publishedAt: new Date((post as { date?: string }).date || Date.now()),
           metaTitle: (post as { metaTitle?: string | null }).metaTitle || null,
           metaDesc: (post as { metaDesc?: string | null }).metaDesc || null,
         },

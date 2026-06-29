@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import BlogArticle from '@/components/BlogArticle/BlogArticle';
 
-// @ts-expect-error CSS import has no type declarations
 import 'react-quill-new/dist/quill.snow.css';
 
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
@@ -247,47 +247,24 @@ export default function BlogForm({ initial }: BlogFormProps) {
               </button>
             </div>
 
-            <div style={{ overflowY: 'auto', padding: '24px', flex: 1 }}>
-              <h1 style={{ fontSize: '2rem', fontWeight: 700, color: '#111', marginBottom: '0.5rem', lineHeight: 1.2 }}>
-                {form.title || 'Untitled Post'}
-              </h1>
-              <p style={{ color: '#777', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-                By {form.author} — {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                <span style={{ marginLeft: '12px', color: form.published ? '#059669' : '#e66926', fontWeight: 600, fontSize: '0.85rem' }}>
+            <div style={{ overflowY: 'auto', flex: 1 }}>
+              <BlogArticle
+                title={form.title || 'Untitled Post'}
+                author={form.author}
+                date={new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                image={form.image}
+                content={form.content}
+              />
+              <div style={{ padding: '0 24px 24px', fontSize: '0.85rem' }}>
+                <span style={{ color: form.published ? '#059669' : '#e66926', fontWeight: 600 }}>
                   {form.published ? '● Published' : '● Draft'}
                 </span>
-              </p>
-
-              {form.image && (
-                <img
-                  src={form.image}
-                  alt={form.title}
-                  style={{ width: '100%', maxHeight: '400px', objectFit: 'cover', borderRadius: '1rem', marginBottom: '2rem' }}
-                />
-              )}
-
-              {form.content && (
-                <div
-                  lang="en"
-                  style={{
-                    fontSize: '1.1rem',
-                    lineHeight: 1.7,
-                    color: '#333',
-                    textAlign: 'justify',
-                    hyphens: 'auto',
-                    WebkitHyphens: 'auto',
-                    msHyphens: 'auto',
-                    maxWidth: '100%',
-                  }}
-                  dangerouslySetInnerHTML={{ __html: form.content }}
-                />
-              )}
-
-              {form.keywords && (
-                <div style={{ marginTop: '2rem', paddingTop: '1rem', borderTop: '1px solid #eee', fontSize: '0.8rem', color: '#999' }}>
-                  Tags: {form.keywords}
-                </div>
-              )}
+                {form.keywords && (
+                  <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid #eee', fontSize: '0.8rem', color: '#999' }}>
+                    Tags: {form.keywords}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
