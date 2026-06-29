@@ -9,7 +9,7 @@ const PartnerSection = () => {
       <div className="row">
         <div className="d-none d-lg-block col-lg-6 pr-5 py-4 my-auto text-center ">
           <Image alt="Our Psychiatrist"
-            src={"/images/providers-map.png"} layout="intrinsic" width={712} height={350}/>
+            src={"/images/providers-map.png"} width={712} height={350}/>
         </div>
 
         <div className="col-lg-6 text-center text-lg-left py-2 py-sm-4">
@@ -19,7 +19,7 @@ const PartnerSection = () => {
           <p className="text-large mb-5">Connect with our board certified Psychiatrist Professionals dedicated to your well-being. Our network guarantees top-tier mental health care designed for you.</p>
 
           <Image alt="Our Psychiatrist" className="partner-image d-lg-none mb-4"
-            src={"/images/providers-map.png"} layout="intrinsic" width={712} height={350}/>
+            src={"/images/providers-map.png"} width={712} height={350}/>
 
           <p className="mb-0"> <Link href="/become-a-patient" className="btn-primary" title="Get Started">Schedule Now</Link></p>
 

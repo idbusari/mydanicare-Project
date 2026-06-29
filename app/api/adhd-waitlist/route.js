@@ -1,6 +1,15 @@
 import nodemailer from 'nodemailer';
+import { rateLimit } from '@/lib/rateLimit';
+import { prisma } from '@/lib/prisma';
 
 export async function POST(req) {
+  const limit = rateLimit(req);
+  if (!limit.success) {
+    return new Response(JSON.stringify({ error: limit.message }), {
+      status: 429,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
   try {
     const { firstName, lastName, email, phone, state, forWhom, notes } = await req.json();
 
@@ -11,6 +20,18 @@ export async function POST(req) {
       );
     }
 
+    await prisma.lead.create({
+      data: {
+        source: 'adhd-waitlist',
+        firstName,
+        lastName,
+        email,
+        phone,
+        state,
+        data: JSON.stringify({ forWhom, notes }),
+      },
+    });
+
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: process.env.SMTP_PORT,
@@ -18,7 +39,7 @@ export async function POST(req) {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-      tls: { rejectUnauthorized: false },
+      tls: { rejectUnauthorized: process.env.NODE_ENV !== 'development' },
     });
 
     await transporter.sendMail({
@@ -42,7 +63,7 @@ export async function POST(req) {
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
   } catch (error) {
-    console.error('ADHD waitlist error:', error);
+    // ADHD waitlist error logged for debugging only
     return new Response(
       JSON.stringify({ error: 'Failed to submit. Please try again.' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }

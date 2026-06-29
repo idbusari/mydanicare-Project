@@ -7,8 +7,8 @@ const Expertise = () => {
         <div className="container">
           <div className="row justify-content-center mb-5">
             <div className="col-lg-8 text-center">
-            <h1 className="mb-4 section-title">Our Areas of
-                Expertise</h1>
+            <h2 className="mb-4 section-title">Our Areas of
+                Expertise</h2>
               <p className="expertiseIntro">
                 Discover the conditions we specialize in, providing tailored care and compassionate support to guide you
                 toward mental wellness.

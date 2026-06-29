@@ -1,6 +1,14 @@
 import nodemailer from "nodemailer";
+import { rateLimit } from "@/lib/rateLimit";
 
 export async function POST(req) {
+  const limit = rateLimit(req);
+  if (!limit.success) {
+    return new Response(JSON.stringify({ error: limit.message }), {
+      status: 429,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
   try {
     const { firstName, lastName, age, email, phone, insurance, state, contact, reason } = await req.json();
 
@@ -12,6 +20,20 @@ export async function POST(req) {
       );
     }
 
+    // Save lead to database
+    await prisma.lead.create({
+      data: {
+        source: 'register',
+        firstName,
+        lastName,
+        email,
+        phone,
+        state,
+        reason,
+        data: JSON.stringify({ age, insurance, contact }),
+      },
+    });
+
     // Mailtrap SMTP transporter
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -21,7 +43,7 @@ export async function POST(req) {
         pass: process.env.SMTP_PASS,
       },
       tls: {
-        rejectUnauthorized: false, // Avoid self-signed certificate issues
+        rejectUnauthorized: process.env.NODE_ENV !== 'development',
       },
     });
 
@@ -44,15 +66,17 @@ export async function POST(req) {
     };
 
     // Send email
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent:", info);
+    await transporter.sendMail(mailOptions);
 
     return new Response(
       JSON.stringify({ message: "Email sent successfully!" }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (error) {
-    console.error("Error sending email:", error);
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.error("Error sending email:", error);
+    }
     return new Response(
       JSON.stringify({ error: "Failed to send email. Please try again later." }),
       { status: 500, headers: { "Content-Type": "application/json" } }

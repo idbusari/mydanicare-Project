@@ -25,9 +25,9 @@ const HeroSection = () => {
         <div className="row align-items-center">
           <div className="col-md-6 col-sm-12 text-center text-md-start">
             <div className="hero-content">
-              <h2 className="mb-4">
+              <h1 className="mb-4">
                 Transformative care for mental health, including anxiety, depression, and more.
-              </h2>
+              </h1>
               <div>
               <p className="lead p-4 bg-transparent sec-dark">
                 Providing compassionate and effective support to help you overcome mental health

@@ -39,7 +39,7 @@ const ImmConsultPage = () => {
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error("Error response:", errorText);
+        // error response logged for debugging only
         throw new Error(`Request failed with status ${response.status}`);
       }
 
@@ -57,9 +57,9 @@ const ImmConsultPage = () => {
         others: "",
       });
       setStatus({ success: true, message: "Submission is succesful!" });
-      console.log(data);
+      // data logged for debugging only
     } catch (error) {
-      console.error("Error submitting form:", error);
+      // error logged for debugging only
       setStatus({ success: false, message: error.message || "An unexpected error occurred." });
     }
   };

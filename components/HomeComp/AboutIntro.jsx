@@ -30,9 +30,9 @@ const AboutIntro = () => {
                             src={'/images/talk.webp'}
                             alt="About Us Image"
                             className="img-fluid rounded shadow hide-on-mobile"
-                            layout="intrinsic"
                             width={701}
                             height={449}
+                            loading="lazy"
                         />
                     </div>
                 </div>

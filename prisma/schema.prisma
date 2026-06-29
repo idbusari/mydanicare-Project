@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  role      String   @default("admin") // admin, editor
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Lead {
+  id         String   @id @default(cuid())
+  source     String   // register, adhd-waitlist, referral, imm, partner, contact
+  firstName  String?
+  lastName   String?
+  email      String?
+  phone      String?
+  state      String?
+  dob        String?
+  insurance  String?
+  reason     String?
+  message    String?
+  notes      String?
+  data       String?  // JSON string for extra fields
+  createdAt  DateTime @default(now())
+  status     String   @default("new") // new, contacted, converted, archived
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String
+  content     String
+  image       String?
+  author      String   @default("DaniCare Team")
+  keywords    String?
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  metaTitle   String?
+  metaDesc    String?
+}
+
+model SiteSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  page      String
+  ip        String?
+  userAgent String?
+  referrer  String?
+  device    String?  // mobile, desktop, tablet
+  source    String?  // seo, facebook, instagram, whatsapp, direct, referrer
+  country   String?
+  createdAt DateTime @default(now())
+}
+
+model ConversionEvent {
+  id        String   @id @default(cuid())
+  event     String   // button name/action
+  page      String
+  ip        String?
+  userAgent String?
+  value     String?  // optional value
+  createdAt DateTime @default(now())
+}

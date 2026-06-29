@@ -18,27 +18,27 @@ const HowItWorks = () => {
         <Image
           src={'/images/virtual.png'}
           alt="How It Works"
-          layout="intrinsic"
           width={667}
           height={1000}
           className="how-it-works-image"
+          loading="lazy"
         />
       </div>
       <div className="col-12 col-md-8">
         <div className="how-it-works-container">
           <div className="how-it-works-content py-2 px-3 mb-3">
-            <Link href="#" data-slide="1">
+            <div data-slide="1">
               <h3 className="text-sapphire-medium mb-2">
                 Comprehensive Initial Consultation
               </h3>
               <p>
-                Let your provider know how you’re feeling, get to know you, and
+                Let your provider know how you&apos;re feeling, get to know you, and
                 provide 1:1 support.
               </p>
-            </Link>
+            </div>
           </div>
           <div className="how-it-works-content py-2 px-3 mb-3">
-            <Link href="#" data-slide="2">
+            <div data-slide="2">
               <h3 className="text-sapphire-medium mb-2">
                 Personalized Care Plan Development
               </h3>
@@ -46,10 +46,10 @@ const HowItWorks = () => {
                 Creating a tailored care plan that addresses individual health
                 needs and goals for optimal well-being.
               </p>
-            </Link>
+            </div>
           </div>
           <div className="how-it-works-content py-2 px-3 mb-3">
-            <Link href="#" data-slide="3">
+            <div data-slide="3">
               <h3 className="text-sapphire-medium mb-2">
                 Regular Follow-Ups for Progress Monitoring
               </h3>
@@ -58,10 +58,10 @@ const HowItWorks = () => {
                 treatment based on patient needs, ensuring better health
                 outcomes.
               </p>
-            </Link>
+            </div>
           </div>
           <div className="how-it-works-content py-2 px-3 mb-3">
-            <Link href="#" data-slide="4">
+            <div data-slide="4">
               <h3 className="text-sapphire-medium mb-2">
                 Seamless integration of advanced telepsychiatry technology
               </h3>
@@ -70,10 +70,10 @@ const HowItWorks = () => {
                 provide accessible, high-quality mental health care from
                 anywhere.
               </p>
-            </Link>
+            </div>
           </div>
           <div className="how-it-works-content py-2 px-3 mb-3">
-            <Link href="#" data-slide="5">
+            <div data-slide="5">
               <h3 className="text-sapphire-medium mb-2">
                 Focus on long-term wellness and adapting care over time
               </h3>
@@ -81,7 +81,7 @@ const HowItWorks = () => {
                 Emphasizing sustained well-being by continuously adapting care
                 to meet evolving needs for lasting health outcomes.
               </p>
-            </Link>
+            </div>
           </div>
         </div>
         <p className="text-start mt-3">

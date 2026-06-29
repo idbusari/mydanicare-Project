@@ -1,6 +1,15 @@
 import nodemailer from "nodemailer";
+import { rateLimit } from "@/lib/rateLimit";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(request) {
+  const limit = rateLimit(request);
+  if (!limit.success) {
+    return new Response(JSON.stringify({ error: limit.message }), {
+      status: 429,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
   try {
     const body = await request.json();
 
@@ -13,17 +22,28 @@ export async function POST(request) {
       });
     }
 
+    await prisma.lead.create({
+      data: {
+        source: 'partner',
+        firstName: name.split(' ')[0],
+        lastName: name.split(' ').slice(1).join(' '),
+        email,
+        phone: phone || null,
+        data: JSON.stringify({ organization, message }),
+      },
+    });
+
     // SMTP configuration
-    var transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port:587,
+      port: 587,
       auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
+        pass: process.env.SMTP_PASS,
       },
-     debug: true, 
-  logger: true, 
-  
+      tls: {
+        rejectUnauthorized: process.env.NODE_ENV !== 'development',
+      },
     });
   
 
@@ -52,8 +72,10 @@ export async function POST(request) {
       }
     );
   } catch (error) {
-    console.error("Error sending email:", error);
-
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.error("Error sending email:", error);
+    }
     return new Response(
       JSON.stringify({ error: "Failed to send email. Please try again later." }),
       {

@@ -37,7 +37,7 @@ const TreatmentLayout = () => {
                     <Link href="/become-a-patient" className="btn btn-custom">Get Started</Link>
                 </div>
                 <div className="col-md-6 text-center slide-right">
-                    <Image src={"/images/compassionateCare.webp"} width={400} height={400} layout="intrinsic" alt="Compassionate Care" className="img-fluid" />
+                    <Image src={"/images/compassionateCare.webp"} width={400} height={400} alt="Compassionate Care" className="img-fluid" />
                 </div>
             </div>
 
@@ -59,7 +59,7 @@ const TreatmentLayout = () => {
                     <Link href="/become-a-patient" className="btn btn-custom">Get Started</Link>
                 </div>
                 <div className="col-md-6 text-center slide-right">
-                    <Image src={"/images/insomniaTreatment.webp"} width={400} height={400} layout="intrinsic" alt="Insomnia Treatment" className="img-fluid" />
+                    <Image src={"/images/insomniaTreatment.webp"} width={400} height={400} alt="Insomnia Treatment" className="img-fluid" />
                 </div>
             </div>
 
@@ -85,7 +85,7 @@ const TreatmentLayout = () => {
                     <Link href="/become-a-patient" className="btn btn-custom">Get Started</Link>
                 </div>
                 <div className="col-md-6 text-center slide-right">
-                    <Image style={{ borderRadius: "20px" }} src={"/images/bipolarTreatment.png"} width={400} height={400} layout="intrinsic" alt="Bipolar Disorder Treatment" className="img-fluid" />
+                    <Image style={{ borderRadius: "20px" }} src={"/images/bipolarTreatment.png"} width={400} height={400} alt="Bipolar Disorder Treatment" className="img-fluid" />
                 </div>
             </div>
 
@@ -98,7 +98,7 @@ const TreatmentLayout = () => {
                     <Link href="/become-a-patient" className="btn btn-custom">Get Started</Link>
                 </div>
                 <div className="col-md-6 order-md-1 slide-left">
-                    <Image style={{ borderRadius: "20px" }} src={"/images/anxietyTreatment.png"} width={400} height={400} layout="intrinsic" alt="Anxiety Treatment" className="img-fluid" />
+                    <Image style={{ borderRadius: "20px" }} src={"/images/anxietyTreatment.png"} width={400} height={400} alt="Anxiety Treatment" className="img-fluid" />
                 </div>
             </div>
 
@@ -110,7 +110,7 @@ const TreatmentLayout = () => {
                     <Link href="/become-a-patient" className="btn btn-custom">Get Started</Link>
                 </div>
                 <div className="col-md-6 text-center slide-right">
-                    <Image style={{ borderRadius: "20px" }} src={"/images/mentalTreatment.png"} width={400} height={400} layout="intrinsic" alt="Comprehensive Mental Health Care" className="img-fluid" />
+                    <Image style={{ borderRadius: "20px" }} src={"/images/mentalTreatment.png"} width={400} height={400} alt="Comprehensive Mental Health Care" className="img-fluid" />
                 </div>
             </div>
 

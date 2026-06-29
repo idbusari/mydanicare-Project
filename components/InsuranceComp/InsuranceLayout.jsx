@@ -36,22 +36,22 @@ const InsuranceLayout = () => {
             <div
               className="col-sm-12 col-lg-12  d-flex flex-row flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center my-auto text-center">
               <Image alt="Aetna logo"
-                src={"/images/aethna.svg"} layout="intrinsic" width={100} height={20}/>
+                src={"/images/aethna.svg"} width={100} height={20}/>
               <Image alt="Cigna logo"
-                src={"/images/insurance-logo-cigna.png"} layout="intrinsic" width={96} height={30}/>
+                src={"/images/insurance-logo-cigna.png"} width={96} height={30}/>
               <div className="flex-break d-sm-none"></div> 
               <Image alt="United Healthcare logo"
-                src={"/images/united1.svg"} layout="intrinsic" width={96} height={30}/>
+                src={"/images/united1.svg"} width={96} height={30}/>
               <Image alt="Anthem logo"
-                src={"/images/insurance-logo-anthem.png"} layout="intrinsic" width={96} height={30}/>
+                src={"/images/insurance-logo-anthem.png"} width={96} height={30}/>
                 <Image alt="Medicaid logo"
-                src={"/images/insurance-logo-dark-gray-medicaid.svg"} layout="intrinsic" width={96} height={30}/>
+                src={"/images/insurance-logo-dark-gray-medicaid.svg"} width={96} height={30}/>
             
               <div className="flex-break d-sm-none"></div>
               <Image alt="Medicare logo"
-                src={"/images/medicare1.svg"} layout="intrinsic" width={84} height={60}/>
+                src={"/images/medicare1.svg"} width={84} height={60}/>
                 <Image alt="Medicare logo"
-                src={"/images/magellan.svg"} layout="intrinsic" width={101} height={35}/>
+                src={"/images/magellan.svg"} width={101} height={35}/>
               <div>
                 <h5 className="mb-0" style={{color: "#99a0b2"}}>and more</h5>
               </div>

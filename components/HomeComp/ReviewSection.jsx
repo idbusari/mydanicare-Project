@@ -79,9 +79,9 @@ const ReviewSection = () => {
                   <p className="review-text">&quot;{review.text}&quot;</p>
                   <div className="review-footer">
                     <p className="reviewer-name">{review.name}</p>
-                    <div className="review-stars">
+                    <div className="review-stars" aria-label={`${review.stars} out of 5 stars`}>
                       {[...Array(review.stars)].map((_, i) => (
-                        <i key={i} className="fa fa-star"></i>
+                        <i key={i} className="fa fa-star" aria-hidden="true"></i>
                       ))}
                     </div>
                   </div>

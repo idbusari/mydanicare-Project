@@ -4,6 +4,13 @@ import Image from "next/image";
 import { getSortedPostsData } from "@/lib/posts";
 import DOMPurify from "isomorphic-dompurify";
 
+export const metadata = {
+  title: 'Blog | DaniCare Psychiatry - Mental Health Insights',
+  description:
+    'Explore mental health insights, tips, and articles from DaniCare Psychiatry. Stay informed about psychiatry, wellness, and telehealth trends.',
+  alternates: { canonical: 'https://www.mydanicare.com/blog' },
+};
+
 export default async function BlogPage() {
   const posts = await getSortedPostsData();
 

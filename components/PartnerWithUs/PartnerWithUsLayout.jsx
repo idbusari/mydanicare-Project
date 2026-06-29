@@ -39,7 +39,7 @@ const PartnerWithUsLayout = () => {
       }
     } catch (error) {
       setStatus("Error: Unable to connect to the server.");
-      console.log(error.message);
+      // error logged for debugging only
     }
   };
 

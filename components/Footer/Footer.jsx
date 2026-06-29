@@ -11,10 +11,9 @@ export const Footer = () => {
             <Link href="#" className="d-block mb-3">
               <Image
                 src={"/images/footerLogo.webp"}
-                layout="intrinsic"
                 width={159}
                 height={32}
-                alt="DaniCare Logo" 
+                alt="DaniCare Logo"
                 style={{color:"transparent"}}
               />
             </Link>

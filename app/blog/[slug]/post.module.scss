@@ -2,6 +2,8 @@
   padding: 2rem;
   max-width: 800px;
   margin: auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .title {
@@ -17,15 +19,88 @@
 .image {
   border-radius: 1rem;
   margin-bottom: 2rem;
+  max-width: 100%;
+  height: auto;
 }
 
 .content {
   font-size: 1.1rem;
   line-height: 1.7;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  max-width: 100%;
+
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  // Force justify on all paragraphs and list items
+  p, li {
+    text-align: justify !important;
+  }
+
+  // Override Quill alignment classes
+  :global(.ql-align-left),
+  :global(.ql-align-right),
+  :global(.ql-align-center),
+  :global(.ql-align-justify) {
+    text-align: justify !important;
+  }
+
+  // Preserve intentional center-aligned divs (CTAs, callouts)
+  div[style*="text-align:center"],
+  div[style*="text-align: center"] {
+    text-align: center !important;
+
+    p, li {
+      text-align: center !important;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  iframe,
+  video,
+  embed,
+  object,
+  table,
+  figure {
+    max-width: 100%;
+    height: auto;
+  }
+
+  pre,
+  code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  blockquote {
+    margin: 1rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid #e2e8f0;
+    background: #f8fafc;
+    font-style: italic;
+  }
+
+  div {
+    max-width: 100%;
+  }
 
   a {
     color: #E66926;
     text-decoration: underline;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 
     &:hover {
       text-decoration: none;

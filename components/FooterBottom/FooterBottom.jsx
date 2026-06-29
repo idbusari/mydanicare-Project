@@ -2,32 +2,29 @@ import Image from "next/image";
 import "./FooterBottom.scss";
 
 export const FooterBottom = () => {
-    return (   
+    return (
         <div className="row mt-4 bg-white">
-          <div className="col-12 text-center">
-          <Image
+          <div className="col-12 text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
+              <Image
                 src={"/images/hipaa.jpg"}
-                layout="intrinsic"
-                width={159}
-                height={32}
-                
-                alt="DaniCare Psychiatry - Mental Heath Service Provider" 
-                style={{color:"transparent"}}
+                width={78}
+                height={50}
+                alt="HIPAA Compliant"
+                style={{ objectFit: 'contain' }}
               />
               <Image
                 src={"/images/psychverify.png"}
-                layout="intrinsic"
-                width={159}
-                height={32}
-                
-                alt="DaniCare Psychiatry" 
-                style={{color:"transparent"}}
+                width={78}
+                height={50}
+                alt="Psychology Today Verified"
+                style={{ objectFit: 'contain' }}
               />
-            <p style={{ color: "#333" }}>
+            </div>
+            <p style={{ color: "#333", margin: 0 }}>
             &copy; {new Date().getFullYear()} DaniCare Psychiatry. All rights reserved.
             </p>
           </div>
         </div>
-    
     );
     }

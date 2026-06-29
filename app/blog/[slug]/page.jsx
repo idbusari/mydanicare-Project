@@ -6,8 +6,9 @@ import { notFound } from "next/navigation";
 import ShareButtons from "@/components/ShareButtons"; // ✅ Import share button
 
 export async function generateMetadata({ params }) {
-  const posts = getSortedPostsData();
-  const post = posts.find((p) => p.id === params.slug);
+  const { slug } = await params;
+  const posts = await getSortedPostsData();
+  const post = posts.find((p) => p.id === slug);
 
   if (!post) {
     return {
@@ -22,9 +23,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function BlogPostPage({ params }) {
-  const posts = getSortedPostsData();
-  const post = posts.find((p) => p.id === params.slug);
+export default async function BlogPostPage({ params }) {
+  const { slug } = await params;
+  const posts = await getSortedPostsData();
+  const post = posts.find((p) => p.id === slug);
 
   if (!post) return notFound();
 
@@ -47,6 +49,7 @@ export default function BlogPostPage({ params }) {
 
       <div
         className={styles.content}
+        lang="en"
         dangerouslySetInnerHTML={{ __html: sanitizedContent }}
       />
 
@@ -58,6 +61,6 @@ export default function BlogPostPage({ params }) {
 }
 
 export async function generateStaticParams() {
-  const posts = getSortedPostsData();
+  const posts = await getSortedPostsData();
   return posts.map((post) => ({ slug: post.id }));
 }

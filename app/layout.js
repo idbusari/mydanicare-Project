@@ -7,9 +7,13 @@ import { Footer } from '../components/Footer/Footer';
 import ClientLayout from './ClientLayout';
 import { FooterBottom } from '../components/FooterBottom/FooterBottom';
 import HeaderTop from '../components/HeaderTop/HeaderTop';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import seoConfig from '../config/seo.config';
-import Script from 'next/script'; // Import Next.js Script component
+import Script from 'next/script';
+import TrackingScripts from '../components/TrackingScripts/TrackingScripts';
+import CookieConsent from '../components/CookieConsent/CookieConsent';
+import OrganizationSchema from '../components/StructuredData/OrganizationSchema';
+import HideOnAdmin from '../components/HideOnAdmin';
+import PWARegister from '../components/PWARegister';
 
 // Import FooterETop
 import FooterETop from '../components/FooterETop/FooterETop';
@@ -34,13 +38,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const GTM_ID = "GTM-PN7M6L9W"; // Your GTM container ID
-
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <title>{seoConfig.title}</title>
-        <meta name="description" content={seoConfig.description} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
         <meta property="og:title" content={seoConfig.openGraph.title} />
         <meta property="og:description" content={seoConfig.openGraph.description} />
         <meta property="og:url" content={seoConfig.openGraph.url} />
@@ -49,72 +53,47 @@ export default function RootLayout({ children }) {
         <meta name="twitter:site" content={seoConfig.twitter.site} />
         <meta name="twitter:creator" content={seoConfig.twitter.handle} />
 
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
-        
-        {/* Google Tag Manager Script */}
-        <Script id="gtm-script" strategy="afterInteractive">
+        {/* Google Consent Mode — default denied before user choice */}
+        <Script id="consent-default" strategy="beforeInteractive">
           {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${GTM_ID}');
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied'
+            });
           `}
         </Script>
-
-        {/* Meta Pixel */}
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window,document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '2239959983479799');
-            fbq('track', 'PageView');
-          `}
-        </Script>
-
-        
-        
-        <GoogleAnalytics gaId="G-BVBHZ1NWSN" />
+        <OrganizationSchema />
       </head>
       <body className={`${outfit.variable} ${dmSans.variable}`}>
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
-
-        {/* Meta Pixel (noscript) */}
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src="https://www.facebook.com/tr?id=2239959983479799&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
-      
-        <HeaderTop />
-        <SocialMediaSidebar />
-        <Header />
-        <ClientLayout>
-          {children}
-        </ClientLayout>
-        <Footer />
-        <FooterETop />
-        <SocialMediaRow />
-        <FooterBottom />
+        <PWARegister />
+        <HideOnAdmin>
+          <a
+            href="#main-content"
+            className="skip-to-content"
+          >
+            Skip to main content
+          </a>
+          <HeaderTop />
+          <SocialMediaSidebar />
+          <Header />
+        </HideOnAdmin>
+        <main id="main-content">
+          <ClientLayout>
+            {children}
+          </ClientLayout>
+        </main>
+        <HideOnAdmin>
+          <Footer />
+          <FooterETop />
+          <SocialMediaRow />
+          <FooterBottom />
+          <TrackingScripts />
+          <CookieConsent />
+        </HideOnAdmin>
       </body>
     </html>
   );

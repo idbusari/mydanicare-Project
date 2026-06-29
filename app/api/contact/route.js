@@ -1,6 +1,15 @@
 import nodemailer from "nodemailer";
+import { rateLimit } from "@/lib/rateLimit";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(req) {
+  const limit = rateLimit(req);
+  if (!limit.success) {
+    return new Response(JSON.stringify({ error: limit.message }), {
+      status: 429,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
   const body = await req.json();
 
   const { name, email, message } = body;
@@ -11,6 +20,16 @@ export async function POST(req) {
       headers: { "Content-Type": "application/json" },
     });
   }
+
+  await prisma.lead.create({
+    data: {
+      source: 'contact',
+      firstName: name.split(' ')[0],
+      lastName: name.split(' ').slice(1).join(' '),
+      email,
+      message,
+    },
+  });
 
   // Configure the SMTP transporter
   const transporter = nodemailer.createTransport({
@@ -43,7 +62,10 @@ export async function POST(req) {
       }
     );
   } catch (error) {
-    console.error("Error sending email:", error);
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.error("Error sending email:", error);
+    }
     return new Response(
       JSON.stringify({ error: "Failed to send email." }),
       {

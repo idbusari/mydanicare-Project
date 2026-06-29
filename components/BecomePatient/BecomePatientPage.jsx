@@ -82,7 +82,7 @@ const BecomePatientPage = () => {
         });
       }
     } catch (error) {
-      console.error("Submission Error:", error);
+      // submission error logged for debugging only
       setResponseMessage("Error: Unable to send message. Please try again.");
       window.dataLayer.push({
         event: 'form_submission_error',
