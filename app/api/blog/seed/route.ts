@@ -16,8 +16,8 @@ export async function POST() {
           author: post.author,
           keywords: post.keywords,
           published: true,
-          metaTitle: (post as any).seo?.title || null,
-          metaDesc: (post as any).seo?.description || null,
+          metaTitle: (post as { metaTitle?: string | null }).metaTitle || null,
+          metaDesc: (post as { metaDesc?: string | null }).metaDesc || null,
         },
       });
       createdCount++;

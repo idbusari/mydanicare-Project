@@ -45,9 +45,10 @@ export default function AdminLogin() {
 
       setError('Login failed. Please try again.');
       setLoading(false);
-    } catch (err: any) {
+    } catch (err) {
       console.error('Login error:', err);
-      setError(err?.message || 'Something went wrong. Please try again.');
+      const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+      setError(message);
       setLoading(false);
     }
   };

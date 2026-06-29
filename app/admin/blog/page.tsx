@@ -68,8 +68,9 @@ export default function BlogAdmin() {
       setMsg(`Imported ${arr.length} posts.`);
       setJsonImport('');
       loadPosts();
-    } catch (err: any) {
-      setMsg('JSON import failed: ' + (err?.message || 'Invalid JSON'));
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Invalid JSON';
+      setMsg('JSON import failed: ' + message);
     }
   };
 
@@ -135,7 +136,7 @@ export default function BlogAdmin() {
             {posts.length === 0 && (
               <tr>
                 <td colSpan={5} style={{ padding: '24px 16px', textAlign: 'center', color: '#5e6883' }}>
-                  No posts yet. Click "Seed from Static" to import existing blogs.
+                  No posts yet. Click &quot;Seed from Static&quot; to import existing blogs.
                 </td>
               </tr>
             )}

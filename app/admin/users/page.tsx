@@ -67,8 +67,9 @@ export default function UsersPage() {
       setMsg(`User "${data.name}" invited successfully.`);
       setForm({ name: '', email: '', password: '', role: 'business' });
       load();
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to create user';
+      setError(message);
     }
   };
 
@@ -85,8 +86,9 @@ export default function UsersPage() {
       setMsg('Role updated successfully.');
       setEditing(null);
       load();
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to update role';
+      setError(message);
     }
   };
 
@@ -99,8 +101,9 @@ export default function UsersPage() {
       if (!res.ok) throw new Error('Failed to delete user');
       setMsg('User deleted.');
       load();
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to delete user';
+      setError(message);
     }
   };
 
