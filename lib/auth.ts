@@ -52,5 +52,16 @@ export const authOptions = {
     strategy: 'jwt' as const,
     maxAge: 24 * 60 * 60,
   },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: true,
+      },
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET || 'danicare-admin-secret-key-2026',
 };
