@@ -16,30 +16,19 @@ import {
   Lock,
 } from 'lucide-react';
 
-const ROLE_ROUTES: Record<string, string[]> = {
-  admin: ['all'],
-  editor: ['/admin/blog', '/admin/settings', '/admin/seo', '/admin/profile'],
-  business: ['/admin', '/admin/leads', '/admin/seo', '/admin/profile'],
-};
-
 const menuItems = [
-  { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, minRole: 'business' },
-  { href: '/admin/leads', label: 'Leads', icon: Users, minRole: 'business' },
-  { href: '/admin/blog', label: 'Blog CMS', icon: FileText, minRole: 'editor' },
-  { href: '/admin/settings', label: 'Site Settings', icon: Settings, minRole: 'editor' },
-  { href: '/admin/analytics', label: 'Analytics', icon: BarChart3, minRole: 'editor' },
-  { href: '/admin/seo', label: 'SEO Dashboard', icon: Globe, minRole: 'business' },
-  { href: '/admin/users', label: 'Users', icon: Shield, minRole: 'admin' },
+  { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, roles: ['admin', 'editor', 'business'] },
+  { href: '/admin/leads', label: 'Leads', icon: Users, roles: ['admin', 'business'] },
+  { href: '/admin/blog', label: 'Blog CMS', icon: FileText, roles: ['admin', 'editor'] },
+  { href: '/admin/settings', label: 'Site Settings', icon: Settings, roles: ['admin', 'editor'] },
+  { href: '/admin/analytics', label: 'Analytics', icon: BarChart3, roles: ['admin', 'editor', 'business'] },
+  { href: '/admin/seo', label: 'SEO Dashboard', icon: Globe, roles: ['admin', 'editor', 'business'] },
+  { href: '/admin/users', label: 'Users', icon: Shield, roles: ['admin'] },
 ];
 
 const bottomItems = [
   { href: '/admin/profile', label: 'My Profile', icon: UserCircle },
 ];
-
-function roleLevel(role: string) {
-  const levels: Record<string, number> = { business: 1, editor: 2, admin: 3 };
-  return levels[role] || 0;
-}
 
 export default function AdminSidebar() {
   const pathname = usePathname();
@@ -47,7 +36,7 @@ export default function AdminSidebar() {
   const role = (session?.user as { role?: string; name?: string; email?: string })?.role || '';
   const userName = (session?.user as { name?: string })?.name || '';
 
-  const visibleItems = menuItems.filter((item) => roleLevel(role) >= roleLevel(item.minRole));
+  const visibleItems = menuItems.filter((item) => item.roles.includes(role));
 
   return (
     <aside

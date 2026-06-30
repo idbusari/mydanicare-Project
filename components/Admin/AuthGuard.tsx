@@ -6,8 +6,8 @@ import { useRouter, usePathname } from 'next/navigation';
 
 const ROLE_ROUTES: Record<string, string[]> = {
   admin: ['all'],
-  editor: ['/admin/blog', '/admin/settings', '/admin/seo', '/admin/profile'],
-  business: ['/admin', '/admin/leads', '/admin/seo', '/admin/profile'],
+  editor: ['/admin', '/admin/blog', '/admin/settings', '/admin/seo', '/admin/profile'],
+  business: ['/admin', '/admin/leads', '/admin/analytics', '/admin/seo', '/admin/profile'],
 };
 
 function canAccess(role: string, path: string) {
