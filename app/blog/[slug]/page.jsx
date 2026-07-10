@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import ShareButtons from "@/components/ShareButtons";
 import BlogArticle from "@/components/BlogArticle/BlogArticle";
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -44,9 +44,4 @@ export default async function BlogPostPage({ params }) {
       </div>
     </>
   );
-}
-
-export async function generateStaticParams() {
-  const posts = await getSortedPostsData();
-  return posts.map((post) => ({ slug: post.id }));
 }
