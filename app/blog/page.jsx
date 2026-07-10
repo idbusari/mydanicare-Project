@@ -4,6 +4,8 @@ import Image from "next/image";
 import { getSortedPostsData } from "@/lib/posts";
 import DOMPurify from "isomorphic-dompurify";
 
+export const revalidate = 60;
+
 export const metadata = {
   title: 'Blog | DaniCare Psychiatry - Mental Health Insights',
   description:
@@ -21,13 +23,30 @@ export default async function BlogPage() {
         {posts.map(({ id, title, date, excerpt, image, author }) => (
           <div key={id} className={styles.card}>
             <Link href={`/blog/${id}`}>
-              <Image
-                src={image}
-                alt={title}
-                width={400}
-                height={250}
-                className={styles.image}
-              />
+              {image ? (
+                <Image
+                  src={image}
+                  alt={title}
+                  width={400}
+                  height={250}
+                  className={styles.image}
+                />
+              ) : (
+                <div
+                  className={styles.image}
+                  style={{
+                    height: '250px',
+                    background: '#f1f5f9',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#94a3b8',
+                    fontSize: '0.9rem',
+                  }}
+                >
+                  No image
+                </div>
+              )}
             </Link>
 
             <div className={styles.content}>
@@ -41,7 +60,7 @@ export default async function BlogPage() {
 
               <div
                 className={styles.excerpt}
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(excerpt) }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(excerpt || '') }}
               />
 
               <Link href={`/blog/${id}`} className={styles.readMore}>

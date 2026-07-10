@@ -13,8 +13,19 @@ interface BlogPost {
   author: string;
   keywords: string | null;
   published: boolean;
+  publishedAt: string | null;
+  createdAt: string;
   metaTitle: string | null;
   metaDesc: string | null;
+}
+
+function formatDate(value: string | null) {
+  if (!value) return '—';
+  return new Date(value).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 }
 
 export default function BlogAdmin() {
@@ -128,6 +139,7 @@ export default function BlogAdmin() {
               <th style={{ padding: '14px 16px', fontWeight: 600 }}>Title</th>
               <th style={{ padding: '14px 16px', fontWeight: 600 }}>Slug</th>
               <th style={{ padding: '14px 16px', fontWeight: 600 }}>Author</th>
+              <th style={{ padding: '14px 16px', fontWeight: 600 }}>Published</th>
               <th style={{ padding: '14px 16px', fontWeight: 600 }}>Status</th>
               <th style={{ padding: '14px 16px', fontWeight: 600 }}>Actions</th>
             </tr>
@@ -135,7 +147,7 @@ export default function BlogAdmin() {
           <tbody>
             {posts.length === 0 && (
               <tr>
-                <td colSpan={5} style={{ padding: '24px 16px', textAlign: 'center', color: '#5e6883' }}>
+                <td colSpan={6} style={{ padding: '24px 16px', textAlign: 'center', color: '#5e6883' }}>
                   No posts yet. Click &quot;Seed from Static&quot; to import existing blogs.
                 </td>
               </tr>
@@ -145,6 +157,7 @@ export default function BlogAdmin() {
                 <td style={{ padding: '12px 16px' }}>{post.title}</td>
                 <td style={{ padding: '12px 16px', fontSize: '0.85rem', color: '#5e6883' }}>{post.slug}</td>
                 <td style={{ padding: '12px 16px', fontSize: '0.85rem', color: '#5e6883' }}>{post.author}</td>
+                <td style={{ padding: '12px 16px', fontSize: '0.85rem', color: '#5e6883' }}>{formatDate(post.publishedAt)}</td>
                 <td style={{ padding: '12px 16px' }}>
                   <span style={{ padding: '4px 10px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: 500, background: post.published ? '#dcfce7' : '#f1f5f9', color: post.published ? '#166534' : '#5e6883' }}>
                     {post.published ? 'Published' : 'Draft'}

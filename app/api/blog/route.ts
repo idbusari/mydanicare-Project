@@ -3,7 +3,10 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET() {
   const posts = await prisma.blogPost.findMany({
-    orderBy: { publishedAt: 'desc' },
+    orderBy: [
+      { publishedAt: { sort: 'desc', nulls: 'last' } },
+      { createdAt: 'desc' },
+    ],
   });
   return NextResponse.json(posts);
 }

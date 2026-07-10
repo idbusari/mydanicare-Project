@@ -37,11 +37,21 @@ export default function ClientLayout({ children }) {
     // Skip admin routes
     if (pathname.startsWith('/admin')) return;
 
-    fetch('/api/analytics', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ page: pathname }),
-    }).catch(() => {});
+    const body = JSON.stringify({ page: pathname });
+    try {
+      if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+        navigator.sendBeacon('/api/analytics', new Blob([body], { type: 'application/json' }));
+      } else {
+        fetch('/api/analytics', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body,
+          keepalive: true,
+        }).catch(() => {});
+      }
+    } catch {
+      // Fail silently so analytics never breaks the UI
+    }
   }, [pathname]);
 
   return (

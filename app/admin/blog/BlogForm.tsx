@@ -64,6 +64,18 @@ export default function BlogForm({ initial }: BlogFormProps) {
     e.preventDefault();
     setLoading(true);
     setMsg('');
+
+    if (!form.title.trim()) {
+      setMsg('Error: Title is required.');
+      setLoading(false);
+      return;
+    }
+    if (!form.slug.trim()) {
+      setMsg('Error: Slug is required. Click "Generate Slug" or type one.');
+      setLoading(false);
+      return;
+    }
+
     const body = isEdit ? { ...form, id: initial!.id } : form;
 
     try {

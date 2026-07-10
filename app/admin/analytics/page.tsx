@@ -15,10 +15,18 @@ const COLORS = ['#1a3c6e', '#FFCC00', '#e66926', '#5e6883', '#059669', '#7c3aed'
 
 export default function AnalyticsPage() {
   const [views, setViews] = useState<PageView[]>([]);
-  const [range, setRange] = useState('7');
+  const [range, setRange] = useState('30');
 
   useEffect(() => {
-    fetch('/api/analytics').then((r) => r.json()).then(setViews);
+    fetch('/api/analytics')
+      .then(async (r) => {
+        if (!r.ok) throw new Error('Failed to load analytics');
+        return r.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data)) setViews(data);
+      })
+      .catch(() => setViews([]));
   }, []);
 
   const cutoff = new Date();

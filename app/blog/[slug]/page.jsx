@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import ShareButtons from "@/components/ShareButtons";
 import BlogArticle from "@/components/BlogArticle/BlogArticle";
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const posts = await getSortedPostsData();

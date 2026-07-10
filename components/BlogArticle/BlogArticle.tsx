@@ -13,7 +13,7 @@ interface BlogArticleProps {
 }
 
 export default function BlogArticle({ title, author, date, image, content }: BlogArticleProps) {
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = DOMPurify.sanitize(content || '');
 
   return (
     <article className={styles.article}>
@@ -22,7 +22,7 @@ export default function BlogArticle({ title, author, date, image, content }: Blo
         By {author} — {date}
       </p>
 
-      {image && (
+      {image ? (
         <Image
           src={image}
           alt={title}
@@ -31,6 +31,24 @@ export default function BlogArticle({ title, author, date, image, content }: Blo
           className={styles.image}
           priority
         />
+      ) : (
+        <div
+          className={styles.image}
+          style={{
+            width: '100%',
+            height: '250px',
+            background: '#f1f5f9',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#94a3b8',
+            fontSize: '0.9rem',
+            borderRadius: '1rem',
+            marginBottom: '2rem',
+          }}
+        >
+          No image
+        </div>
       )}
 
       <div
