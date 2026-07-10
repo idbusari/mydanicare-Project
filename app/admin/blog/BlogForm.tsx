@@ -9,6 +9,17 @@ import 'react-quill-new/dist/quill.snow.css';
 
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
+const QUILL_MODULES = {
+  toolbar: [
+    [{ header: [1, 2, 3, false] }],
+    ['bold', 'italic', 'underline', 'strike'],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    [{ align: [] }],
+    ['link', 'image'],
+    ['clean'],
+  ],
+};
+
 interface BlogFormProps {
   initial?: {
     id?: string;
@@ -182,6 +193,7 @@ export default function BlogForm({ initial }: BlogFormProps) {
               theme="snow"
               value={form.content}
               onChange={(val: string) => handleChange('content', val)}
+              modules={QUILL_MODULES}
               style={{ height: '260px', marginBottom: '40px' }}
             />
           </div>
