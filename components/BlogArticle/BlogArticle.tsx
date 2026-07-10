@@ -23,14 +23,23 @@ export default function BlogArticle({ title, author, date, image, content }: Blo
       </p>
 
       {image ? (
-        <Image
-          src={image}
-          alt={title}
-          width={800}
-          height={400}
-          className={styles.image}
-          priority
-        />
+        image.startsWith('data:') ? (
+          <img
+            src={image}
+            alt={title}
+            className={styles.image}
+            style={{ width: '100%', height: '400px', objectFit: 'cover' }}
+          />
+        ) : (
+          <Image
+            src={image}
+            alt={title}
+            width={800}
+            height={400}
+            className={styles.image}
+            priority
+          />
+        )
       ) : (
         <div
           className={styles.image}

@@ -24,13 +24,22 @@ export default async function BlogPage() {
           <div key={id} className={styles.card}>
             <Link href={`/blog/${id}`}>
               {image ? (
-                <Image
-                  src={image}
-                  alt={title}
-                  width={400}
-                  height={250}
-                  className={styles.image}
-                />
+                image.startsWith('data:') ? (
+                  <img
+                    src={image}
+                    alt={title}
+                    className={styles.image}
+                    style={{ width: '100%', height: '250px', objectFit: 'cover' }}
+                  />
+                ) : (
+                  <Image
+                    src={image}
+                    alt={title}
+                    width={400}
+                    height={250}
+                    className={styles.image}
+                  />
+                )
               ) : (
                 <div
                   className={styles.image}

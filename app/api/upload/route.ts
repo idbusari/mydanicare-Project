@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
-import { join } from 'path';
-import { mkdir } from 'fs/promises';
+import { put } from '@vercel/blob';
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,15 +10,24 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
     const safeName = file.name.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9.-]/g, '');
     const filename = `${Date.now()}-${safeName}`;
-    const dir = join(process.cwd(), 'public', 'images');
-    await mkdir(dir, { recursive: true });
-    await writeFile(join(dir, filename), buffer);
 
-    return NextResponse.json({ url: `/images/${filename}` });
+    // Use Vercel Blob if configured; otherwise embed the image as a base64 data URI.
+    // Writing to public/images at runtime does not work in serverless environments.
+    if (process.env.BLOB_READ_WRITE_TOKEN) {
+      const blob = await put(filename, file, {
+        access: 'public',
+        addRandomSuffix: false,
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+      });
+      return NextResponse.json({ url: blob.url });
+    }
+
+    const bytes = await file.arrayBuffer();
+    const base64 = Buffer.from(bytes).toString('base64');
+    const url = `data:${file.type || 'image/png'};base64,${base64}`;
+    return NextResponse.json({ url });
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Upload failed';
     return NextResponse.json({ error: message }, { status: 500 });
